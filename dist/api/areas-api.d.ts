@@ -1,0 +1,66 @@
+import { AxiosInstance, AxiosPromise } from "axios";
+import { IAreaCreateRequest, IArea, IAreaSearchCriteria, IAreaResponseFormat } from "../model/areas-model";
+import { IDeviceAssignmentResponseFormat, IDeviceAssignment } from "../model/device-assignments-model";
+import { ISearchCriteria, IDateRangeSearchCriteria } from "../model/common-model";
+import { IDeviceMeasurement, IDeviceLocation, IDeviceAlert } from "@/model/device-events-model";
+/**
+ * Create a new area.
+ * @param axios
+ * @param request
+ */
+export declare function createArea(axios: AxiosInstance, request: IAreaCreateRequest): AxiosPromise<IArea>;
+/**
+ * Get an area by unique token.
+ * @param axios
+ * @param token
+ */
+export declare function getArea(axios: AxiosInstance, token: string): AxiosPromise<IArea>;
+/**
+ * Update an existing area.
+ * @param axios
+ * @param token
+ * @param request
+ */
+export declare function updateArea(axios: AxiosInstance, token: string, request: IAreaCreateRequest): AxiosPromise<IArea>;
+/**
+ * List areas that match the given criteria.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+export declare function listAreas(axios: AxiosInstance, criteria?: IAreaSearchCriteria, format?: IAreaResponseFormat): AxiosPromise<IArea[]>;
+/**
+ * Delete an existing area.
+ * @param axios
+ * @param token
+ */
+export declare function deleteArea(axios: AxiosInstance, token: string): AxiosPromise<IArea>;
+/**
+ * List assignments associated with an area.
+ * @param axios
+ * @param token
+ * @param criteria
+ * @param format
+ */
+export declare function listAssignmentsForArea(axios: AxiosInstance, token: string, criteria?: ISearchCriteria, format?: IDeviceAssignmentResponseFormat): AxiosPromise<IDeviceAssignment[]>;
+/**
+ * List measurement events associated with area.
+ * @param axios
+ * @param token
+ * @param criteria
+ */
+export declare function listMeasurementsForArea(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria): AxiosPromise<IDeviceMeasurement[]>;
+/**
+ * List location events associated with area.
+ * @param axios
+ * @param token
+ * @param criteria
+ */
+export declare function listLocationsForArea(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria): AxiosPromise<IDeviceLocation[]>;
+/**
+ * List alert events associated with area.
+ * @param axios
+ * @param token
+ * @param criteria
+ */
+export declare function listAlertsForArea(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria): AxiosPromise<IDeviceAlert[]>;
