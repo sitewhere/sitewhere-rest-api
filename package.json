@@ -1,0 +1,43 @@
+{
+  "name": "sitewhere-rest-api",
+  "version": "0.0.1",
+  "description": "Provides promise-based access to SiteWhere REST APIs",
+  "main": "dist/sitewhere-rest-api.js",
+  "module": "dist/sitewhere-rest-api.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -cw",
+    "test": "mocha src/test/*.spec.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sitewhere/sitewhere-rest-api.git"
+  },
+  "keywords": [
+    "sitewhere",
+    "rest",
+    "api"
+  ],
+  "author": "Derek Adams <derek.adams@sitewhere.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/sitewhere/sitewhere-rest-api/issues"
+  },
+  "homepage": "https://github.com/sitewhere/sitewhere-rest-api#readme",
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "mocha": "^6.0.1",
+    "rollup": "^1.1.2",
+    "rollup-plugin-typescript2": "^0.19.2",
+    "tslint": "^5.13.0",
+    "typescript": "^3.3.3"
+  }
+}

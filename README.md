@@ -1,2 +1,3 @@
-# sitewhere-rest-api
-JavaScript model and REST API calls for interacting with a SiteWhere instance
+# SiteWhere REST API
+
+A Node.js module that provides promise-based access to [SiteWhere](https://www.sitewhere.com/) REST APIs.
