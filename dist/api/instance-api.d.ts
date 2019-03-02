@@ -41,7 +41,7 @@ export declare function getGlobalConfiguration(axios: AxiosInstance, identifier:
  * @param identifier
  * @param config
  */
-export declare function updateGlobalConfiguration(axios: AxiosInstance, identifier: string, config: IElementContent): void;
+export declare function updateGlobalConfiguration(axios: AxiosInstance, identifier: string, config: IElementContent): AxiosPromise<void>;
 /**
  * Get configuration for tenant microservice based on identifier.
  * @param axios
@@ -54,4 +54,4 @@ export declare function getTenantConfiguration(axios: AxiosInstance, identifier:
  * @param identifier
  * @param config
  */
-export declare function updateTenantConfiguration(axios: AxiosInstance, identifier: string, tenantToken: string, config: IElementContent): void;
+export declare function updateTenantConfiguration(axios: AxiosInstance, identifier: string, tenantToken: string, config: IElementContent): AxiosPromise<void>;

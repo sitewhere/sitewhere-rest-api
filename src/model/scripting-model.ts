@@ -35,3 +35,10 @@ export interface IScriptCreateRequest extends IAccessible {
   type: string;
   content: string;
 }
+
+/**
+ * Information used to clone a script.
+ */
+export interface IScriptCloneRequest {
+  comment: string;
+}

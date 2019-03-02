@@ -15,7 +15,7 @@ import * as DeviceTypesApi from "./api/device-types-api";
 import * as DevicesApi from "./api/devices-api";
 import * as InstanceApi from "./api/instance-api";
 import * as SchedulesApi from "./api/schedules-api";
-import * as ScriptingApi from "./api/schedules-api";
+import * as ScriptingApi from "./api/scripting-api";
 import * as TenantsApi from "./api/tenants-api";
 import * as UsersApi from "./api/users-api";
 import * as ZonesApi from "./api/zones-api";
@@ -23,7 +23,7 @@ import * as ZonesApi from "./api/zones-api";
 /** Export authentication functions */
 export const Auth = Authentication;
 
-/** Export APIs */
+/** Export core APIs */
 export const API = {
   AreaTypes: AreaTypesApi,
   Areas: AreasApi,
@@ -45,4 +45,11 @@ export const API = {
   Tenants: TenantsApi,
   Users: UsersApi,
   Zones: ZonesApi
+};
+
+import * as JwtApi from "./authapi/jwt-api";
+
+/** Export authentication APIs */
+export const AuthAPI = {
+  Jwt: JwtApi
 };

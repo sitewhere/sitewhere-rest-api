@@ -4,7 +4,7 @@ export default [
   {
     input: "src/index.ts",
     output: {
-      file: "dist/sitewhere-rest-api.js",
+      file: "dist/index.js",
       format: "umd",
       name: "sitewhere-rest-api",
       globals: {

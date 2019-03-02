@@ -15,12 +15,13 @@ import * as DeviceTypesApi from "./api/device-types-api";
 import * as DevicesApi from "./api/devices-api";
 import * as InstanceApi from "./api/instance-api";
 import * as SchedulesApi from "./api/schedules-api";
+import * as ScriptingApi from "./api/scripting-api";
 import * as TenantsApi from "./api/tenants-api";
 import * as UsersApi from "./api/users-api";
 import * as ZonesApi from "./api/zones-api";
 /** Export authentication functions */
 export declare const Auth: typeof Authentication;
-/** Export APIs */
+/** Export core APIs */
 export declare const API: {
     AreaTypes: typeof AreaTypesApi;
     Areas: typeof AreasApi;
@@ -38,8 +39,13 @@ export declare const API: {
     Devices: typeof DevicesApi;
     Instance: typeof InstanceApi;
     Schedules: typeof SchedulesApi;
-    Scripting: typeof SchedulesApi;
+    Scripting: typeof ScriptingApi;
     Tenants: typeof TenantsApi;
     Users: typeof UsersApi;
     Zones: typeof ZonesApi;
+};
+import * as JwtApi from "./authapi/jwt-api";
+/** Export authentication APIs */
+export declare const AuthAPI: {
+    Jwt: typeof JwtApi;
 };

@@ -2,8 +2,8 @@
   "name": "sitewhere-rest-api",
   "version": "0.0.1",
   "description": "Provides promise-based access to SiteWhere REST APIs",
-  "main": "dist/sitewhere-rest-api.js",
-  "module": "dist/sitewhere-rest-api.es.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],

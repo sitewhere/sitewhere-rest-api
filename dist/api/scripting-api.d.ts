@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IScriptTemplate, IScriptMetadata, IScriptCreateRequest, IScriptVersion } from "@/model/scripting-model";
+import { IScriptTemplate, IScriptMetadata, IScriptCreateRequest, IScriptVersion, IScriptCloneRequest } from "../model/scripting-model";
 /**
  * List script templates for a microservice by identifier.
  * @param axios
@@ -58,16 +58,15 @@ export declare function updateGlobalScript(axios: AxiosInstance, identifier: str
  * @param versionId
  * @param request
  */
-export declare function cloneGlobalScript(axios: AxiosInstance, identifier: string, scriptId: string, versionId: string, request: IScriptCreateRequest): AxiosPromise<IScriptVersion>;
+export declare function cloneGlobalScript(axios: AxiosInstance, identifier: string, scriptId: string, versionId: string, request: IScriptCloneRequest): AxiosPromise<IScriptVersion>;
 /**
  * Activate a global script.
  * @param axios
  * @param identifier
  * @param scriptId
  * @param versionId
- * @param request
  */
-export declare function activateGlobalScript(axios: AxiosInstance, identifier: string, scriptId: string, versionId: string, request: IScriptCreateRequest): AxiosPromise<IScriptMetadata>;
+export declare function activateGlobalScript(axios: AxiosInstance, identifier: string, scriptId: string, versionId: string): AxiosPromise<IScriptMetadata>;
 /**
  * Delete a global script and its version history.
  * @param axios
@@ -126,7 +125,7 @@ export declare function updateTenantScript(axios: AxiosInstance, tenantToken: st
  * @param versionId
  * @param request
  */
-export declare function cloneTenantScript(axios: AxiosInstance, tenantToken: string, identifier: string, scriptId: string, versionId: string, request: IScriptCreateRequest): AxiosPromise<IScriptVersion>;
+export declare function cloneTenantScript(axios: AxiosInstance, tenantToken: string, identifier: string, scriptId: string, versionId: string, request: IScriptCloneRequest): AxiosPromise<IScriptVersion>;
 /**
  * Activate a given version of a microservice tenant script.
  * @param axios
@@ -136,7 +135,7 @@ export declare function cloneTenantScript(axios: AxiosInstance, tenantToken: str
  * @param versionId
  * @param request
  */
-export declare function activateTenantScript(axios: AxiosInstance, tenantToken: string, identifier: string, scriptId: string, versionId: string, request: IScriptCreateRequest): AxiosPromise<IScriptMetadata>;
+export declare function activateTenantScript(axios: AxiosInstance, tenantToken: string, identifier: string, scriptId: string, versionId: string): AxiosPromise<IScriptMetadata>;
 /**
  * Delete a microservice tenant script and its version history.
  * @param axios

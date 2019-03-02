@@ -4,8 +4,9 @@ import {
   IScriptTemplate,
   IScriptMetadata,
   IScriptCreateRequest,
-  IScriptVersion
-} from "@/model/scripting-model";
+  IScriptVersion,
+  IScriptCloneRequest
+} from "../model/scripting-model";
 
 /**
  * List script templates for a microservice by identifier.
@@ -143,7 +144,7 @@ export function cloneGlobalScript(
   identifier: string,
   scriptId: string,
   versionId: string,
-  request: IScriptCreateRequest
+  request: IScriptCloneRequest
 ): AxiosPromise<IScriptVersion> {
   return restAuthPost<IScriptVersion>(
     axios,
@@ -158,19 +159,17 @@ export function cloneGlobalScript(
  * @param identifier
  * @param scriptId
  * @param versionId
- * @param request
  */
 export function activateGlobalScript(
   axios: AxiosInstance,
   identifier: string,
   scriptId: string,
-  versionId: string,
-  request: IScriptCreateRequest
+  versionId: string
 ): AxiosPromise<IScriptMetadata> {
   return restAuthPost<IScriptMetadata>(
     axios,
     `/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}/activate`,
-    request
+    null
   );
 }
 
@@ -307,7 +306,7 @@ export function cloneTenantScript(
   identifier: string,
   scriptId: string,
   versionId: string,
-  request: IScriptCreateRequest
+  request: IScriptCloneRequest
 ): AxiosPromise<IScriptVersion> {
   return restAuthPost<IScriptVersion>(
     axios,
@@ -330,13 +329,12 @@ export function activateTenantScript(
   tenantToken: string,
   identifier: string,
   scriptId: string,
-  versionId: string,
-  request: IScriptCreateRequest
+  versionId: string
 ): AxiosPromise<IScriptMetadata> {
   return restAuthPost<IScriptMetadata>(
     axios,
     `/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/activate`,
-    request
+    null
   );
 }
 

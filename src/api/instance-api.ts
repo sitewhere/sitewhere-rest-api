@@ -103,8 +103,8 @@ export function updateGlobalConfiguration(
   axios: AxiosInstance,
   identifier: string,
   config: IElementContent
-): void {
-  restAuthPost(
+): AxiosPromise<void> {
+  return restAuthPost(
     axios,
     `instance/microservice/${identifier}/configuration`,
     config
@@ -138,8 +138,8 @@ export function updateTenantConfiguration(
   identifier: string,
   tenantToken: string,
   config: IElementContent
-): void {
-  restAuthPost(
+): AxiosPromise<void> {
+  return restAuthPost(
     axios,
     `instance/microservice/${identifier}/tenants/${tenantToken}/configuration`,
     config
