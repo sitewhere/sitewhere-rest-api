@@ -3,11 +3,13 @@ import {
   ICustomerCreateRequest,
   ICustomer,
   ICustomerSearchCriteria,
-  ICustomerResponseFormat
+  ICustomerResponseFormat,
+  ICustomerSearchResults
 } from "../model/customers-model";
 import {
   IDeviceAssignmentResponseFormat,
-  IDeviceAssignment
+  IDeviceAssignment,
+  IDeviceAssignmentSearchResults
 } from "../model/device-assignments-model";
 import {
   createPagingQuery,
@@ -26,7 +28,10 @@ import {
 import {
   IDeviceMeasurement,
   IDeviceLocation,
-  IDeviceAlert
+  IDeviceAlert,
+  IDeviceMeasurementSearchResults,
+  IDeviceLocationSearchResults,
+  IDeviceAlertSearchResults
 } from "@/model/device-events-model";
 
 /**
@@ -77,7 +82,7 @@ export function listCustomers(
   axios: AxiosInstance,
   criteria?: ICustomerSearchCriteria,
   format?: ICustomerResponseFormat
-): AxiosPromise<ICustomer[]> {
+): AxiosPromise<ICustomerSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(format.includeCustomerType, "includeCustomerType");
@@ -88,7 +93,7 @@ export function listCustomers(
     query += addStringFilter(criteria.customerTypeId, "customerTypeId");
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<ICustomer[]>(axios, `customers${query}`);
+  return restAuthGet<ICustomerSearchResults>(axios, `customers${query}`);
 }
 
 /**
@@ -115,7 +120,7 @@ export function listAssignmentsForCustomer(
   token: string,
   criteria?: ISearchCriteria,
   format?: IDeviceAssignmentResponseFormat
-): AxiosPromise<IDeviceAssignment[]> {
+): AxiosPromise<IDeviceAssignmentSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(format.includeDevice, "includeDevice");
@@ -126,7 +131,7 @@ export function listAssignmentsForCustomer(
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceAssignment[]>(
+  return restAuthGet<IDeviceAssignmentSearchResults>(
     axios,
     `customers/${token}/assignments${query}`
   );
@@ -142,12 +147,12 @@ export function listMeasurementsForCustomer(
   axios: AxiosInstance,
   token: string,
   criteria?: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceMeasurement[]> {
+): AxiosPromise<IDeviceMeasurementSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceMeasurement[]>(
+  return restAuthGet<IDeviceMeasurementSearchResults>(
     axios,
     `customers/${token}/measurements${query}`
   );
@@ -163,12 +168,12 @@ export function listLocationsForCustomer(
   axios: AxiosInstance,
   token: string,
   criteria?: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceLocation[]> {
+): AxiosPromise<IDeviceLocationSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceLocation[]>(
+  return restAuthGet<IDeviceLocationSearchResults>(
     axios,
     `customers/${token}/locations${query}`
   );
@@ -184,12 +189,12 @@ export function listAlertsForCustomer(
   axios: AxiosInstance,
   token: string,
   criteria?: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceAlert[]> {
+): AxiosPromise<IDeviceAlertSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceAlert[]>(
+  return restAuthGet<IDeviceAlertSearchResults>(
     axios,
     `customers/${token}/alerts${query}`
   );

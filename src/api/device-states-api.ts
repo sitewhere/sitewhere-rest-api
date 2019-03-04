@@ -2,7 +2,8 @@ import { AxiosInstance, AxiosPromise } from "axios";
 import {
   IDeviceState,
   IDeviceStateResponseFormat,
-  IDeviceStateSearchCriteria
+  IDeviceStateSearchCriteria,
+  IDeviceStateSearchResults
 } from "../model/device-states-model";
 import { restAuthPost, randomSeedQuery, addFilter } from "../rest";
 
@@ -16,7 +17,7 @@ export function searchDeviceStates(
   axios: AxiosInstance,
   criteria?: IDeviceStateSearchCriteria,
   format?: IDeviceStateResponseFormat
-): AxiosPromise<IDeviceState[]> {
+): AxiosPromise<IDeviceStateSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(format.includeArea, "includeArea");
@@ -30,7 +31,7 @@ export function searchDeviceStates(
     query += addFilter(format.includeDeviceType, "includeDeviceType");
     query += addFilter(format.includeEventDetails, "includeEventDetails");
   }
-  return restAuthPost<IDeviceState[]>(
+  return restAuthPost<IDeviceStateSearchResults>(
     axios,
     `devicestates/search${query}`,
     criteria

@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IAssetCreateRequest, IAsset, IAssetSearchCriteria, IAssetResponseFormat } from "../model/assets-model";
+import { IAssetCreateRequest, IAsset, IAssetSearchCriteria, IAssetResponseFormat, IAssetSearchResults } from "../model/assets-model";
 /**
  * Create a new asset.
  * @param axios
@@ -25,7 +25,7 @@ export declare function updateAsset(axios: AxiosInstance, token: string, request
  * @param criteria
  * @param format
  */
-export declare function listAssets(axios: AxiosInstance, criteria?: IAssetSearchCriteria, format?: IAssetResponseFormat): AxiosPromise<IAsset[]>;
+export declare function listAssets(axios: AxiosInstance, criteria?: IAssetSearchCriteria, format?: IAssetResponseFormat): AxiosPromise<IAssetSearchResults>;
 /**
  * Delete an existing asset.
  * @param axios

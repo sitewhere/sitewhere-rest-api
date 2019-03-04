@@ -3,7 +3,8 @@ import {
   IAssetCreateRequest,
   IAsset,
   IAssetSearchCriteria,
-  IAssetResponseFormat
+  IAssetResponseFormat,
+  IAssetSearchResults
 } from "../model/assets-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -63,7 +64,7 @@ export function listAssets(
   axios: AxiosInstance,
   criteria?: IAssetSearchCriteria,
   format?: IAssetResponseFormat
-): AxiosPromise<IAsset[]> {
+): AxiosPromise<IAssetSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(format.includeAssetType, "includeAssetType");
@@ -71,7 +72,7 @@ export function listAssets(
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IAsset[]>(axios, `assets${query}`);
+  return restAuthGet<IAssetSearchResults>(axios, `assets${query}`);
 }
 
 /**

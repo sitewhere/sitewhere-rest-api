@@ -51,3 +51,8 @@ export interface IDeviceGroupElement {
 export interface IDeviceGroupElementResponseFormat extends IResponseFormat {
     includeDetails?: boolean;
 }
+/**
+ * Search results for device group elements.
+ */
+export interface IDeviceGroupElementSearchResults extends ISearchResults<IDeviceGroupElement> {
+}

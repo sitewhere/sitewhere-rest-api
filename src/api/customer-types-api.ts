@@ -3,7 +3,8 @@ import {
   ICustomerTypeCreateRequest,
   ICustomerType,
   ICustomerTypeSearchCriteria,
-  ICustomerTypeResponseFormat
+  ICustomerTypeResponseFormat,
+  ICustomerTypeSearchResults
 } from "../model/customer-types-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -63,7 +64,7 @@ export function listCustomerTypes(
   axios: AxiosInstance,
   criteria?: ICustomerTypeSearchCriteria,
   format?: ICustomerTypeResponseFormat
-): AxiosPromise<ICustomerType[]> {
+): AxiosPromise<ICustomerTypeSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(
@@ -74,7 +75,10 @@ export function listCustomerTypes(
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<ICustomerType[]>(axios, `customertypes${query}`);
+  return restAuthGet<ICustomerTypeSearchResults>(
+    axios,
+    `customertypes${query}`
+  );
 }
 
 /**

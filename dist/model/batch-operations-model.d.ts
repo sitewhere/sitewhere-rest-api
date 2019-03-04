@@ -70,6 +70,11 @@ export interface IBatchElement extends IMetadataProvider {
     processedDate: Date;
 }
 /**
+ * Search results that contain batch elements.
+ */
+export interface IBatchElementSearchResults extends ISearchResults<IBatchElement> {
+}
+/**
  * Used to create a batch command invocation.
  */
 export interface IBatchCommandInvocationRequest {

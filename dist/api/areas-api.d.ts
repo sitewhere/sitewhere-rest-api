@@ -1,8 +1,8 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IAreaCreateRequest, IArea, IAreaSearchCriteria, IAreaResponseFormat } from "../model/areas-model";
-import { IDeviceAssignmentResponseFormat, IDeviceAssignment } from "../model/device-assignments-model";
+import { IAreaCreateRequest, IArea, IAreaSearchCriteria, IAreaResponseFormat, IAreaSearchResults } from "../model/areas-model";
+import { IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults } from "../model/device-assignments-model";
 import { ISearchCriteria, IDateRangeSearchCriteria } from "../model/common-model";
-import { IDeviceMeasurement, IDeviceLocation, IDeviceAlert } from "@/model/device-events-model";
+import { IDeviceMeasurementSearchResults, IDeviceLocationSearchResults, IDeviceAlertSearchResults } from "@/model/device-events-model";
 /**
  * Create a new area.
  * @param axios
@@ -28,7 +28,7 @@ export declare function updateArea(axios: AxiosInstance, token: string, request:
  * @param criteria
  * @param format
  */
-export declare function listAreas(axios: AxiosInstance, criteria?: IAreaSearchCriteria, format?: IAreaResponseFormat): AxiosPromise<IArea[]>;
+export declare function listAreas(axios: AxiosInstance, criteria?: IAreaSearchCriteria, format?: IAreaResponseFormat): AxiosPromise<IAreaSearchResults>;
 /**
  * Delete an existing area.
  * @param axios
@@ -42,25 +42,25 @@ export declare function deleteArea(axios: AxiosInstance, token: string): AxiosPr
  * @param criteria
  * @param format
  */
-export declare function listAssignmentsForArea(axios: AxiosInstance, token: string, criteria?: ISearchCriteria, format?: IDeviceAssignmentResponseFormat): AxiosPromise<IDeviceAssignment[]>;
+export declare function listAssignmentsForArea(axios: AxiosInstance, token: string, criteria?: ISearchCriteria, format?: IDeviceAssignmentResponseFormat): AxiosPromise<IDeviceAssignmentSearchResults>;
 /**
  * List measurement events associated with area.
  * @param axios
  * @param token
  * @param criteria
  */
-export declare function listMeasurementsForArea(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria): AxiosPromise<IDeviceMeasurement[]>;
+export declare function listMeasurementsForArea(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria): AxiosPromise<IDeviceMeasurementSearchResults>;
 /**
  * List location events associated with area.
  * @param axios
  * @param token
  * @param criteria
  */
-export declare function listLocationsForArea(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria): AxiosPromise<IDeviceLocation[]>;
+export declare function listLocationsForArea(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria): AxiosPromise<IDeviceLocationSearchResults>;
 /**
  * List alert events associated with area.
  * @param axios
  * @param token
  * @param criteria
  */
-export declare function listAlertsForArea(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria): AxiosPromise<IDeviceAlert[]>;
+export declare function listAlertsForArea(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria): AxiosPromise<IDeviceAlertSearchResults>;

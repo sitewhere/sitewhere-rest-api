@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IBatchOperation, IBatchOperationSearchCriteria, IBatchOperationResponseFormat, IBatchOperationElementResponseFormat, IBatchCommandInvocationRequest, IBatchElement, IBatchCommandForCriteriaRequest } from "../model/batch-operations-model";
+import { IBatchOperation, IBatchOperationSearchCriteria, IBatchOperationResponseFormat, IBatchOperationElementResponseFormat, IBatchCommandInvocationRequest, IBatchCommandForCriteriaRequest, IBatchOperationSearchResults, IBatchElementSearchResults } from "../model/batch-operations-model";
 import { ISearchCriteria } from "../model/common-model";
 /**
  * Get an batch operation by unique token.
@@ -13,11 +13,11 @@ export declare function getBatchOperation(axios: AxiosInstance, token: string): 
  * @param criteria
  * @param format
  */
-export declare function listBatchOperations(axios: AxiosInstance, criteria?: IBatchOperationSearchCriteria, format?: IBatchOperationResponseFormat): AxiosPromise<IBatchOperation[]>;
+export declare function listBatchOperations(axios: AxiosInstance, criteria?: IBatchOperationSearchCriteria, format?: IBatchOperationResponseFormat): AxiosPromise<IBatchOperationSearchResults>;
 /**
  * List elements for a batch operation that match the given criteria.
  */
-export declare function listBatchOperationElements(axios: AxiosInstance, token: string, criteria?: ISearchCriteria, format?: IBatchOperationElementResponseFormat): AxiosPromise<IBatchElement[]>;
+export declare function listBatchOperationElements(axios: AxiosInstance, token: string, criteria?: ISearchCriteria, format?: IBatchOperationElementResponseFormat): AxiosPromise<IBatchElementSearchResults>;
 /**
  * Create a batch command invocation.
  * @param axios

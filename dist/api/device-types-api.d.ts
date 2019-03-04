@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IDeviceTypeCreateRequest, IDeviceType, IDeviceTypeSearchCriteria, IDeviceTypeResponseFormat } from "../model/device-types-model";
+import { IDeviceTypeCreateRequest, IDeviceType, IDeviceTypeSearchCriteria, IDeviceTypeResponseFormat, IDeviceTypeSearchResults } from "../model/device-types-model";
 /**
  * Create a new device type.
  * @param axios
@@ -25,7 +25,7 @@ export declare function updateDeviceType(axios: AxiosInstance, deviceTypeToken: 
  * @param criteria
  * @param format
  */
-export declare function listDeviceTypes(axios: AxiosInstance, criteria?: IDeviceTypeSearchCriteria, format?: IDeviceTypeResponseFormat): AxiosPromise<IDeviceType[]>;
+export declare function listDeviceTypes(axios: AxiosInstance, criteria?: IDeviceTypeSearchCriteria, format?: IDeviceTypeResponseFormat): AxiosPromise<IDeviceTypeSearchResults>;
 /**
  * Delete an existing device type.
  * @param axios

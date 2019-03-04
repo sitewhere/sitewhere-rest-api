@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { ICustomerTypeCreateRequest, ICustomerType, ICustomerTypeSearchCriteria, ICustomerTypeResponseFormat } from "../model/customer-types-model";
+import { ICustomerTypeCreateRequest, ICustomerType, ICustomerTypeSearchCriteria, ICustomerTypeResponseFormat, ICustomerTypeSearchResults } from "../model/customer-types-model";
 /**
  * Create a new customer type.
  * @param axios
@@ -25,7 +25,7 @@ export declare function updateCustomerType(axios: AxiosInstance, token: string, 
  * @param criteria
  * @param format
  */
-export declare function listCustomerTypes(axios: AxiosInstance, criteria?: ICustomerTypeSearchCriteria, format?: ICustomerTypeResponseFormat): AxiosPromise<ICustomerType[]>;
+export declare function listCustomerTypes(axios: AxiosInstance, criteria?: ICustomerTypeSearchCriteria, format?: ICustomerTypeResponseFormat): AxiosPromise<ICustomerTypeSearchResults>;
 /**
  * Delete an existing customer type.
  * @param axios

@@ -6,7 +6,9 @@ import {
   IBatchOperationElementResponseFormat,
   IBatchCommandInvocationRequest,
   IBatchElement,
-  IBatchCommandForCriteriaRequest
+  IBatchCommandForCriteriaRequest,
+  IBatchOperationSearchResults,
+  IBatchElementSearchResults
 } from "../model/batch-operations-model";
 import { createPagingQuery, ISearchCriteria } from "../model/common-model";
 import { restAuthGet, restAuthPost, randomSeedQuery, addFilter } from "../rest";
@@ -33,7 +35,7 @@ export function listBatchOperations(
   axios: AxiosInstance,
   criteria?: IBatchOperationSearchCriteria,
   format?: IBatchOperationResponseFormat
-): AxiosPromise<IBatchOperation[]> {
+): AxiosPromise<IBatchOperationSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     // No response format options available.
@@ -41,7 +43,7 @@ export function listBatchOperations(
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IBatchOperation[]>(axios, `batch${query}`);
+  return restAuthGet<IBatchOperationSearchResults>(axios, `batch${query}`);
 }
 
 /**
@@ -52,7 +54,7 @@ export function listBatchOperationElements(
   token: string,
   criteria?: ISearchCriteria,
   format?: IBatchOperationElementResponseFormat
-): AxiosPromise<IBatchElement[]> {
+): AxiosPromise<IBatchElementSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(format.includeDevice, "includeDevice");
@@ -60,7 +62,10 @@ export function listBatchOperationElements(
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IBatchElement[]>(axios, `batch/${token}/elements${query}`);
+  return restAuthGet<IBatchElementSearchResults>(
+    axios,
+    `batch/${token}/elements${query}`
+  );
 }
 
 /**

@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IAreaTypeCreateRequest, IAreaType, IAreaTypeSearchCriteria, IAreaTypeResponseFormat } from "../model/area-types-model";
+import { IAreaTypeCreateRequest, IAreaType, IAreaTypeSearchCriteria, IAreaTypeResponseFormat, IAreaTypeSearchResults } from "../model/area-types-model";
 /**
  * Create a new area type.
  * @param axios
@@ -25,7 +25,7 @@ export declare function updateAreaType(axios: AxiosInstance, token: string, requ
  * @param criteria
  * @param format
  */
-export declare function listAreaTypes(axios: AxiosInstance, criteria?: IAreaTypeSearchCriteria, format?: IAreaTypeResponseFormat): AxiosPromise<IAreaType[]>;
+export declare function listAreaTypes(axios: AxiosInstance, criteria?: IAreaTypeSearchCriteria, format?: IAreaTypeResponseFormat): AxiosPromise<IAreaTypeSearchResults>;
 /**
  * Delete an existing area type.
  * @param axios

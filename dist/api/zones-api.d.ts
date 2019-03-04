@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IZoneCreateRequest, IZone, IZoneSearchCriteria, IZoneResponseFormat } from "../model/zones-model";
+import { IZoneCreateRequest, IZone, IZoneSearchCriteria, IZoneResponseFormat, IZoneSearchResults } from "../model/zones-model";
 /**
  * Create a new zone.
  * @param axios
@@ -25,7 +25,7 @@ export declare function updateZone(axios: AxiosInstance, zoneToken: string, requ
  * @param criteria
  * @param format
  */
-export declare function listDeviceStatuses(axios: AxiosInstance, criteria?: IZoneSearchCriteria, format?: IZoneResponseFormat): AxiosPromise<IZone[]>;
+export declare function listZones(axios: AxiosInstance, criteria?: IZoneSearchCriteria, format?: IZoneResponseFormat): AxiosPromise<IZoneSearchResults>;
 /**
  * Delete an existing zone.
  * @param axios

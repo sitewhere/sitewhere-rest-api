@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IDeviceCommandCreateRequest, IDeviceCommand, IDeviceCommandSearchCriteria, IDeviceCommandResponseFormat } from "../model/device-commands-model";
+import { IDeviceCommandCreateRequest, IDeviceCommand, IDeviceCommandSearchCriteria, IDeviceCommandResponseFormat, IDeviceCommandSearchResults } from "../model/device-commands-model";
 /**
  * Create a new device command.
  * @param axios
@@ -25,7 +25,7 @@ export declare function updateDeviceCommand(axios: AxiosInstance, commandToken: 
  * @param criteria
  * @param format
  */
-export declare function listDeviceCommands(axios: AxiosInstance, criteria?: IDeviceCommandSearchCriteria, format?: IDeviceCommandResponseFormat): AxiosPromise<IDeviceCommand[]>;
+export declare function listDeviceCommands(axios: AxiosInstance, criteria?: IDeviceCommandSearchCriteria, format?: IDeviceCommandResponseFormat): AxiosPromise<IDeviceCommandSearchResults>;
 /**
  * List device commands that match the given criteria
  * and arrange them by namespace.
@@ -33,7 +33,7 @@ export declare function listDeviceCommands(axios: AxiosInstance, criteria?: IDev
  * @param criteria
  * @param format
  */
-export declare function listDeviceCommandsForNamespace(axios: AxiosInstance, criteria?: IDeviceCommandSearchCriteria, format?: IDeviceCommandResponseFormat): AxiosPromise<IDeviceCommand[]>;
+export declare function listDeviceCommandsForNamespace(axios: AxiosInstance, criteria?: IDeviceCommandSearchCriteria, format?: IDeviceCommandResponseFormat): AxiosPromise<IDeviceCommandSearchResults>;
 /**
  * Delete an existing device command.
  * @param axios

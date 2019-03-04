@@ -5,7 +5,8 @@ import {
   ITenantSearchCriteria,
   ITenantResponseFormat,
   ITenantTemplate,
-  IDatasetTemplate
+  IDatasetTemplate,
+  ITenantSearchResults
 } from "../model/tenants-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -65,7 +66,7 @@ export function listTenants(
   axios: AxiosInstance,
   criteria?: ITenantSearchCriteria,
   format?: ITenantResponseFormat
-): AxiosPromise<ITenant[]> {
+): AxiosPromise<ITenantSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     // No response format options available.
@@ -73,7 +74,7 @@ export function listTenants(
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<ITenant[]>(axios, `tenants${query}`);
+  return restAuthGet<ITenantSearchResults>(axios, `tenants${query}`);
 }
 
 /**

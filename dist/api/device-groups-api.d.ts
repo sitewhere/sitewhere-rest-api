@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IDeviceGroupCreateRequest, IDeviceGroup, IDeviceGroupSearchCriteria, IDeviceGroupResponseFormat, IDeviceGroupElementCreateRequest, IDeviceGroupElement, IDeviceGroupElementResponseFormat } from "../model/device-groups-model";
+import { IDeviceGroupCreateRequest, IDeviceGroup, IDeviceGroupSearchCriteria, IDeviceGroupResponseFormat, IDeviceGroupElementCreateRequest, IDeviceGroupElement, IDeviceGroupElementResponseFormat, IDeviceGroupSearchResults, IDeviceGroupElementSearchResults } from "../model/device-groups-model";
 /**
  * Create a new device group.
  * @param axios
@@ -25,7 +25,7 @@ export declare function updateDeviceGroup(axios: AxiosInstance, token: string, r
  * @param criteria
  * @param format
  */
-export declare function listDeviceGroups(axios: AxiosInstance, criteria?: IDeviceGroupSearchCriteria, format?: IDeviceGroupResponseFormat): AxiosPromise<IDeviceGroup[]>;
+export declare function listDeviceGroups(axios: AxiosInstance, criteria?: IDeviceGroupSearchCriteria, format?: IDeviceGroupResponseFormat): AxiosPromise<IDeviceGroupSearchResults>;
 /**
  * Delete an existing device group.
  * @param axios
@@ -37,7 +37,7 @@ export declare function deleteDeviceGroup(axios: AxiosInstance, token: string): 
  * @param axios
  * @param request
  */
-export declare function createDeviceGroupElement(axios: AxiosInstance, request: IDeviceGroupElementCreateRequest): AxiosPromise<IDeviceGroupElement>;
+export declare function createDeviceGroupElement(axios: AxiosInstance, token: string, request: IDeviceGroupElementCreateRequest): AxiosPromise<IDeviceGroupElement>;
 /**
  * List device group elements that match the given criteria.
  * @param axios
@@ -45,7 +45,7 @@ export declare function createDeviceGroupElement(axios: AxiosInstance, request: 
  * @param criteria
  * @param format
  */
-export declare function listDeviceGroupElements(axios: AxiosInstance, token: string, criteria?: IDeviceGroupSearchCriteria, format?: IDeviceGroupElementResponseFormat): AxiosPromise<IDeviceGroupElement[]>;
+export declare function listDeviceGroupElements(axios: AxiosInstance, token: string, criteria?: IDeviceGroupSearchCriteria, format?: IDeviceGroupElementResponseFormat): AxiosPromise<IDeviceGroupElementSearchResults>;
 /**
  * Delete an existing device group element.
  * @param axios

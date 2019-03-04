@@ -3,7 +3,8 @@ import {
   IDeviceStatusCreateRequest,
   IDeviceStatus,
   IDeviceStatusSearchCriteria,
-  IDeviceStatusResponseFormat
+  IDeviceStatusResponseFormat,
+  IDeviceStatusSearchResults
 } from "../model/device-statuses-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -30,27 +31,27 @@ export function createDeviceStatus(
 /**
  * Get a device status by unique token.
  * @param axios
- * @param statusToken
+ * @param token
  */
 export function getDeviceStatus(
   axios: AxiosInstance,
-  statusToken: string
+  token: string
 ): AxiosPromise<IDeviceStatus> {
-  return restAuthGet<IDeviceStatus>(axios, `statuses/${statusToken}`);
+  return restAuthGet<IDeviceStatus>(axios, `statuses/${token}`);
 }
 
 /**
  * Update an existing device status.
  * @param axios
- * @param statusToken
+ * @param token
  * @param request
  */
 export function updateDeviceStatus(
   axios: AxiosInstance,
-  statusToken: string,
+  token: string,
   request: IDeviceStatusCreateRequest
 ): AxiosPromise<IDeviceStatus> {
-  return restAuthPut<IDeviceStatus>(axios, `statuses/${statusToken}`, request);
+  return restAuthPut<IDeviceStatus>(axios, `statuses/${token}`, request);
 }
 
 /**
@@ -63,7 +64,7 @@ export function listDeviceStatuses(
   axios: AxiosInstance,
   criteria?: IDeviceStatusSearchCriteria,
   format?: IDeviceStatusResponseFormat
-): AxiosPromise<IDeviceStatus[]> {
+): AxiosPromise<IDeviceStatusSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     // No filters currently defined.
@@ -72,17 +73,17 @@ export function listDeviceStatuses(
     query += addStringFilter(criteria.deviceTypeToken, "deviceTypeToken");
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceStatus[]>(axios, `statuses${query}`);
+  return restAuthGet<IDeviceStatusSearchResults>(axios, `statuses${query}`);
 }
 
 /**
  * Delete an existing device status.
  * @param axios
- * @param statusToken
+ * @param token
  */
 export function deleteDeviceStatus(
   axios: AxiosInstance,
-  statusToken: string
+  token: string
 ): AxiosPromise<IDeviceStatus> {
-  return restAuthDelete<IDeviceStatus>(axios, `statuses/${statusToken}`);
+  return restAuthDelete<IDeviceStatus>(axios, `statuses/${token}`);
 }

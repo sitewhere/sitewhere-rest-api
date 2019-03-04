@@ -4,7 +4,8 @@ import {
   IDeviceAssignment,
   IDeviceAssignmentSearchCriteria,
   IDeviceAssignmentResponseFormat,
-  IDeviceAssignmentBulkRequest
+  IDeviceAssignmentBulkRequest,
+  IDeviceAssignmentSearchResults
 } from "../model/device-assignments-model";
 import {
   createPagingQuery,
@@ -33,7 +34,13 @@ import {
   IDeviceCommandResponse,
   IDeviceStateChangeCreateRequest,
   IDeviceStateChange,
-  IChartSeries
+  IChartSeries,
+  IDeviceMeasurementSearchResults,
+  IDeviceLocationSearchResults,
+  IDeviceAlertSearchResults,
+  IDeviceCommandInvocationSearchResults,
+  IDeviceCommandResponseSearchResults,
+  IDeviceStateChangeSearchResults
 } from "@/model/device-events-model";
 
 /**
@@ -84,7 +91,7 @@ export function listDeviceAssignments(
   axios: AxiosInstance,
   criteria?: IDeviceAssignmentSearchCriteria,
   format?: IDeviceAssignmentResponseFormat
-): AxiosPromise<IDeviceAssignment[]> {
+): AxiosPromise<IDeviceAssignmentSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(format.includeDevice, "includeDevice");
@@ -97,7 +104,10 @@ export function listDeviceAssignments(
     query += addStringFilter(criteria.assetToken, "assetToken");
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceAssignment[]>(axios, `assignments${query}`);
+  return restAuthGet<IDeviceAssignmentSearchResults>(
+    axios,
+    `assignments${query}`
+  );
 }
 
 /**
@@ -172,12 +182,12 @@ export function listMeasurementsForAssignment(
   axios: AxiosInstance,
   token: string,
   criteria: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceMeasurement[]> {
+): AxiosPromise<IDeviceMeasurementSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createDateRangeQuery(criteria);
   }
-  return restAuthGet<IDeviceMeasurement[]>(
+  return restAuthGet<IDeviceMeasurementSearchResults>(
     axios,
     `assignments/${token}/measurements${query}`
   );
@@ -214,12 +224,12 @@ export function listBulkMeasurementsForAssignment(
   axios: AxiosInstance,
   bulk: IDeviceAssignmentBulkRequest,
   criteria: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceMeasurement[]> {
+): AxiosPromise<IDeviceMeasurementSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createDateRangeQuery(criteria);
   }
-  return restAuthPost<IDeviceMeasurement[]>(
+  return restAuthPost<IDeviceMeasurementSearchResults>(
     axios,
     `/assignments/bulk/measurements${query}`,
     bulk
@@ -276,12 +286,12 @@ export function listLocationsForAssignment(
   axios: AxiosInstance,
   token: string,
   criteria: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceLocation[]> {
+): AxiosPromise<IDeviceLocationSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createDateRangeQuery(criteria);
   }
-  return restAuthGet<IDeviceLocation[]>(
+  return restAuthGet<IDeviceLocationSearchResults>(
     axios,
     `assignments/${token}/locations${query}`
   );
@@ -297,12 +307,12 @@ export function listBulkLocationsForAssignment(
   axios: AxiosInstance,
   bulk: IDeviceAssignmentBulkRequest,
   criteria: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceLocation[]> {
+): AxiosPromise<IDeviceLocationSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createDateRangeQuery(criteria);
   }
-  return restAuthPost<IDeviceLocation[]>(
+  return restAuthPost<IDeviceLocationSearchResults>(
     axios,
     `/assignments/bulk/locations${query}`,
     bulk
@@ -337,12 +347,12 @@ export function listAlertsForAssignment(
   axios: AxiosInstance,
   token: string,
   criteria: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceAlert[]> {
+): AxiosPromise<IDeviceAlertSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createDateRangeQuery(criteria);
   }
-  return restAuthGet<IDeviceAlert[]>(
+  return restAuthGet<IDeviceAlertSearchResults>(
     axios,
     `assignments/${token}/alerts${query}`
   );
@@ -358,12 +368,12 @@ export function listBulkAlertsForAssignment(
   axios: AxiosInstance,
   bulk: IDeviceAssignmentBulkRequest,
   criteria: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceAlert[]> {
+): AxiosPromise<IDeviceAlertSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createDateRangeQuery(criteria);
   }
-  return restAuthPost<IDeviceAlert[]>(
+  return restAuthPost<IDeviceAlertSearchResults>(
     axios,
     `/assignments/bulk/alerts${query}`,
     bulk
@@ -418,12 +428,12 @@ export function listCommandInvocationsForAssignment(
   axios: AxiosInstance,
   token: string,
   criteria: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceCommandInvocation[]> {
+): AxiosPromise<IDeviceCommandInvocationSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createDateRangeQuery(criteria);
   }
-  return restAuthGet<IDeviceCommandInvocation[]>(
+  return restAuthGet<IDeviceCommandInvocationSearchResults>(
     axios,
     `assignments/${token}/invocations${query}`
   );
@@ -439,12 +449,12 @@ export function listBulkCommandInvocationsForAssignment(
   axios: AxiosInstance,
   bulk: IDeviceAssignmentBulkRequest,
   criteria: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceCommandInvocation[]> {
+): AxiosPromise<IDeviceCommandInvocationSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createDateRangeQuery(criteria);
   }
-  return restAuthPost<IDeviceCommandInvocation[]>(
+  return restAuthPost<IDeviceCommandInvocationSearchResults>(
     axios,
     `/assignments/bulk/invocations${query}`,
     bulk
@@ -479,12 +489,12 @@ export function listCommandResponsesForAssignment(
   axios: AxiosInstance,
   token: string,
   criteria: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceCommandResponse[]> {
+): AxiosPromise<IDeviceCommandResponseSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createDateRangeQuery(criteria);
   }
-  return restAuthGet<IDeviceCommandResponse[]>(
+  return restAuthGet<IDeviceCommandResponseSearchResults>(
     axios,
     `assignments/${token}/responses${query}`
   );
@@ -500,12 +510,12 @@ export function listBulkCommandResponsesForAssignment(
   axios: AxiosInstance,
   bulk: IDeviceAssignmentBulkRequest,
   criteria: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceCommandResponse[]> {
+): AxiosPromise<IDeviceCommandResponseSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createDateRangeQuery(criteria);
   }
-  return restAuthPost<IDeviceCommandResponse[]>(
+  return restAuthPost<IDeviceCommandResponseSearchResults>(
     axios,
     `/assignments/bulk/responses${query}`,
     bulk
@@ -540,12 +550,12 @@ export function listStateChangesForAssignment(
   axios: AxiosInstance,
   token: string,
   criteria: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceStateChange[]> {
+): AxiosPromise<IDeviceStateChangeSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createDateRangeQuery(criteria);
   }
-  return restAuthGet<IDeviceStateChange[]>(
+  return restAuthGet<IDeviceStateChangeSearchResults>(
     axios,
     `assignments/${token}/statechanges${query}`
   );
@@ -561,12 +571,12 @@ export function listBulkStateChangesForAssignment(
   axios: AxiosInstance,
   bulk: IDeviceAssignmentBulkRequest,
   criteria: IDateRangeSearchCriteria
-): AxiosPromise<IDeviceStateChange[]> {
+): AxiosPromise<IDeviceStateChangeSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createDateRangeQuery(criteria);
   }
-  return restAuthPost<IDeviceStateChange[]>(
+  return restAuthPost<IDeviceStateChangeSearchResults>(
     axios,
     `/assignments/bulk/statechanges${query}`,
     bulk

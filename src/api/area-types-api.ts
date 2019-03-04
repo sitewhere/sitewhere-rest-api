@@ -3,7 +3,8 @@ import {
   IAreaTypeCreateRequest,
   IAreaType,
   IAreaTypeSearchCriteria,
-  IAreaTypeResponseFormat
+  IAreaTypeResponseFormat,
+  IAreaTypeSearchResults
 } from "../model/area-types-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -63,7 +64,7 @@ export function listAreaTypes(
   axios: AxiosInstance,
   criteria?: IAreaTypeSearchCriteria,
   format?: IAreaTypeResponseFormat
-): AxiosPromise<IAreaType[]> {
+): AxiosPromise<IAreaTypeSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(
@@ -74,7 +75,7 @@ export function listAreaTypes(
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IAreaType[]>(axios, `areatypes${query}`);
+  return restAuthGet<IAreaTypeSearchResults>(axios, `areatypes${query}`);
 }
 
 /**

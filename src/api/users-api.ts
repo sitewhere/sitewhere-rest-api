@@ -5,7 +5,8 @@ import {
   IUserSearchCriteria,
   IUserResponseFormat,
   IGrantedAuthority,
-  IGrantedAuthorityHierarchyNode
+  IGrantedAuthorityHierarchyNode,
+  IUserSearchResults
 } from "../model/users-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -65,7 +66,7 @@ export function listUsers(
   axios: AxiosInstance,
   criteria?: IUserSearchCriteria,
   format?: IUserResponseFormat
-): AxiosPromise<IUser[]> {
+): AxiosPromise<IUserSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     // No response format options available.
@@ -73,7 +74,7 @@ export function listUsers(
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IUser[]>(axios, `users${query}`);
+  return restAuthGet<IUserSearchResults>(axios, `users${query}`);
 }
 
 /**

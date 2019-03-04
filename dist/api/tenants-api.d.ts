@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { ITenantCreateRequest, ITenant, ITenantSearchCriteria, ITenantResponseFormat, ITenantTemplate, IDatasetTemplate } from "../model/tenants-model";
+import { ITenantCreateRequest, ITenant, ITenantSearchCriteria, ITenantResponseFormat, ITenantTemplate, IDatasetTemplate, ITenantSearchResults } from "../model/tenants-model";
 /**
  * Create a new tenant.
  * @param axios
@@ -25,7 +25,7 @@ export declare function updateTenant(axios: AxiosInstance, token: string, reques
  * @param criteria
  * @param format
  */
-export declare function listTenants(axios: AxiosInstance, criteria?: ITenantSearchCriteria, format?: ITenantResponseFormat): AxiosPromise<ITenant[]>;
+export declare function listTenants(axios: AxiosInstance, criteria?: ITenantSearchCriteria, format?: ITenantResponseFormat): AxiosPromise<ITenantSearchResults>;
 /**
  * Delete an existing tenant.
  * @param axios

@@ -6,7 +6,9 @@ import {
   IDeviceGroupResponseFormat,
   IDeviceGroupElementCreateRequest,
   IDeviceGroupElement,
-  IDeviceGroupElementResponseFormat
+  IDeviceGroupElementResponseFormat,
+  IDeviceGroupSearchResults,
+  IDeviceGroupElementSearchResults
 } from "../model/device-groups-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -67,7 +69,7 @@ export function listDeviceGroups(
   axios: AxiosInstance,
   criteria?: IDeviceGroupSearchCriteria,
   format?: IDeviceGroupResponseFormat
-): AxiosPromise<IDeviceGroup[]> {
+): AxiosPromise<IDeviceGroupSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     // No format options supported.
@@ -76,7 +78,7 @@ export function listDeviceGroups(
     query += addStringFilter(criteria.role, "role");
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceGroup[]>(axios, `devicegroups${query}`);
+  return restAuthGet<IDeviceGroupSearchResults>(axios, `devicegroups${query}`);
 }
 
 /**
@@ -98,11 +100,12 @@ export function deleteDeviceGroup(
  */
 export function createDeviceGroupElement(
   axios: AxiosInstance,
+  token: string,
   request: IDeviceGroupElementCreateRequest
 ): AxiosPromise<IDeviceGroupElement> {
   return restAuthPost<IDeviceGroupElement>(
     axios,
-    "devicegroups/${token}/elements",
+    `devicegroups/${token}/elements`,
     request
   );
 }
@@ -119,7 +122,7 @@ export function listDeviceGroupElements(
   token: string,
   criteria?: IDeviceGroupSearchCriteria,
   format?: IDeviceGroupElementResponseFormat
-): AxiosPromise<IDeviceGroupElement[]> {
+): AxiosPromise<IDeviceGroupElementSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(format.includeDetails, "includeDetails");
@@ -127,7 +130,7 @@ export function listDeviceGroupElements(
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceGroupElement[]>(
+  return restAuthGet<IDeviceGroupElementSearchResults>(
     axios,
     `devicegroups/${token}/elements${query}`
   );

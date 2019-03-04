@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IUserCreateRequest, IUser, IUserSearchCriteria, IUserResponseFormat, IGrantedAuthority, IGrantedAuthorityHierarchyNode } from "../model/users-model";
+import { IUserCreateRequest, IUser, IUserSearchCriteria, IUserResponseFormat, IGrantedAuthority, IGrantedAuthorityHierarchyNode, IUserSearchResults } from "../model/users-model";
 /**
  * Create a new user.
  * @param axios
@@ -25,7 +25,7 @@ export declare function updateUser(axios: AxiosInstance, username: string, reque
  * @param criteria
  * @param format
  */
-export declare function listUsers(axios: AxiosInstance, criteria?: IUserSearchCriteria, format?: IUserResponseFormat): AxiosPromise<IUser[]>;
+export declare function listUsers(axios: AxiosInstance, criteria?: IUserSearchCriteria, format?: IUserResponseFormat): AxiosPromise<IUserSearchResults>;
 /**
  * Delete an existing user.
  * @param axios

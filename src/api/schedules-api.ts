@@ -3,7 +3,8 @@ import {
   IScheduleCreateRequest,
   ISchedule,
   IScheduleSearchCriteria,
-  IScheduleResponseFormat
+  IScheduleResponseFormat,
+  IScheduleSearchResults
 } from "../model/schedules-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -62,7 +63,7 @@ export function listSchedules(
   axios: AxiosInstance,
   criteria?: IScheduleSearchCriteria,
   format?: IScheduleResponseFormat
-): AxiosPromise<ISchedule[]> {
+): AxiosPromise<IScheduleSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     // No response format options.
@@ -70,7 +71,7 @@ export function listSchedules(
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<ISchedule[]>(axios, `schedules${query}`);
+  return restAuthGet<IScheduleSearchResults>(axios, `schedules${query}`);
 }
 
 /**

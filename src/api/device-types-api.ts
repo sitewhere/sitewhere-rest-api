@@ -3,7 +3,8 @@ import {
   IDeviceTypeCreateRequest,
   IDeviceType,
   IDeviceTypeSearchCriteria,
-  IDeviceTypeResponseFormat
+  IDeviceTypeResponseFormat,
+  IDeviceTypeSearchResults
 } from "../model/device-types-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -66,7 +67,7 @@ export function listDeviceTypes(
   axios: AxiosInstance,
   criteria?: IDeviceTypeSearchCriteria,
   format?: IDeviceTypeResponseFormat
-): AxiosPromise<IDeviceType[]> {
+): AxiosPromise<IDeviceTypeSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     // No filters currently defined.
@@ -74,7 +75,7 @@ export function listDeviceTypes(
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceType[]>(axios, `devicetypes${query}`);
+  return restAuthGet<IDeviceTypeSearchResults>(axios, `devicetypes${query}`);
 }
 
 /**

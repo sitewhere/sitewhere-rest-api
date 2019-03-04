@@ -3,7 +3,8 @@ import {
   IDeviceCommandCreateRequest,
   IDeviceCommand,
   IDeviceCommandSearchCriteria,
-  IDeviceCommandResponseFormat
+  IDeviceCommandResponseFormat,
+  IDeviceCommandSearchResults
 } from "../model/device-commands-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -67,7 +68,7 @@ export function listDeviceCommands(
   axios: AxiosInstance,
   criteria?: IDeviceCommandSearchCriteria,
   format?: IDeviceCommandResponseFormat
-): AxiosPromise<IDeviceCommand[]> {
+): AxiosPromise<IDeviceCommandSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     // No filters currently defined.
@@ -76,7 +77,7 @@ export function listDeviceCommands(
     query += addStringFilter(criteria.deviceTypeToken, "deviceTypeToken");
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceCommand[]>(axios, `commands${query}`);
+  return restAuthGet<IDeviceCommandSearchResults>(axios, `commands${query}`);
 }
 
 /**
@@ -90,7 +91,7 @@ export function listDeviceCommandsForNamespace(
   axios: AxiosInstance,
   criteria?: IDeviceCommandSearchCriteria,
   format?: IDeviceCommandResponseFormat
-): AxiosPromise<IDeviceCommand[]> {
+): AxiosPromise<IDeviceCommandSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     // No filters currently defined.
@@ -99,7 +100,10 @@ export function listDeviceCommandsForNamespace(
     query += addStringFilter(criteria.deviceTypeToken, "deviceTypeToken");
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceCommand[]>(axios, `commands/namespaces${query}`);
+  return restAuthGet<IDeviceCommandSearchResults>(
+    axios,
+    `commands/namespaces${query}`
+  );
 }
 
 /**

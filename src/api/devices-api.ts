@@ -3,9 +3,13 @@ import {
   IDeviceCreateRequest,
   IDevice,
   IDeviceSearchCriteria,
-  IDeviceResponseFormat
+  IDeviceResponseFormat,
+  IDeviceSearchResults
 } from "../model/devices-model";
-import { IDeviceAssignmentResponseFormat } from "../model/device-assignments-model";
+import {
+  IDeviceAssignmentResponseFormat,
+  IDeviceAssignmentSearchResults
+} from "../model/device-assignments-model";
 import { createPagingQuery, ISearchCriteria } from "../model/common-model";
 import {
   restAuthGet,
@@ -66,7 +70,7 @@ export function listDevices(
   axios: AxiosInstance,
   criteria?: IDeviceSearchCriteria,
   format?: IDeviceResponseFormat
-): AxiosPromise<IDevice[]> {
+): AxiosPromise<IDeviceSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(format.includeDeviceType, "includeDeviceType");
@@ -78,7 +82,7 @@ export function listDevices(
     query += addStringFilter(criteria.deviceTypeToken, "deviceType");
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDevice[]>(axios, `devices${query}`);
+  return restAuthGet<IDeviceSearchResults>(axios, `devices${query}`);
 }
 
 /**
@@ -104,7 +108,7 @@ export function listDeviceAssignmentHistory(
   deviceToken: string,
   criteria?: ISearchCriteria,
   format?: IDeviceAssignmentResponseFormat
-): AxiosPromise<IDeviceAssignment[]> {
+): AxiosPromise<IDeviceAssignmentSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(format.includeDevice, "includeDevice");
@@ -115,7 +119,7 @@ export function listDeviceAssignmentHistory(
   if (criteria) {
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceAssignment[]>(
+  return restAuthGet<IDeviceAssignmentSearchResults>(
     axios,
     `devices/${deviceToken}/assignments${query}`
   );

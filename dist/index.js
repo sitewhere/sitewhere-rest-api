@@ -1157,8 +1157,8 @@
    * @param axios
    * @param request
    */
-  function createDeviceGroupElement(axios$$1, request) {
-      return restAuthPost(axios$$1, "devicegroups/${token}/elements", request);
+  function createDeviceGroupElement(axios$$1, token, request) {
+      return restAuthPost(axios$$1, "devicegroups/" + token + "/elements", request);
   }
   /**
    * List device group elements that match the given criteria.
@@ -1233,19 +1233,19 @@
   /**
    * Get a device status by unique token.
    * @param axios
-   * @param statusToken
+   * @param token
    */
-  function getDeviceStatus(axios$$1, statusToken) {
-      return restAuthGet(axios$$1, "statuses/" + statusToken);
+  function getDeviceStatus(axios$$1, token) {
+      return restAuthGet(axios$$1, "statuses/" + token);
   }
   /**
    * Update an existing device status.
    * @param axios
-   * @param statusToken
+   * @param token
    * @param request
    */
-  function updateDeviceStatus(axios$$1, statusToken, request) {
-      return restAuthPut(axios$$1, "statuses/" + statusToken, request);
+  function updateDeviceStatus(axios$$1, token, request) {
+      return restAuthPut(axios$$1, "statuses/" + token, request);
   }
   /**
    * List device statuses that match the given criteria.
@@ -1264,10 +1264,10 @@
   /**
    * Delete an existing device status.
    * @param axios
-   * @param statusToken
+   * @param token
    */
-  function deleteDeviceStatus(axios$$1, statusToken) {
-      return restAuthDelete(axios$$1, "statuses/" + statusToken);
+  function deleteDeviceStatus(axios$$1, token) {
+      return restAuthDelete(axios$$1, "statuses/" + token);
   }
 
   var DeviceStatusesApi = /*#__PURE__*/Object.freeze({
@@ -1931,7 +1931,7 @@
    * @param criteria
    * @param format
    */
-  function listDeviceStatuses$1(axios$$1, criteria, format) {
+  function listZones(axios$$1, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += addStringFilter(criteria.areaToken, "areaToken");
@@ -1952,7 +1952,7 @@
     createZone: createZone,
     getZone: getZone,
     updateZone: updateZone,
-    listDeviceStatuses: listDeviceStatuses$1,
+    listZones: listZones,
     deleteZone: deleteZone
   });
 

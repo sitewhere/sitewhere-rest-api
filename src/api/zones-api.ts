@@ -3,7 +3,8 @@ import {
   IZoneCreateRequest,
   IZone,
   IZoneSearchCriteria,
-  IZoneResponseFormat
+  IZoneResponseFormat,
+  IZoneSearchResults
 } from "../model/zones-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -59,11 +60,11 @@ export function updateZone(
  * @param criteria
  * @param format
  */
-export function listDeviceStatuses(
+export function listZones(
   axios: AxiosInstance,
   criteria?: IZoneSearchCriteria,
   format?: IZoneResponseFormat
-): AxiosPromise<IZone[]> {
+): AxiosPromise<IZoneSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     // No filters currently defined.
@@ -72,7 +73,7 @@ export function listDeviceStatuses(
     query += addStringFilter(criteria.areaToken, "areaToken");
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IZone[]>(axios, `zones${query}`);
+  return restAuthGet<IZoneSearchResults>(axios, `zones${query}`);
 }
 
 /**

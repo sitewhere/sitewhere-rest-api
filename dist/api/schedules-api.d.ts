@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IScheduleCreateRequest, ISchedule, IScheduleSearchCriteria, IScheduleResponseFormat } from "../model/schedules-model";
+import { IScheduleCreateRequest, ISchedule, IScheduleSearchCriteria, IScheduleResponseFormat, IScheduleSearchResults } from "../model/schedules-model";
 /**
  * Create a new schedule.
  * @param axios
@@ -25,7 +25,7 @@ export declare function updateSchedule(axios: AxiosInstance, token: string, requ
  * @param criteria
  * @param format
  */
-export declare function listSchedules(axios: AxiosInstance, criteria?: IScheduleSearchCriteria, format?: IScheduleResponseFormat): AxiosPromise<ISchedule[]>;
+export declare function listSchedules(axios: AxiosInstance, criteria?: IScheduleSearchCriteria, format?: IScheduleResponseFormat): AxiosPromise<IScheduleSearchResults>;
 /**
  * Delete an existing schedule.
  * @param axios

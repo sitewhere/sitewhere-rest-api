@@ -1,8 +1,7 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IDeviceCreateRequest, IDevice, IDeviceSearchCriteria, IDeviceResponseFormat } from "../model/devices-model";
-import { IDeviceAssignmentResponseFormat } from "../model/device-assignments-model";
+import { IDeviceCreateRequest, IDevice, IDeviceSearchCriteria, IDeviceResponseFormat, IDeviceSearchResults } from "../model/devices-model";
+import { IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults } from "../model/device-assignments-model";
 import { ISearchCriteria } from "../model/common-model";
-import { IDeviceAssignment } from "@/model/device-assignments-model";
 /**
  * Create a new device.
  * @param axios
@@ -28,7 +27,7 @@ export declare function updateDevice(axios: AxiosInstance, deviceToken: string, 
  * @param criteria
  * @param format
  */
-export declare function listDevices(axios: AxiosInstance, criteria?: IDeviceSearchCriteria, format?: IDeviceResponseFormat): AxiosPromise<IDevice[]>;
+export declare function listDevices(axios: AxiosInstance, criteria?: IDeviceSearchCriteria, format?: IDeviceResponseFormat): AxiosPromise<IDeviceSearchResults>;
 /**
  * Delete an existing device.
  * @param axios
@@ -41,4 +40,4 @@ export declare function deleteDevice(axios: AxiosInstance, deviceToken: string):
  * @param criteria
  * @param format
  */
-export declare function listDeviceAssignmentHistory(axios: AxiosInstance, deviceToken: string, criteria?: ISearchCriteria, format?: IDeviceAssignmentResponseFormat): AxiosPromise<IDeviceAssignment[]>;
+export declare function listDeviceAssignmentHistory(axios: AxiosInstance, deviceToken: string, criteria?: ISearchCriteria, format?: IDeviceAssignmentResponseFormat): AxiosPromise<IDeviceAssignmentSearchResults>;

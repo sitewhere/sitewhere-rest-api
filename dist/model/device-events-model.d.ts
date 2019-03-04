@@ -1,4 +1,4 @@
-import { uuid, IMetadataProvider } from "./common-model";
+import { uuid, IMetadataProvider, ISearchResults } from "./common-model";
 /**
  * Enumeration of device assignment statuses.
  */
@@ -128,6 +128,11 @@ export interface IDeviceMeasurement extends IDeviceEvent {
     value: number;
 }
 /**
+ * Search results that contain device measurement events.
+ */
+export interface IDeviceMeasurementSearchResults extends ISearchResults<IDeviceMeasurement> {
+}
+/**
  * Device alert event.
  */
 export interface IDeviceAlert extends IDeviceEvent {
@@ -137,12 +142,22 @@ export interface IDeviceAlert extends IDeviceEvent {
     message: string;
 }
 /**
+ * Search results that contain device alert events.
+ */
+export interface IDeviceAlertSearchResults extends ISearchResults<IDeviceAlert> {
+}
+/**
  * Device location event.
  */
 export interface IDeviceLocation extends IDeviceEvent {
     latitude: number;
     longitude: number;
     elevation?: number;
+}
+/**
+ * Search results that contain device location events.
+ */
+export interface IDeviceLocationSearchResults extends ISearchResults<IDeviceLocation> {
 }
 /**
  * Device command invocation event.
@@ -156,12 +171,22 @@ export interface IDeviceCommandInvocation extends IDeviceEvent {
     parameterValues: {};
 }
 /**
+ * Search results that contain device command invocation events.
+ */
+export interface IDeviceCommandInvocationSearchResults extends ISearchResults<IDeviceCommandInvocation> {
+}
+/**
  * Device command response event.
  */
 export interface IDeviceCommandResponse extends IDeviceEvent {
     originatingEventId?: uuid;
     responseEventId?: uuid;
     response?: string;
+}
+/**
+ * Search results that contain device command response events.
+ */
+export interface IDeviceCommandResponseSearchResults extends ISearchResults<IDeviceCommandResponse> {
 }
 /**
  * Device state change event.
@@ -171,6 +196,11 @@ export interface IDeviceStateChange extends IDeviceEvent {
     type: string;
     previousState?: string;
     newState?: string;
+}
+/**
+ * Search results that contain device state change events.
+ */
+export interface IDeviceStateChangeSearchResults extends ISearchResults<IDeviceStateChange> {
 }
 /**
  * Single entry in a chart series.
