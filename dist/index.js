@@ -25,9 +25,8 @@
   function createBasicAuthRequest(baseUrl, encoded) {
       var config = {};
       config.baseURL = baseUrl;
-      if (encoded) {
-          config.headers.Authorization = "Basic " + encoded;
-      }
+      config.headers = {};
+      config.headers["Authorization"] = "Basic " + encoded;
       return axios.create(config);
   }
   /**
@@ -40,8 +39,9 @@
   function createJwtRequest(baseUrl, jwt, tenantId, tenantAuth) {
       var config = {};
       config.baseURL = baseUrl;
+      config.headers = {};
       if (jwt) {
-          config.headers.Authorization = "Bearer " + jwt;
+          config.headers["Authorization"] = "Bearer " + jwt;
       }
       if (tenantId) {
           config.headers["X-SiteWhere-Tenant-Id"] = tenantId;
@@ -1606,7 +1606,7 @@
    * @param versionId
    */
   function getGlobalScriptContent(axios$$1, identifier, scriptId, versionId) {
-      return restAuthGet(axios$$1, "/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/content");
+      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/content");
   }
   /**
    * Update an existing global script.
@@ -1617,7 +1617,7 @@
    * @param request
    */
   function updateGlobalScript(axios$$1, identifier, scriptId, versionId, request) {
-      return restAuthPost(axios$$1, "/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId, request);
+      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId, request);
   }
   /**
    * Clone an existing global script.
@@ -1628,7 +1628,7 @@
    * @param request
    */
   function cloneGlobalScript(axios$$1, identifier, scriptId, versionId, request) {
-      return restAuthPost(axios$$1, "/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/clone", request);
+      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/clone", request);
   }
   /**
    * Activate a global script.
@@ -1638,7 +1638,7 @@
    * @param versionId
    */
   function activateGlobalScript(axios$$1, identifier, scriptId, versionId) {
-      return restAuthPost(axios$$1, "/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", null);
+      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", null);
   }
   /**
    * Delete a global script and its version history.
@@ -1647,93 +1647,92 @@
    * @param scriptId
    */
   function deleteGlobalScript(axios$$1, identifier, scriptId) {
-      return restAuthDelete(axios$$1, "/microservice/" + identifier + "/scripting/scripts/" + scriptId);
+      return restAuthDelete(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId);
   }
   /**
    * List metadata for microservice tenant scripts.
    * @param axios
-   * @param tenantToken
    * @param identifier
+   * @param tenantToken
    */
-  function listTenantScriptMetadata(axios$$1, tenantToken, identifier) {
-      return restAuthGet(axios$$1, "/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts");
+  function listTenantScriptMetadata(axios$$1, identifier, tenantToken) {
+      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts");
   }
   /**
    * Get metadata for a given microservice tenant script.
    * @param axios
-   * @param tenantToken
    * @param identifier
+   * @param tenantToken
    * @param scriptId
    */
-  function getTenantScriptMetadata(axios$$1, tenantToken, identifier, scriptId) {
-      return restAuthGet(axios$$1, "/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId);
+  function getTenantScriptMetadata(axios$$1, identifier, tenantToken, scriptId) {
+      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId);
   }
   /**
    * Create a new script for a microservice tenant.
    * @param axios
-   * @param tenantToken
    * @param identifier
+   * @param tenantToken
    * @param request
    */
-  function createTenantScript(axios$$1, tenantToken, identifier, request) {
-      return restAuthPost(axios$$1, "/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts", request);
+  function createTenantScript(axios$$1, identifier, tenantToken, request) {
+      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts", request);
   }
   /**
    * Get content associated with a microservice tenant script.
    * @param axios
-   * @param tenantToken
    * @param identifier
+   * @param tenantToken
    * @param scriptId
    * @param versionId
    */
-  function getTenantScriptContent(axios$$1, tenantToken, identifier, scriptId, versionId) {
-      return restAuthGet(axios$$1, "/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/content");
+  function getTenantScriptContent(axios$$1, identifier, tenantToken, scriptId, versionId) {
+      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/content");
   }
   /**
    * Update an existing microservice tenant script.
    * @param axios
-   * @param tenantToken
    * @param identifier
+   * @param tenantToken
    * @param scriptId
    * @param versionId
    * @param request
    */
-  function updateTenantScript(axios$$1, tenantToken, identifier, scriptId, versionId, request) {
-      return restAuthPost(axios$$1, "/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId, request);
+  function updateTenantScript(axios$$1, identifier, tenantToken, scriptId, versionId, request) {
+      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId, request);
   }
   /**
    * Clone an existing microservice tenant script.
    * @param axios
-   * @param tenantToken
    * @param identifier
+   * @param tenantToken
    * @param scriptId
    * @param versionId
    * @param request
    */
-  function cloneTenantScript(axios$$1, tenantToken, identifier, scriptId, versionId, request) {
-      return restAuthPost(axios$$1, "/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/clone", request);
+  function cloneTenantScript(axios$$1, identifier, tenantToken, scriptId, versionId, request) {
+      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/clone", request);
   }
   /**
    * Activate a given version of a microservice tenant script.
    * @param axios
-   * @param tenantToken
    * @param identifier
+   * @param tenantToken
    * @param scriptId
    * @param versionId
-   * @param request
    */
-  function activateTenantScript(axios$$1, tenantToken, identifier, scriptId, versionId) {
-      return restAuthPost(axios$$1, "/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", null);
+  function activateTenantScript(axios$$1, identifier, tenantToken, scriptId, versionId) {
+      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", null);
   }
   /**
    * Delete a microservice tenant script and its version history.
    * @param axios
-   * @param tenantToken
    * @param identifier
+   * @param tenantToken
    * @param scriptId
    */
-  function deleteTenantScript(axios$$1, tenantToken, identifier, scriptId) {
-      return restAuthDelete(axios$$1, "/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId);
+  function deleteTenantScript(axios$$1, identifier, tenantToken, scriptId) {
+      return restAuthDelete(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId);
   }
 
   var ScriptingApi = /*#__PURE__*/Object.freeze({

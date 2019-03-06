@@ -7,7 +7,6 @@ import {
   IInstanceTopologySummary,
   ITenantEngineState
 } from "../model/instance-model";
-import { createPagingQuery } from "../model/common-model";
 import { restAuthGet, restAuthPost } from "../rest";
 
 /**

@@ -27,9 +27,8 @@ export function createBasicAuthRequest(
 ): AxiosInstance {
   let config: AxiosRequestConfig = {};
   config.baseURL = baseUrl;
-  if (encoded) {
-    config.headers.Authorization = "Basic " + encoded;
-  }
+  config.headers = {};
+  config.headers["Authorization"] = "Basic " + encoded;
   return axios.create(config);
 }
 
@@ -48,8 +47,9 @@ export function createJwtRequest(
 ): AxiosInstance {
   let config: AxiosRequestConfig = {};
   config.baseURL = baseUrl;
+  config.headers = {};
   if (jwt) {
-    config.headers.Authorization = "Bearer " + jwt;
+    config.headers["Authorization"] = "Bearer " + jwt;
   }
   if (tenantId) {
     config.headers["X-SiteWhere-Tenant-Id"] = tenantId;

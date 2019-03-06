@@ -77,70 +77,69 @@ export declare function deleteGlobalScript(axios: AxiosInstance, identifier: str
 /**
  * List metadata for microservice tenant scripts.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  */
-export declare function listTenantScriptMetadata(axios: AxiosInstance, tenantToken: string, identifier: string): AxiosPromise<IScriptMetadata[]>;
+export declare function listTenantScriptMetadata(axios: AxiosInstance, identifier: string, tenantToken: string): AxiosPromise<IScriptMetadata[]>;
 /**
  * Get metadata for a given microservice tenant script.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param scriptId
  */
-export declare function getTenantScriptMetadata(axios: AxiosInstance, tenantToken: string, identifier: string, scriptId: string): AxiosPromise<IScriptMetadata>;
+export declare function getTenantScriptMetadata(axios: AxiosInstance, identifier: string, tenantToken: string, scriptId: string): AxiosPromise<IScriptMetadata>;
 /**
  * Create a new script for a microservice tenant.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param request
  */
-export declare function createTenantScript(axios: AxiosInstance, tenantToken: string, identifier: string, request: IScriptCreateRequest): AxiosPromise<IScriptMetadata>;
+export declare function createTenantScript(axios: AxiosInstance, identifier: string, tenantToken: string, request: IScriptCreateRequest): AxiosPromise<IScriptMetadata>;
 /**
  * Get content associated with a microservice tenant script.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param scriptId
  * @param versionId
  */
-export declare function getTenantScriptContent(axios: AxiosInstance, tenantToken: string, identifier: string, scriptId: string, versionId: string): AxiosPromise<string>;
+export declare function getTenantScriptContent(axios: AxiosInstance, identifier: string, tenantToken: string, scriptId: string, versionId: string): AxiosPromise<string>;
 /**
  * Update an existing microservice tenant script.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param scriptId
  * @param versionId
  * @param request
  */
-export declare function updateTenantScript(axios: AxiosInstance, tenantToken: string, identifier: string, scriptId: string, versionId: string, request: IScriptCreateRequest): AxiosPromise<IScriptMetadata>;
+export declare function updateTenantScript(axios: AxiosInstance, identifier: string, tenantToken: string, scriptId: string, versionId: string, request: IScriptCreateRequest): AxiosPromise<IScriptMetadata>;
 /**
  * Clone an existing microservice tenant script.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param scriptId
  * @param versionId
  * @param request
  */
-export declare function cloneTenantScript(axios: AxiosInstance, tenantToken: string, identifier: string, scriptId: string, versionId: string, request: IScriptCloneRequest): AxiosPromise<IScriptVersion>;
+export declare function cloneTenantScript(axios: AxiosInstance, identifier: string, tenantToken: string, scriptId: string, versionId: string, request: IScriptCloneRequest): AxiosPromise<IScriptVersion>;
 /**
  * Activate a given version of a microservice tenant script.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param scriptId
  * @param versionId
- * @param request
  */
-export declare function activateTenantScript(axios: AxiosInstance, tenantToken: string, identifier: string, scriptId: string, versionId: string): AxiosPromise<IScriptMetadata>;
+export declare function activateTenantScript(axios: AxiosInstance, identifier: string, tenantToken: string, scriptId: string, versionId: string): AxiosPromise<IScriptMetadata>;
 /**
  * Delete a microservice tenant script and its version history.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param scriptId
  */
-export declare function deleteTenantScript(axios: AxiosInstance, tenantToken: string, identifier: string, scriptId: string): AxiosPromise<IScriptMetadata>;
+export declare function deleteTenantScript(axios: AxiosInstance, identifier: string, tenantToken: string, scriptId: string): AxiosPromise<IScriptMetadata>;

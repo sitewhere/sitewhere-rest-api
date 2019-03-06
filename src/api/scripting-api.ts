@@ -105,7 +105,7 @@ export function getGlobalScriptContent(
 ): AxiosPromise<string> {
   return restAuthGet<string>(
     axios,
-    `/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}/content`
+    `instance/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}/content`
   );
 }
 
@@ -126,7 +126,7 @@ export function updateGlobalScript(
 ): AxiosPromise<IScriptMetadata> {
   return restAuthPost<IScriptMetadata>(
     axios,
-    `/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}`,
+    `instance/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}`,
     request
   );
 }
@@ -148,7 +148,7 @@ export function cloneGlobalScript(
 ): AxiosPromise<IScriptVersion> {
   return restAuthPost<IScriptVersion>(
     axios,
-    `/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}/clone`,
+    `instance/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}/clone`,
     request
   );
 }
@@ -168,7 +168,7 @@ export function activateGlobalScript(
 ): AxiosPromise<IScriptMetadata> {
   return restAuthPost<IScriptMetadata>(
     axios,
-    `/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}/activate`,
+    `instance/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}/activate`,
     null
   );
 }
@@ -186,62 +186,62 @@ export function deleteGlobalScript(
 ): AxiosPromise<IScriptMetadata> {
   return restAuthDelete<IScriptMetadata>(
     axios,
-    `/microservice/${identifier}/scripting/scripts/${scriptId}`
+    `instance/microservice/${identifier}/scripting/scripts/${scriptId}`
   );
 }
 
 /**
  * List metadata for microservice tenant scripts.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  */
 export function listTenantScriptMetadata(
   axios: AxiosInstance,
-  tenantToken: string,
-  identifier: string
+  identifier: string,
+  tenantToken: string
 ): AxiosPromise<IScriptMetadata[]> {
   return restAuthGet<IScriptMetadata[]>(
     axios,
-    `/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts`
+    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts`
   );
 }
 
 /**
  * Get metadata for a given microservice tenant script.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param scriptId
  */
 export function getTenantScriptMetadata(
   axios: AxiosInstance,
-  tenantToken: string,
   identifier: string,
+  tenantToken: string,
   scriptId: string
 ): AxiosPromise<IScriptMetadata> {
   return restAuthGet<IScriptMetadata>(
     axios,
-    `/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}`
+    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}`
   );
 }
 
 /**
  * Create a new script for a microservice tenant.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param request
  */
 export function createTenantScript(
   axios: AxiosInstance,
-  tenantToken: string,
   identifier: string,
+  tenantToken: string,
   request: IScriptCreateRequest
 ): AxiosPromise<IScriptMetadata> {
   return restAuthPost<IScriptMetadata>(
     axios,
-    `/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts`,
+    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts`,
     request
   );
 }
@@ -249,44 +249,44 @@ export function createTenantScript(
 /**
  * Get content associated with a microservice tenant script.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param scriptId
  * @param versionId
  */
 export function getTenantScriptContent(
   axios: AxiosInstance,
-  tenantToken: string,
   identifier: string,
+  tenantToken: string,
   scriptId: string,
   versionId: string
 ): AxiosPromise<string> {
   return restAuthGet<string>(
     axios,
-    `/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/content`
+    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/content`
   );
 }
 
 /**
  * Update an existing microservice tenant script.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param scriptId
  * @param versionId
  * @param request
  */
 export function updateTenantScript(
   axios: AxiosInstance,
-  tenantToken: string,
   identifier: string,
+  tenantToken: string,
   scriptId: string,
   versionId: string,
   request: IScriptCreateRequest
 ): AxiosPromise<IScriptMetadata> {
   return restAuthPost<IScriptMetadata>(
     axios,
-    `/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}`,
+    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}`,
     request
   );
 }
@@ -294,23 +294,23 @@ export function updateTenantScript(
 /**
  * Clone an existing microservice tenant script.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param scriptId
  * @param versionId
  * @param request
  */
 export function cloneTenantScript(
   axios: AxiosInstance,
-  tenantToken: string,
   identifier: string,
+  tenantToken: string,
   scriptId: string,
   versionId: string,
   request: IScriptCloneRequest
 ): AxiosPromise<IScriptVersion> {
   return restAuthPost<IScriptVersion>(
     axios,
-    `/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/clone`,
+    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/clone`,
     request
   );
 }
@@ -318,22 +318,21 @@ export function cloneTenantScript(
 /**
  * Activate a given version of a microservice tenant script.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param scriptId
  * @param versionId
- * @param request
  */
 export function activateTenantScript(
   axios: AxiosInstance,
-  tenantToken: string,
   identifier: string,
+  tenantToken: string,
   scriptId: string,
   versionId: string
 ): AxiosPromise<IScriptMetadata> {
   return restAuthPost<IScriptMetadata>(
     axios,
-    `/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/activate`,
+    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/activate`,
     null
   );
 }
@@ -341,18 +340,18 @@ export function activateTenantScript(
 /**
  * Delete a microservice tenant script and its version history.
  * @param axios
- * @param tenantToken
  * @param identifier
+ * @param tenantToken
  * @param scriptId
  */
 export function deleteTenantScript(
   axios: AxiosInstance,
-  tenantToken: string,
   identifier: string,
+  tenantToken: string,
   scriptId: string
 ): AxiosPromise<IScriptMetadata> {
   return restAuthDelete<IScriptMetadata>(
     axios,
-    `/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}`
+    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}`
   );
 }
