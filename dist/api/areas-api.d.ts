@@ -2,7 +2,7 @@ import { AxiosInstance, AxiosPromise } from "axios";
 import { IAreaCreateRequest, IArea, IAreaSearchCriteria, IAreaResponseFormat, IAreaSearchResults } from "../model/areas-model";
 import { IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults } from "../model/device-assignments-model";
 import { ISearchCriteria, IDateRangeSearchCriteria } from "../model/common-model";
-import { IDeviceMeasurementSearchResults, IDeviceLocationSearchResults, IDeviceAlertSearchResults } from "@/model/device-events-model";
+import { IDeviceMeasurementSearchResults, IDeviceLocationSearchResults, IDeviceAlertSearchResults } from "../model/device-events-model";
 /**
  * Create a new area.
  * @param axios
