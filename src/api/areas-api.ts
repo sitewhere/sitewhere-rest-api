@@ -8,7 +8,6 @@ import {
 } from "../model/areas-model";
 import {
   IDeviceAssignmentResponseFormat,
-  IDeviceAssignment,
   IDeviceAssignmentSearchResults
 } from "../model/device-assignments-model";
 import {
@@ -26,13 +25,10 @@ import {
   addStringFilter
 } from "../rest";
 import {
-  IDeviceMeasurement,
-  IDeviceLocation,
-  IDeviceAlert,
   IDeviceMeasurementSearchResults,
   IDeviceLocationSearchResults,
   IDeviceAlertSearchResults
-} from "@/model/device-events-model";
+} from "../model/device-events-model";
 
 /**
  * Create a new area.

@@ -41,7 +41,7 @@ import {
   IDeviceCommandInvocationSearchResults,
   IDeviceCommandResponseSearchResults,
   IDeviceStateChangeSearchResults
-} from "@/model/device-events-model";
+} from "../model/device-events-model";
 
 /**
  * Create a new device assignment.
