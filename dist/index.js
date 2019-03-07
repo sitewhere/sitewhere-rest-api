@@ -63,14 +63,16 @@
    * @param criteria
    */
   function createPagingQuery(criteria) {
-      return "&pageNumber=" + criteria.pageNumber + "&pageSize=" + criteria.pageSize;
+      return "&pageNumber=" + (criteria.pageNumber ||
+          1) + "&pageSize=" + (criteria.pageSize || 100);
   }
   /**
    * Create query string parameters for paging attributes of criteria.
    * @param criteria
    */
   function createDateRangeQuery(criteria) {
-      return "&pageNumber=" + criteria.pageNumber + "&pageSize=" + criteria.pageSize;
+      return "&pageNumber=" + (criteria.pageNumber ||
+          1) + "&pageSize=" + (criteria.pageSize || 0);
   }
 
   /**

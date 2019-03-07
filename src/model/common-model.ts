@@ -119,7 +119,8 @@ export interface ISearchResults<T> {
  * @param criteria
  */
 export function createPagingQuery(criteria: ISearchCriteria): string {
-  return `&pageNumber=${criteria.pageNumber}&pageSize=${criteria.pageSize}`;
+  return `&pageNumber=${criteria.pageNumber ||
+    1}&pageSize=${criteria.pageSize || 100}`;
 }
 
 /**
@@ -129,7 +130,8 @@ export function createPagingQuery(criteria: ISearchCriteria): string {
 export function createDateRangeQuery(
   criteria: IDateRangeSearchCriteria
 ): string {
-  return `&pageNumber=${criteria.pageNumber}&pageSize=${criteria.pageSize}`;
+  return `&pageNumber=${criteria.pageNumber ||
+    1}&pageSize=${criteria.pageSize || 0}`;
 }
 
 /**
