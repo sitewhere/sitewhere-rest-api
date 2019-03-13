@@ -33,7 +33,7 @@ export interface IDeviceGroupResponseFormat extends IResponseFormat {}
  * Search criteria for device groups.
  */
 export interface IDeviceGroupSearchCriteria extends ISearchCriteria {
-  role: string;
+  role?: string;
 }
 
 /**
