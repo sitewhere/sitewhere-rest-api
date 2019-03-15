@@ -32,12 +32,18 @@ export function createCustomerType(
  * Get a customer type by unique token.
  * @param axios
  * @param token
+ * @param format
  */
 export function getCustomerType(
   axios: AxiosInstance,
-  token: string
+  token: string,
+  format: ICustomerTypeResponseFormat
 ): AxiosPromise<ICustomerType> {
-  return restAuthGet<ICustomerType>(axios, `customertypes/${token}`);
+  let query = randomSeedQuery();
+  if (format) {
+    // No format options for now.
+  }
+  return restAuthGet<ICustomerType>(axios, `customertypes/${token}${query}`);
 }
 
 /**

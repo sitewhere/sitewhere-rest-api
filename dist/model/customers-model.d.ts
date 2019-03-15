@@ -18,6 +18,7 @@ export interface ICustomer extends IBrandedEntity, IAccessible {
  */
 export interface ICustomerResponseFormat extends IResponseFormat {
     includeCustomerType?: boolean;
+    includeParentCustomer?: boolean;
 }
 /**
  * Search criteria for customers.

@@ -517,9 +517,11 @@
    * Get a customer type by unique token.
    * @param axios
    * @param token
+   * @param format
    */
-  function getCustomerType(axios$$1, token) {
-      return restAuthGet(axios$$1, "customertypes/" + token);
+  function getCustomerType(axios$$1, token, format) {
+      var query = randomSeedQuery();
+      return restAuthGet(axios$$1, "customertypes/" + token + query);
   }
   /**
    * Update an existing customer type.
@@ -576,8 +578,13 @@
    * @param axios
    * @param token
    */
-  function getCustomer(axios$$1, token) {
-      return restAuthGet(axios$$1, "customers/" + token);
+  function getCustomer(axios$$1, token, format) {
+      var query = randomSeedQuery();
+      if (format) {
+          query += addFilter(format.includeCustomerType, "includeCustomerType");
+          query += addFilter(format.includeParentCustomer, "includeParentCustomer");
+      }
+      return restAuthGet(axios$$1, "customers/" + token + query);
   }
   /**
    * Update an existing customer.

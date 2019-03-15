@@ -14,7 +14,7 @@ export declare function createCustomer(axios: AxiosInstance, request: ICustomerC
  * @param axios
  * @param token
  */
-export declare function getCustomer(axios: AxiosInstance, token: string): AxiosPromise<ICustomer>;
+export declare function getCustomer(axios: AxiosInstance, token: string, format: ICustomerResponseFormat): AxiosPromise<ICustomer>;
 /**
  * Update an existing customer.
  * @param axios

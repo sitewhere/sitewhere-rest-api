@@ -49,9 +49,15 @@ export function createCustomer(
  */
 export function getCustomer(
   axios: AxiosInstance,
-  token: string
+  token: string,
+  format: ICustomerResponseFormat
 ): AxiosPromise<ICustomer> {
-  return restAuthGet<ICustomer>(axios, `customers/${token}`);
+  let query = randomSeedQuery();
+  if (format) {
+    query += addFilter(format.includeCustomerType, "includeCustomerType");
+    query += addFilter(format.includeParentCustomer, "includeParentCustomer");
+  }
+  return restAuthGet<ICustomer>(axios, `customers/${token}${query}`);
 }
 
 /**

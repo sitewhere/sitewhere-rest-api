@@ -10,8 +10,9 @@ export declare function createCustomerType(axios: AxiosInstance, request: ICusto
  * Get a customer type by unique token.
  * @param axios
  * @param token
+ * @param format
  */
-export declare function getCustomerType(axios: AxiosInstance, token: string): AxiosPromise<ICustomerType>;
+export declare function getCustomerType(axios: AxiosInstance, token: string, format: ICustomerTypeResponseFormat): AxiosPromise<ICustomerType>;
 /**
  * Update an existing customer type.
  * @param axios
