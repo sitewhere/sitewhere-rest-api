@@ -91,8 +91,11 @@ export function listCustomers(
   }
   if (criteria) {
     query += addFilter(criteria.rootOnly, "rootOnly");
-    query += addStringFilter(criteria.parentCustomerId, "parentCustomerId");
-    query += addStringFilter(criteria.customerTypeId, "customerTypeId");
+    query += addStringFilter(
+      criteria.parentCustomerToken,
+      "parentCustomerToken"
+    );
+    query += addStringFilter(criteria.customerTypeToken, "customerTypeToken");
     query += createPagingQuery(criteria);
   }
   return restAuthGet<ICustomerSearchResults>(axios, `customers${query}`);

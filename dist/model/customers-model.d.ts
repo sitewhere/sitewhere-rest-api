@@ -25,8 +25,8 @@ export interface ICustomerResponseFormat extends IResponseFormat {
  */
 export interface ICustomerSearchCriteria extends ISearchCriteria {
     rootOnly?: boolean;
-    parentCustomerId?: uuid;
-    customerTypeId?: uuid;
+    parentCustomerToken?: string;
+    customerTypeToken?: string;
 }
 /**
  * Search results for customers.
