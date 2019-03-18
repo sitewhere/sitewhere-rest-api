@@ -115,12 +115,21 @@ export interface ISearchResults<T> {
 }
 
 /**
+ * Interface for location information.
+ */
+export interface ILocation {
+  latitude: number;
+  longitude: number;
+  elevation: number;
+}
+
+/**
  * Create query string parameters for paging attributes of criteria.
  * @param criteria
  */
 export function createPagingQuery(criteria: ISearchCriteria): string {
-  return `&pageNumber=${criteria.pageNumber ||
-    1}&pageSize=${criteria.pageSize || 100}`;
+  return `&page=${criteria.pageNumber || 1}&pageSize=${criteria.pageSize ||
+    100}`;
 }
 
 /**
@@ -130,15 +139,5 @@ export function createPagingQuery(criteria: ISearchCriteria): string {
 export function createDateRangeQuery(
   criteria: IDateRangeSearchCriteria
 ): string {
-  return `&pageNumber=${criteria.pageNumber ||
-    1}&pageSize=${criteria.pageSize || 0}`;
-}
-
-/**
- * Interface for location information.
- */
-export interface ILocation {
-  latitude: number;
-  longitude: number;
-  elevation: number;
+  return `&page=${criteria.pageNumber || 1}&pageSize=${criteria.pageSize || 0}`;
 }

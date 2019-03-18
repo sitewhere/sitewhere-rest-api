@@ -647,8 +647,9 @@
    * @param axios
    * @param token
    * @param criteria
+   * @param format
    */
-  function listMeasurementsForCustomer(axios$$1, token, criteria) {
+  function listMeasurementsForCustomer(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
@@ -660,8 +661,9 @@
    * @param axios
    * @param token
    * @param criteria
+   * @param format
    */
-  function listLocationsForCustomer(axios$$1, token, criteria) {
+  function listLocationsForCustomer(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
@@ -673,8 +675,9 @@
    * @param axios
    * @param token
    * @param criteria
+   * @param format
    */
-  function listAlertsForCustomer(axios$$1, token, criteria) {
+  function listAlertsForCustomer(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);

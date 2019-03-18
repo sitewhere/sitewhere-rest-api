@@ -27,7 +27,10 @@ import {
 import {
   IDeviceMeasurementSearchResults,
   IDeviceLocationSearchResults,
-  IDeviceAlertSearchResults
+  IDeviceAlertSearchResults,
+  IDeviceMeasurementResponseFormat,
+  IDeviceLocationResponseFormat,
+  IDeviceAlertResponseFormat
 } from "../model/device-events-model";
 
 /**
@@ -147,15 +150,20 @@ export function listAssignmentsForCustomer(
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
 export function listMeasurementsForCustomer(
   axios: AxiosInstance,
   token: string,
-  criteria?: IDateRangeSearchCriteria
+  criteria?: IDateRangeSearchCriteria,
+  format?: IDeviceMeasurementResponseFormat
 ): AxiosPromise<IDeviceMeasurementSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createPagingQuery(criteria);
+  }
+  if (format) {
+    // No format options available.
   }
   return restAuthGet<IDeviceMeasurementSearchResults>(
     axios,
@@ -168,15 +176,20 @@ export function listMeasurementsForCustomer(
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
 export function listLocationsForCustomer(
   axios: AxiosInstance,
   token: string,
-  criteria?: IDateRangeSearchCriteria
+  criteria?: IDateRangeSearchCriteria,
+  format?: IDeviceLocationResponseFormat
 ): AxiosPromise<IDeviceLocationSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createPagingQuery(criteria);
+  }
+  if (format) {
+    // No format options available.
   }
   return restAuthGet<IDeviceLocationSearchResults>(
     axios,
@@ -189,15 +202,20 @@ export function listLocationsForCustomer(
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
 export function listAlertsForCustomer(
   axios: AxiosInstance,
   token: string,
-  criteria?: IDateRangeSearchCriteria
+  criteria?: IDateRangeSearchCriteria,
+  format?: IDeviceAlertResponseFormat
 ): AxiosPromise<IDeviceAlertSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createPagingQuery(criteria);
+  }
+  if (format) {
+    // No format options available.
   }
   return restAuthGet<IDeviceAlertSearchResults>(
     axios,

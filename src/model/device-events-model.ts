@@ -1,4 +1,9 @@
-import { uuid, IMetadataProvider, ISearchResults } from "./common-model";
+import {
+  uuid,
+  IMetadataProvider,
+  ISearchResults,
+  IResponseFormat
+} from "./common-model";
 
 /**
  * Enumeration of device assignment statuses.
@@ -24,6 +29,11 @@ export interface IDeviceEventCreateRequest extends IMetadataProvider {
   assetToken?: string;
   updateState?: boolean;
 }
+
+/**
+ * Common response format for device events.
+ */
+export interface IDeviceEventResponseFormat extends IResponseFormat {}
 
 /**
  * Device measurement event create request.
@@ -148,6 +158,12 @@ export interface IDeviceMeasurement extends IDeviceEvent {
 }
 
 /**
+ * Response format for device measurement events.
+ */
+export interface IDeviceMeasurementResponseFormat
+  extends IDeviceEventResponseFormat {}
+
+/**
  * Search results that contain device measurement events.
  */
 export interface IDeviceMeasurementSearchResults
@@ -164,6 +180,12 @@ export interface IDeviceAlert extends IDeviceEvent {
 }
 
 /**
+ * Response format for device alert events.
+ */
+export interface IDeviceAlertResponseFormat
+  extends IDeviceEventResponseFormat {}
+
+/**
  * Search results that contain device alert events.
  */
 export interface IDeviceAlertSearchResults
@@ -177,6 +199,12 @@ export interface IDeviceLocation extends IDeviceEvent {
   longitude: number;
   elevation?: number;
 }
+
+/**
+ * Response format for device location events.
+ */
+export interface IDeviceLocationResponseFormat
+  extends IDeviceEventResponseFormat {}
 
 /**
  * Search results that contain device location events.
@@ -197,6 +225,12 @@ export interface IDeviceCommandInvocation extends IDeviceEvent {
 }
 
 /**
+ * Response format for device command invocation events.
+ */
+export interface IDeviceCommandInvocationResponseFormat
+  extends IDeviceEventResponseFormat {}
+
+/**
  * Search results that contain device command invocation events.
  */
 export interface IDeviceCommandInvocationSearchResults
@@ -210,6 +244,12 @@ export interface IDeviceCommandResponse extends IDeviceEvent {
   responseEventId?: uuid;
   response?: string;
 }
+
+/**
+ * Response format for device command response events.
+ */
+export interface IDeviceCommandResponseResponseFormat
+  extends IDeviceEventResponseFormat {}
 
 /**
  * Search results that contain device command response events.
@@ -226,6 +266,12 @@ export interface IDeviceStateChange extends IDeviceEvent {
   previousState?: string;
   newState?: string;
 }
+
+/**
+ * Response format for device state change events.
+ */
+export interface IDeviceStateChangeResponseFormat
+  extends IDeviceEventResponseFormat {}
 
 /**
  * Search results that contain device state change events.

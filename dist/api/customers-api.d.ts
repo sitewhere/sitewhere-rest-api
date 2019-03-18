@@ -2,7 +2,7 @@ import { AxiosInstance, AxiosPromise } from "axios";
 import { ICustomerCreateRequest, ICustomer, ICustomerSearchCriteria, ICustomerResponseFormat, ICustomerSearchResults } from "../model/customers-model";
 import { IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults } from "../model/device-assignments-model";
 import { ISearchCriteria, IDateRangeSearchCriteria } from "../model/common-model";
-import { IDeviceMeasurementSearchResults, IDeviceLocationSearchResults, IDeviceAlertSearchResults } from "../model/device-events-model";
+import { IDeviceMeasurementSearchResults, IDeviceLocationSearchResults, IDeviceAlertSearchResults, IDeviceMeasurementResponseFormat, IDeviceLocationResponseFormat, IDeviceAlertResponseFormat } from "../model/device-events-model";
 /**
  * Create a new customer.
  * @param axios
@@ -48,19 +48,22 @@ export declare function listAssignmentsForCustomer(axios: AxiosInstance, token: 
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
-export declare function listMeasurementsForCustomer(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria): AxiosPromise<IDeviceMeasurementSearchResults>;
+export declare function listMeasurementsForCustomer(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria, format?: IDeviceMeasurementResponseFormat): AxiosPromise<IDeviceMeasurementSearchResults>;
 /**
  * List location events associated with customer.
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
-export declare function listLocationsForCustomer(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria): AxiosPromise<IDeviceLocationSearchResults>;
+export declare function listLocationsForCustomer(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria, format?: IDeviceLocationResponseFormat): AxiosPromise<IDeviceLocationSearchResults>;
 /**
  * List alert events associated with customer.
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
-export declare function listAlertsForCustomer(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria): AxiosPromise<IDeviceAlertSearchResults>;
+export declare function listAlertsForCustomer(axios: AxiosInstance, token: string, criteria?: IDateRangeSearchCriteria, format?: IDeviceAlertResponseFormat): AxiosPromise<IDeviceAlertSearchResults>;
