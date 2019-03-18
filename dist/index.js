@@ -63,16 +63,15 @@
    * @param criteria
    */
   function createPagingQuery(criteria) {
-      return "&pageNumber=" + (criteria.pageNumber ||
-          1) + "&pageSize=" + (criteria.pageSize || 100);
+      return "&page=" + (criteria.pageNumber || 1) + "&pageSize=" + (criteria.pageSize ||
+          100);
   }
   /**
    * Create query string parameters for paging attributes of criteria.
    * @param criteria
    */
   function createDateRangeQuery(criteria) {
-      return "&pageNumber=" + (criteria.pageNumber ||
-          1) + "&pageSize=" + (criteria.pageSize || 0);
+      return "&page=" + (criteria.pageNumber || 1) + "&pageSize=" + (criteria.pageSize || 0);
   }
 
   /**
@@ -123,7 +122,9 @@
       if (criteria) {
           return "&" + parameter + "=true";
       }
-      return "";
+      else {
+          return "&" + parameter + "=false";
+      }
   }
   /**
    * Add a filter onto an existing query.
@@ -219,9 +220,16 @@
    * Get an area by unique token.
    * @param axios
    * @param token
+   * @param format
    */
-  function getArea(axios$$1, token) {
-      return restAuthGet(axios$$1, "areas/" + token);
+  function getArea(axios$$1, token, format) {
+      var query = randomSeedQuery();
+      if (format) {
+          query += addFilter(format.includeAreaType, "includeAreaType");
+          query += addFilter(format.includeAssignments, "includeAssignments");
+          query += addFilter(format.includeZones, "includeZones");
+      }
+      return restAuthGet(axios$$1, "areas/" + token + query);
   }
   /**
    * Update an existing area.
@@ -247,8 +255,8 @@
       }
       if (criteria) {
           query += addFilter(criteria.rootOnly, "rootOnly");
-          query += addStringFilter(criteria.parentAreaId, "parentAreaId");
-          query += addStringFilter(criteria.areaTypeId, "areaTypeId");
+          query += addStringFilter(criteria.parentAreaToken, "parentAreaToken");
+          query += addStringFilter(criteria.areaTypeToken, "areaTypeToken");
           query += createPagingQuery(criteria);
       }
       return restAuthGet(axios$$1, "areas" + query);
@@ -287,7 +295,7 @@
    * @param token
    * @param criteria
    */
-  function listMeasurementsForArea(axios$$1, token, criteria) {
+  function listMeasurementsForArea(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
@@ -300,7 +308,7 @@
    * @param token
    * @param criteria
    */
-  function listLocationsForArea(axios$$1, token, criteria) {
+  function listLocationsForArea(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
@@ -313,7 +321,7 @@
    * @param token
    * @param criteria
    */
-  function listAlertsForArea(axios$$1, token, criteria) {
+  function listAlertsForArea(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);

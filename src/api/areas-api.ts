@@ -27,7 +27,10 @@ import {
 import {
   IDeviceMeasurementSearchResults,
   IDeviceLocationSearchResults,
-  IDeviceAlertSearchResults
+  IDeviceAlertSearchResults,
+  IDeviceMeasurementResponseFormat,
+  IDeviceLocationResponseFormat,
+  IDeviceAlertResponseFormat
 } from "../model/device-events-model";
 
 /**
@@ -46,12 +49,20 @@ export function createArea(
  * Get an area by unique token.
  * @param axios
  * @param token
+ * @param format
  */
 export function getArea(
   axios: AxiosInstance,
-  token: string
+  token: string,
+  format: IAreaResponseFormat
 ): AxiosPromise<IArea> {
-  return restAuthGet<IArea>(axios, `areas/${token}`);
+  let query = randomSeedQuery();
+  if (format) {
+    query += addFilter(format.includeAreaType, "includeAreaType");
+    query += addFilter(format.includeAssignments, "includeAssignments");
+    query += addFilter(format.includeZones, "includeZones");
+  }
+  return restAuthGet<IArea>(axios, `areas/${token}${query}`);
 }
 
 /**
@@ -87,8 +98,8 @@ export function listAreas(
   }
   if (criteria) {
     query += addFilter(criteria.rootOnly, "rootOnly");
-    query += addStringFilter(criteria.parentAreaId, "parentAreaId");
-    query += addStringFilter(criteria.areaTypeId, "areaTypeId");
+    query += addStringFilter(criteria.parentAreaToken, "parentAreaToken");
+    query += addStringFilter(criteria.areaTypeToken, "areaTypeToken");
     query += createPagingQuery(criteria);
   }
   return restAuthGet<IAreaSearchResults>(axios, `areas${query}`);
@@ -144,11 +155,15 @@ export function listAssignmentsForArea(
 export function listMeasurementsForArea(
   axios: AxiosInstance,
   token: string,
-  criteria?: IDateRangeSearchCriteria
+  criteria?: IDateRangeSearchCriteria,
+  format?: IDeviceMeasurementResponseFormat
 ): AxiosPromise<IDeviceMeasurementSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createPagingQuery(criteria);
+  }
+  if (format) {
+    // No format options available.
   }
   return restAuthGet<IDeviceMeasurementSearchResults>(
     axios,
@@ -165,11 +180,15 @@ export function listMeasurementsForArea(
 export function listLocationsForArea(
   axios: AxiosInstance,
   token: string,
-  criteria?: IDateRangeSearchCriteria
+  criteria?: IDateRangeSearchCriteria,
+  format?: IDeviceLocationResponseFormat
 ): AxiosPromise<IDeviceLocationSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createPagingQuery(criteria);
+  }
+  if (format) {
+    // No format options available.
   }
   return restAuthGet<IDeviceLocationSearchResults>(
     axios,
@@ -186,11 +205,15 @@ export function listLocationsForArea(
 export function listAlertsForArea(
   axios: AxiosInstance,
   token: string,
-  criteria?: IDateRangeSearchCriteria
+  criteria?: IDateRangeSearchCriteria,
+  format?: IDeviceAlertResponseFormat
 ): AxiosPromise<IDeviceAlertSearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += createPagingQuery(criteria);
+  }
+  if (format) {
+    // No format options available.
   }
   return restAuthGet<IDeviceAlertSearchResults>(
     axios,

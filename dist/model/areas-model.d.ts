@@ -19,8 +19,8 @@ export interface IAreaResponseFormat extends IResponseFormat {
  */
 export interface IAreaSearchCriteria extends ISearchCriteria {
     rootOnly?: boolean;
-    parentAreaId?: uuid;
-    areaTypeId?: uuid;
+    parentAreaToken?: uuid;
+    areaTypeToken?: uuid;
 }
 /**
  * Search results for areas.

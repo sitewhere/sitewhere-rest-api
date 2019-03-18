@@ -95,6 +95,14 @@ export interface ISearchResults<T> {
     results: T[];
 }
 /**
+ * Interface for location information.
+ */
+export interface ILocation {
+    latitude: number;
+    longitude: number;
+    elevation: number;
+}
+/**
  * Create query string parameters for paging attributes of criteria.
  * @param criteria
  */
@@ -104,11 +112,3 @@ export declare function createPagingQuery(criteria: ISearchCriteria): string;
  * @param criteria
  */
 export declare function createDateRangeQuery(criteria: IDateRangeSearchCriteria): string;
-/**
- * Interface for location information.
- */
-export interface ILocation {
-    latitude: number;
-    longitude: number;
-    elevation: number;
-}

@@ -88,8 +88,9 @@ export function addFilter(
 ): string {
   if (criteria) {
     return `&${parameter}=true`;
+  } else {
+    return `&${parameter}=false`;
   }
-  return "";
 }
 
 /**
