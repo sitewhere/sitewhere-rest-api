@@ -1987,6 +1987,158 @@
     getJwt: getJwt
   });
 
+  /**
+   * Enumeration of asset categories.
+   */
+  (function (AssetCategory) {
+      AssetCategory["Device"] = "Device";
+      AssetCategory["Person"] = "Person";
+      AssetCategory["Hardware"] = "Hardware";
+  })(exports.AssetCategory || (exports.AssetCategory = {}));
+
+  /**
+   * Enumeration of batch operation status values.
+   */
+  (function (BatchOperationStatus) {
+      BatchOperationStatus["Unprocessed"] = "Unprocessed";
+      BatchOperationStatus["Initializing"] = "Initializing";
+      BatchOperationStatus["InitializedSuccessfully"] = "InitializedSuccessfully";
+      BatchOperationStatus["InitializedWithErrors"] = "InitializedWithErrors";
+      BatchOperationStatus["FinishedSuccessfully"] = "FinishedSuccessfully";
+      BatchOperationStatus["FinishedWithErrors"] = "FinishedWithErrors";
+  })(exports.BatchOperationStatus || (exports.BatchOperationStatus = {}));
+  (function (ElementProcessingStatus) {
+      ElementProcessingStatus["Unprocessed"] = "Unprocessed";
+      ElementProcessingStatus["Initializing"] = "Initializing";
+      ElementProcessingStatus["Processing"] = "Processing";
+      ElementProcessingStatus["Failed"] = "Failed";
+      ElementProcessingStatus["Succeeded"] = "Succeeded";
+  })(exports.ElementProcessingStatus || (exports.ElementProcessingStatus = {}));
+
+  /**
+   * Enumeration of node types.
+   */
+  (function (NodeType) {
+      NodeType["Element"] = "Element";
+      NodeType["Attribute"] = "Attribute";
+  })(exports.NodeType || (exports.NodeType = {}));
+  (function (AttributeType) {
+      AttributeType["String"] = "String";
+      AttributeType["Integer"] = "Integer";
+      AttributeType["Decimal"] = "Decimal";
+      AttributeType["Boolean"] = "Boolean";
+      AttributeType["Script"] = "Script";
+      AttributeType["DeviceTypeReference"] = "DeviceTypeReference";
+      AttributeType["CustomerReference"] = "CustomerReference";
+      AttributeType["AreaReference"] = "AreaReference";
+      AttributeType["AssetReference"] = "AssetReference";
+  })(exports.AttributeType || (exports.AttributeType = {}));
+
+  /**
+   * Enumeration of device assignment statuses.
+   */
+  (function (DeviceAssignmentStatus) {
+      DeviceAssignmentStatus["Active"] = "Active";
+      DeviceAssignmentStatus["Missing"] = "Missing";
+      DeviceAssignmentStatus["Released"] = "Released";
+  })(exports.DeviceAssignmentStatus || (exports.DeviceAssignmentStatus = {}));
+
+  /**
+   * Enumeration of parameter types.
+   */
+  (function (ParameterType) {
+      ParameterType["Double"] = "Double";
+      ParameterType["Float"] = "Float";
+      ParameterType["Int32"] = "Int32";
+      ParameterType["Int64"] = "Int64";
+      ParameterType["UInt32"] = "UInt32";
+      ParameterType["UInt64"] = "UInt64";
+      ParameterType["SInt32"] = "SInt32";
+      ParameterType["SInt64"] = "SInt64";
+      ParameterType["Fixed32"] = "Fixed32";
+      ParameterType["Fixed64"] = "Fixed64";
+      ParameterType["SFixed32"] = "SFixed32";
+      ParameterType["SFixed64"] = "SFixed64";
+      ParameterType["Bool"] = "Bool";
+      ParameterType["String"] = "String";
+      ParameterType["Bytes"] = "Bytes";
+  })(exports.ParameterType || (exports.ParameterType = {}));
+
+  /**
+   * Enumeration of device assignment statuses.
+   */
+  (function (DeviceEventType) {
+      DeviceEventType["Measurement"] = "Measurement";
+      DeviceEventType["Location"] = "Location";
+      DeviceEventType["Alert"] = "Alert";
+      DeviceEventType["CommandInvocation"] = "CommandInvocation";
+      DeviceEventType["CommandResponse"] = "CommandResponse";
+      DeviceEventType["StateChange"] = "StateChange";
+  })(exports.DeviceEventType || (exports.DeviceEventType = {}));
+  (function (AlertSource) {
+      AlertSource["Device"] = "Device";
+      AlertSource["System"] = "System";
+  })(exports.AlertSource || (exports.AlertSource = {}));
+  (function (AlertLevel) {
+      AlertLevel["Info"] = "Info";
+      AlertLevel["Warning"] = "Warning";
+      AlertLevel["Error"] = "Error";
+      AlertLevel["Critical"] = "Critical";
+  })(exports.AlertLevel || (exports.AlertLevel = {}));
+  (function (CommandInitiator) {
+      CommandInitiator["REST"] = "REST";
+      CommandInitiator["BatchOperation"] = "BatchOperation";
+      CommandInitiator["Script"] = "Script";
+      CommandInitiator["Scheduler"] = "Scheduler";
+  })(exports.CommandInitiator || (exports.CommandInitiator = {}));
+  (function (CommandTarget) {
+      CommandTarget["Assignment"] = "Assignment";
+  })(exports.CommandTarget || (exports.CommandTarget = {}));
+
+  /**
+   * Enum of device container policy choices.
+   */
+  (function (DeviceContainerPolicy) {
+      DeviceContainerPolicy["Standalone"] = "Standalone";
+      DeviceContainerPolicy["Composite"] = "Composite";
+  })(exports.DeviceContainerPolicy || (exports.DeviceContainerPolicy = {}));
+
+  /**
+   * Enumeration of lifecycle statuses.
+   */
+  (function (LifecycleStatus) {
+      LifecycleStatus["Initializing"] = "Initializing";
+      LifecycleStatus["InitializationError"] = "InitializationError";
+      LifecycleStatus["Stopped"] = "Stopped";
+      LifecycleStatus["StoppedWithErrors"] = "StoppedWithErrors";
+      LifecycleStatus["Starting"] = "Starting";
+      LifecycleStatus["Started"] = "Started";
+      LifecycleStatus["StartedWithErrors"] = "StartedWithErrors";
+      LifecycleStatus["Pausing"] = "Pausing";
+      LifecycleStatus["Paused"] = "Paused";
+      LifecycleStatus["Stopping"] = "Stopping";
+      LifecycleStatus["Terminating"] = "Terminating";
+      LifecycleStatus["Terminated"] = "Terminated";
+      LifecycleStatus["LifecycleError"] = "LifecycleError";
+  })(exports.LifecycleStatus || (exports.LifecycleStatus = {}));
+
+  /**
+   * Enumeration of trigger types.
+   */
+  (function (TriggerType) {
+      TriggerType["SimpleTrigger"] = "SimpleTrigger";
+      TriggerType["CronTrigger"] = "CronTrigger";
+  })(exports.TriggerType || (exports.TriggerType = {}));
+
+  /**
+   * Enumeration of user account status values.
+   */
+  (function (AccountStatus) {
+      AccountStatus["AccountStatus"] = "A";
+      AccountStatus["Expired"] = "E";
+      AccountStatus["Locked"] = "L";
+  })(exports.AccountStatus || (exports.AccountStatus = {}));
+
   /** Export authentication functions */
   var Auth = Authentication;
   /** Export core APIs */
@@ -2020,6 +2172,8 @@
   exports.Auth = Auth;
   exports.API = API;
   exports.AuthAPI = AuthAPI;
+  exports.createPagingQuery = createPagingQuery;
+  exports.createDateRangeQuery = createDateRangeQuery;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
