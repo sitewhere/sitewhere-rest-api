@@ -9,9 +9,9 @@ export declare function createDeviceType(axios: AxiosInstance, request: IDeviceT
 /**
  * Get a device type by unique token.
  * @param axios
- * @param deviceTypeToken
+ * @param token
  */
-export declare function getDeviceType(axios: AxiosInstance, deviceTypeToken: string): AxiosPromise<IDeviceType>;
+export declare function getDeviceType(axios: AxiosInstance, token: string, format: IDeviceTypeResponseFormat): AxiosPromise<IDeviceType>;
 /**
  * Update an existing device type.
  * @param axios

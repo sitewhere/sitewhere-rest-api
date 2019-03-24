@@ -8,6 +8,7 @@ import {
 } from "../model/device-types-model";
 import { createPagingQuery } from "../model/common-model";
 import {
+  addFilter,
   restAuthGet,
   restAuthPost,
   restAuthPut,
@@ -30,13 +31,18 @@ export function createDeviceType(
 /**
  * Get a device type by unique token.
  * @param axios
- * @param deviceTypeToken
+ * @param token
  */
 export function getDeviceType(
   axios: AxiosInstance,
-  deviceTypeToken: string
+  token: string,
+  format: IDeviceTypeResponseFormat
 ): AxiosPromise<IDeviceType> {
-  return restAuthGet<IDeviceType>(axios, `devicetypes/${deviceTypeToken}`);
+  let query = randomSeedQuery();
+  if (format) {
+    query += addFilter(format.includeAsset, "includeAsset");
+  }
+  return restAuthGet<IDeviceType>(axios, `devicetypes/${token}${query}`);
 }
 
 /**

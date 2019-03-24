@@ -20,7 +20,6 @@ import {
   addFilter,
   addStringFilter
 } from "../rest";
-import { IDeviceAssignment } from "@/model/device-assignments-model";
 
 /**
  * Create a new device.
@@ -41,9 +40,15 @@ export function createDevice(
  */
 export function getDevice(
   axios: AxiosInstance,
-  deviceToken: string
+  token: string,
+  format: IDeviceResponseFormat
 ): AxiosPromise<IDevice> {
-  return restAuthGet<IDevice>(axios, `devices/${deviceToken}`);
+  let query = randomSeedQuery();
+  if (format) {
+    query += addFilter(format.includeDeviceType, "includeDeviceType");
+    query += addFilter(format.includeAssignment, "includeAssignment");
+  }
+  return restAuthGet<IDevice>(axios, `devices/${token}${query}`);
 }
 
 /**

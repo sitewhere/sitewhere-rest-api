@@ -1309,10 +1309,14 @@
   /**
    * Get a device type by unique token.
    * @param axios
-   * @param deviceTypeToken
+   * @param token
    */
-  function getDeviceType(axios$$1, deviceTypeToken) {
-      return restAuthGet(axios$$1, "devicetypes/" + deviceTypeToken);
+  function getDeviceType(axios$$1, token, format) {
+      var query = randomSeedQuery();
+      if (format) {
+          query += addFilter(format.includeAsset, "includeAsset");
+      }
+      return restAuthGet(axios$$1, "devicetypes/" + token + query);
   }
   /**
    * Update an existing device type.
@@ -1366,8 +1370,13 @@
    * @param axios
    * @param deviceToken
    */
-  function getDevice(axios$$1, deviceToken) {
-      return restAuthGet(axios$$1, "devices/" + deviceToken);
+  function getDevice(axios$$1, token, format) {
+      var query = randomSeedQuery();
+      if (format) {
+          query += addFilter(format.includeDeviceType, "includeDeviceType");
+          query += addFilter(format.includeAssignment, "includeAssignment");
+      }
+      return restAuthGet(axios$$1, "devices/" + token + query);
   }
   /**
    * Update an existing device.

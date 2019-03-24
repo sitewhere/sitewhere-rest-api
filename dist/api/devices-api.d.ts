@@ -13,7 +13,7 @@ export declare function createDevice(axios: AxiosInstance, request: IDeviceCreat
  * @param axios
  * @param deviceToken
  */
-export declare function getDevice(axios: AxiosInstance, deviceToken: string): AxiosPromise<IDevice>;
+export declare function getDevice(axios: AxiosInstance, token: string, format: IDeviceResponseFormat): AxiosPromise<IDevice>;
 /**
  * Update an existing device.
  * @param axios
