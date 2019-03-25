@@ -4,7 +4,8 @@ import {
   IDeviceCommand,
   IDeviceCommandSearchCriteria,
   IDeviceCommandResponseFormat,
-  IDeviceCommandSearchResults
+  IDeviceCommandSearchResults,
+  IDeviceCommandNamespaceSearchResults
 } from "../model/device-commands-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -91,7 +92,7 @@ export function listDeviceCommandsForNamespace(
   axios: AxiosInstance,
   criteria?: IDeviceCommandSearchCriteria,
   format?: IDeviceCommandResponseFormat
-): AxiosPromise<IDeviceCommandSearchResults> {
+): AxiosPromise<IDeviceCommandNamespaceSearchResults> {
   let query = randomSeedQuery();
   if (format) {
     // No filters currently defined.
@@ -100,7 +101,7 @@ export function listDeviceCommandsForNamespace(
     query += addStringFilter(criteria.deviceTypeToken, "deviceTypeToken");
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceCommandSearchResults>(
+  return restAuthGet<IDeviceCommandNamespaceSearchResults>(
     axios,
     `commands/namespaces${query}`
   );

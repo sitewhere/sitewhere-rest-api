@@ -10,8 +10,9 @@ export declare function createDeviceGroup(axios: AxiosInstance, request: IDevice
  * Get a device group by unique token.
  * @param axios
  * @param token
+ * @param format
  */
-export declare function getDeviceGroup(axios: AxiosInstance, token: string): AxiosPromise<IDeviceGroup>;
+export declare function getDeviceGroup(axios: AxiosInstance, token: string, format: IDeviceGroupResponseFormat): AxiosPromise<IDeviceGroup>;
 /**
  * Update an existing device group.
  * @param axios

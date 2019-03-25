@@ -67,7 +67,7 @@ export interface IDeviceCommandResponseFormat extends IResponseFormat {}
  * Search criteria for device commands.
  */
 export interface IDeviceCommandSearchCriteria extends ISearchCriteria {
-  deviceTypeToken: string;
+  deviceTypeToken?: string;
 }
 
 /**
@@ -75,3 +75,17 @@ export interface IDeviceCommandSearchCriteria extends ISearchCriteria {
  */
 export interface IDeviceCommandSearchResults
   extends ISearchResults<IDeviceCommand> {}
+
+/**
+ * List of commands associated with a given namespace.
+ */
+export interface IDeviceCommandNamespace {
+  value: string;
+  commands: IDeviceCommand[];
+}
+
+/**
+ * Search results for device command namespaces.
+ */
+export interface IDeviceCommandNamespaceSearchResults
+  extends ISearchResults<IDeviceCommandNamespace> {}

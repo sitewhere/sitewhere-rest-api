@@ -37,12 +37,18 @@ export function createDeviceGroup(
  * Get a device group by unique token.
  * @param axios
  * @param token
+ * @param format
  */
 export function getDeviceGroup(
   axios: AxiosInstance,
-  token: string
+  token: string,
+  format: IDeviceGroupResponseFormat
 ): AxiosPromise<IDeviceGroup> {
-  return restAuthGet<IDeviceGroup>(axios, `devicegroups/${token}`);
+  let query = randomSeedQuery();
+  if (format) {
+    // No format options available.
+  }
+  return restAuthGet<IDeviceGroup>(axios, `devicegroups/${token}${query}`);
 }
 
 /**

@@ -1137,9 +1137,11 @@
    * Get a device group by unique token.
    * @param axios
    * @param token
+   * @param format
    */
-  function getDeviceGroup(axios$$1, token) {
-      return restAuthGet(axios$$1, "devicegroups/" + token);
+  function getDeviceGroup(axios$$1, token, format) {
+      var query = randomSeedQuery();
+      return restAuthGet(axios$$1, "devicegroups/" + token + query);
   }
   /**
    * Update an existing device group.
