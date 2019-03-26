@@ -24,7 +24,7 @@ export interface IDeviceStatusResponseFormat extends IResponseFormat {
  * Search criteria for device statuses.
  */
 export interface IDeviceStatusSearchCriteria extends ISearchCriteria {
-    deviceTypeToken: string;
+    deviceTypeToken?: string;
 }
 /**
  * Search results for device statuses.

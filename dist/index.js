@@ -1195,6 +1195,7 @@
           query += addFilter(format.includeDetails, "includeDetails");
       }
       if (criteria) {
+          query += addStringFilter(criteria.deviceGroupToken, "groupToken");
           query += createPagingQuery(criteria);
       }
       return restAuthGet(axios$$1, "devicegroups/" + token + "/elements" + query);

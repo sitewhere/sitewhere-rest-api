@@ -46,6 +46,12 @@ export interface IDeviceGroupElement {
     roles: string[];
 }
 /**
+ * Search criteria for device group elements.
+ */
+export interface IDeviceGroupElementSearchCriteria extends ISearchCriteria {
+    deviceGroupToken?: string;
+}
+/**
  * Response format for device group element records.
  */
 export interface IDeviceGroupElementResponseFormat extends IResponseFormat {

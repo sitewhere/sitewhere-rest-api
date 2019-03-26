@@ -8,7 +8,8 @@ import {
   IDeviceGroupElement,
   IDeviceGroupElementResponseFormat,
   IDeviceGroupSearchResults,
-  IDeviceGroupElementSearchResults
+  IDeviceGroupElementSearchResults,
+  IDeviceGroupElementSearchCriteria
 } from "../model/device-groups-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -126,7 +127,7 @@ export function createDeviceGroupElement(
 export function listDeviceGroupElements(
   axios: AxiosInstance,
   token: string,
-  criteria?: IDeviceGroupSearchCriteria,
+  criteria?: IDeviceGroupElementSearchCriteria,
   format?: IDeviceGroupElementResponseFormat
 ): AxiosPromise<IDeviceGroupElementSearchResults> {
   let query = randomSeedQuery();
@@ -134,6 +135,7 @@ export function listDeviceGroupElements(
     query += addFilter(format.includeDetails, "includeDetails");
   }
   if (criteria) {
+    query += addStringFilter(criteria.deviceGroupToken, "groupToken");
     query += createPagingQuery(criteria);
   }
   return restAuthGet<IDeviceGroupElementSearchResults>(

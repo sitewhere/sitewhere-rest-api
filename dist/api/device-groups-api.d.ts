@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IDeviceGroupCreateRequest, IDeviceGroup, IDeviceGroupSearchCriteria, IDeviceGroupResponseFormat, IDeviceGroupElementCreateRequest, IDeviceGroupElement, IDeviceGroupElementResponseFormat, IDeviceGroupSearchResults, IDeviceGroupElementSearchResults } from "../model/device-groups-model";
+import { IDeviceGroupCreateRequest, IDeviceGroup, IDeviceGroupSearchCriteria, IDeviceGroupResponseFormat, IDeviceGroupElementCreateRequest, IDeviceGroupElement, IDeviceGroupElementResponseFormat, IDeviceGroupSearchResults, IDeviceGroupElementSearchResults, IDeviceGroupElementSearchCriteria } from "../model/device-groups-model";
 /**
  * Create a new device group.
  * @param axios
@@ -46,7 +46,7 @@ export declare function createDeviceGroupElement(axios: AxiosInstance, token: st
  * @param criteria
  * @param format
  */
-export declare function listDeviceGroupElements(axios: AxiosInstance, token: string, criteria?: IDeviceGroupSearchCriteria, format?: IDeviceGroupElementResponseFormat): AxiosPromise<IDeviceGroupElementSearchResults>;
+export declare function listDeviceGroupElements(axios: AxiosInstance, token: string, criteria?: IDeviceGroupElementSearchCriteria, format?: IDeviceGroupElementResponseFormat): AxiosPromise<IDeviceGroupElementSearchResults>;
 /**
  * Delete an existing device group element.
  * @param axios
