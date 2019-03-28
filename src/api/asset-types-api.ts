@@ -31,12 +31,18 @@ export function createAssetType(
  * Get an asset type by unique token.
  * @param axios
  * @param token
+ * @param format
  */
 export function getAssetType(
   axios: AxiosInstance,
-  token: string
+  token: string,
+  format: IAssetTypeResponseFormat
 ): AxiosPromise<IAssetType> {
-  return restAuthGet<IAssetType>(axios, `assettypes/${token}`);
+  let query = randomSeedQuery();
+  if (format) {
+    // No options available.
+  }
+  return restAuthGet<IAssetType>(axios, `assettypes/${token}${query}`);
 }
 
 /**

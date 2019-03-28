@@ -162,9 +162,14 @@
    * Get an area type by unique token.
    * @param axios
    * @param token
+   * @param format
    */
-  function getAreaType(axios$$1, token) {
-      return restAuthGet(axios$$1, "areatypes/" + token);
+  function getAreaType(axios$$1, token, format) {
+      var query = randomSeedQuery();
+      if (format) {
+          query += addFilter(format.includeContainedAreaTypes, "includeContainedAreaTypes");
+      }
+      return restAuthGet(axios$$1, "areatypes/" + token + query);
   }
   /**
    * Update an existing area type.
@@ -353,9 +358,11 @@
    * Get an asset type by unique token.
    * @param axios
    * @param token
+   * @param format
    */
-  function getAssetType(axios$$1, token) {
-      return restAuthGet(axios$$1, "assettypes/" + token);
+  function getAssetType(axios$$1, token, format) {
+      var query = randomSeedQuery();
+      return restAuthGet(axios$$1, "assettypes/" + token + query);
   }
   /**
    * Update an existing asset type.
@@ -408,9 +415,14 @@
    * Get an asset by unique token.
    * @param axios
    * @param token
+   * @param format
    */
-  function getAsset(axios$$1, token) {
-      return restAuthGet(axios$$1, "assets/" + token);
+  function getAsset(axios$$1, token, format) {
+      var query = randomSeedQuery();
+      if (format) {
+          query += addFilter(format.includeAssetType, "includeAssetType");
+      }
+      return restAuthGet(axios$$1, "assets/" + token + query);
   }
   /**
    * Update an existing asset.
@@ -744,9 +756,12 @@
           query += addFilter(format.includeArea, "includeArea");
           query += addFilter(format.includeAsset, "includeAsset");
       }
+      console.log("Criteria", criteria);
       if (criteria) {
           query += addStringFilter(criteria.areaToken, "areaToken");
           query += addStringFilter(criteria.assetToken, "assetToken");
+          query += addStringFilter(criteria.customerToken, "customerToken");
+          query += addStringFilter(criteria.deviceToken, "deviceToken");
           query += createPagingQuery(criteria);
       }
       return restAuthGet(axios$$1, "assignments" + query);

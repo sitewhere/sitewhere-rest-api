@@ -32,12 +32,21 @@ export function createAreaType(
  * Get an area type by unique token.
  * @param axios
  * @param token
+ * @param format
  */
 export function getAreaType(
   axios: AxiosInstance,
-  token: string
+  token: string,
+  format: IAreaTypeResponseFormat
 ): AxiosPromise<IAreaType> {
-  return restAuthGet<IAreaType>(axios, `areatypes/${token}`);
+  let query = randomSeedQuery();
+  if (format) {
+    query += addFilter(
+      format.includeContainedAreaTypes,
+      "includeContainedAreaTypes"
+    );
+  }
+  return restAuthGet<IAreaType>(axios, `areatypes/${token}${query}`);
 }
 
 /**

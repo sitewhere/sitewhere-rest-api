@@ -99,9 +99,12 @@ export function listDeviceAssignments(
     query += addFilter(format.includeArea, "includeArea");
     query += addFilter(format.includeAsset, "includeAsset");
   }
+  console.log("Criteria", criteria);
   if (criteria) {
     query += addStringFilter(criteria.areaToken, "areaToken");
     query += addStringFilter(criteria.assetToken, "assetToken");
+    query += addStringFilter(criteria.customerToken, "customerToken");
+    query += addStringFilter(criteria.deviceToken, "deviceToken");
     query += createPagingQuery(criteria);
   }
   return restAuthGet<IDeviceAssignmentSearchResults>(

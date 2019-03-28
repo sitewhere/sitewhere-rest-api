@@ -10,8 +10,9 @@ export declare function createAreaType(axios: AxiosInstance, request: IAreaTypeC
  * Get an area type by unique token.
  * @param axios
  * @param token
+ * @param format
  */
-export declare function getAreaType(axios: AxiosInstance, token: string): AxiosPromise<IAreaType>;
+export declare function getAreaType(axios: AxiosInstance, token: string, format: IAreaTypeResponseFormat): AxiosPromise<IAreaType>;
 /**
  * Update an existing area type.
  * @param axios

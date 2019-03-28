@@ -36,7 +36,9 @@ export interface IAssetResponseFormat extends IResponseFormat {
 /**
  * Search criteria for assets.
  */
-export interface IAssetSearchCriteria extends ISearchCriteria {}
+export interface IAssetSearchCriteria extends ISearchCriteria {
+  assetTypeToken?: uuid;
+}
 
 /**
  * Search results for assets.

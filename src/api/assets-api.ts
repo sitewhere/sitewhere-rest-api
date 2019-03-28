@@ -32,12 +32,18 @@ export function createAsset(
  * Get an asset by unique token.
  * @param axios
  * @param token
+ * @param format
  */
 export function getAsset(
   axios: AxiosInstance,
-  token: string
+  token: string,
+  format: IAssetResponseFormat
 ): AxiosPromise<IAsset> {
-  return restAuthGet<IAsset>(axios, `assets/${token}`);
+  let query = randomSeedQuery();
+  if (format) {
+    query += addFilter(format.includeAssetType, "includeAssetType");
+  }
+  return restAuthGet<IAsset>(axios, `assets/${token}${query}`);
 }
 
 /**

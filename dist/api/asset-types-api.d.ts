@@ -10,8 +10,9 @@ export declare function createAssetType(axios: AxiosInstance, request: IAssetTyp
  * Get an asset type by unique token.
  * @param axios
  * @param token
+ * @param format
  */
-export declare function getAssetType(axios: AxiosInstance, token: string): AxiosPromise<IAssetType>;
+export declare function getAssetType(axios: AxiosInstance, token: string, format: IAssetTypeResponseFormat): AxiosPromise<IAssetType>;
 /**
  * Update an existing asset type.
  * @param axios
