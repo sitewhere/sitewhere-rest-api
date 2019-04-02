@@ -10,8 +10,9 @@ export declare function createTenant(axios: AxiosInstance, request: ITenantCreat
  * Get a tenant by unique token.
  * @param axios
  * @param token
+ * @param format
  */
-export declare function getTenant(axios: AxiosInstance, token: string): AxiosPromise<ITenant>;
+export declare function getTenant(axios: AxiosInstance, token: string, format: ITenantResponseFormat): AxiosPromise<ITenant>;
 /**
  * Update an existing tenant.
  * @param axios

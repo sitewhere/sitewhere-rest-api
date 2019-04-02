@@ -1815,9 +1815,11 @@
    * Get a tenant by unique token.
    * @param axios
    * @param token
+   * @param format
    */
-  function getTenant(axios$$1, token) {
-      return restAuthGet(axios$$1, "tenants/" + token);
+  function getTenant(axios$$1, token, format) {
+      var query = randomSeedQuery();
+      return restAuthGet(axios$$1, "tenants/" + token + query);
   }
   /**
    * Update an existing tenant.

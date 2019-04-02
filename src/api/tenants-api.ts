@@ -33,12 +33,18 @@ export function createTenant(
  * Get a tenant by unique token.
  * @param axios
  * @param token
+ * @param format
  */
 export function getTenant(
   axios: AxiosInstance,
-  token: string
+  token: string,
+  format: ITenantResponseFormat
 ): AxiosPromise<ITenant> {
-  return restAuthGet<ITenant>(axios, `tenants/${token}`);
+  let query = randomSeedQuery();
+  if (format) {
+    // No format options available.
+  }
+  return restAuthGet<ITenant>(axios, `tenants/${token}${query}`);
 }
 
 /**
