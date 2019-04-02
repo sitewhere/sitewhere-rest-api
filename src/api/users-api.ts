@@ -34,12 +34,18 @@ export function createUser(
  * Get a user by username.
  * @param axios
  * @param username
+ * @param format
  */
 export function getUser(
   axios: AxiosInstance,
-  username: string
+  username: string,
+  format: IUserResponseFormat
 ): AxiosPromise<IUser> {
-  return restAuthGet<IUser>(axios, `users/${username}`);
+  let query = randomSeedQuery();
+  if (format) {
+    // No format options available.
+  }
+  return restAuthGet<IUser>(axios, `users/${username}${query}`);
 }
 
 /**

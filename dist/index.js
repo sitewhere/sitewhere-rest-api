@@ -1888,9 +1888,11 @@
    * Get a user by username.
    * @param axios
    * @param username
+   * @param format
    */
-  function getUser(axios$$1, username) {
-      return restAuthGet(axios$$1, "users/" + username);
+  function getUser(axios$$1, username, format) {
+      var query = randomSeedQuery();
+      return restAuthGet(axios$$1, "users/" + username + query);
   }
   /**
    * Update an existing user.

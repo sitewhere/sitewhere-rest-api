@@ -10,8 +10,9 @@ export declare function createUser(axios: AxiosInstance, request: IUserCreateReq
  * Get a user by username.
  * @param axios
  * @param username
+ * @param format
  */
-export declare function getUser(axios: AxiosInstance, username: string): AxiosPromise<IUser>;
+export declare function getUser(axios: AxiosInstance, username: string, format: IUserResponseFormat): AxiosPromise<IUser>;
 /**
  * Update an existing user.
  * @param axios
