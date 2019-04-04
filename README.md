@@ -62,3 +62,47 @@ async function createDevice() {
 createDevice();
 
 ```
+
+## Getting a JSON Web Token for Authentication
+In order to use any of the SiteWhere APIs, a JWT must first be obtained using
+HTTP basic authentication to establish the identity of a system user making
+the call. The logic below obtains a JWT for user `admin` with password
+`password`. The JWT has a limited lifetime which is determined on the 
+SiteWhere server that issues it. New JWTs may be obtained at any time since
+there is little-or-no server overhead for creating new ones.
+
+```typescript
+  // Create Axios instance with basic auth for getting JWT.
+  let auth: AxiosInstance = SiteWhere.Auth.createBasicAuthRequestForCredentials(
+    "http://localhost:8080/sitewhere/authapi",
+    "admin",
+    "password"
+  );
+
+  // Extract JWT.
+  let jwtResp: AxiosResponse<any> = await SiteWhere.AuthAPI.Jwt.getJwt(auth);
+  let jwt: string = jwtResp.headers["x-sitewhere-jwt"];
+````
+Note that since the code uses `await`, this block would need to be nested
+in an `async` function. As an alternative, standard promise-based access
+is also supported.
+
+## Issuing API Calls for Specific Tenants
+Since SiteWhere is a multitenant system, API calls must specify the tenant
+and associated authentication token in order to access the tenant-specific APIs.
+Before issuing API calls, create an Axios context. The example shown below
+will access the `default` tenant with authentication token `sitewhere0123456789`:
+
+```typescript
+  // Create Axios instance with JWT and tenant auth information.
+  let axios: AxiosInstance = SiteWhere.Auth.createJwtRequest(
+    "http://localhost:8080/sitewhere/api",
+    jwt,
+    "default",
+    "sitewhere0123456789"
+  );
+```
+
+The same Axios context may be reused any number of times as long as the included
+JWT is still valid. If accessing multiple tenants, a separate context should be
+created for each tenant.
