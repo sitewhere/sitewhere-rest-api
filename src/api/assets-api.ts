@@ -13,7 +13,8 @@ import {
   restAuthPut,
   restAuthDelete,
   randomSeedQuery,
-  addFilter
+  addFilter,
+  addStringFilter
 } from "../rest";
 
 /**
@@ -76,6 +77,7 @@ export function listAssets(
     query += addFilter(format.includeAssetType, "includeAssetType");
   }
   if (criteria) {
+    query += addStringFilter(criteria.assetTypeToken, "assetTypeToken");
     query += createPagingQuery(criteria);
   }
   return restAuthGet<IAssetSearchResults>(axios, `assets${query}`);

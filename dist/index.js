@@ -445,6 +445,7 @@
           query += addFilter(format.includeAssetType, "includeAssetType");
       }
       if (criteria) {
+          query += addStringFilter(criteria.assetTypeToken, "assetTypeToken");
           query += createPagingQuery(criteria);
       }
       return restAuthGet(axios$$1, "assets" + query);
