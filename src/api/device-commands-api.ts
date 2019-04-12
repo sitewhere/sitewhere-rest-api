@@ -33,12 +33,18 @@ export function createDeviceCommand(
  * Get a device command by unique token.
  * @param axios
  * @param commandToken
+ * @param format
  */
 export function getDeviceCommand(
   axios: AxiosInstance,
-  commandToken: string
+  commandToken: string,
+  format: IDeviceCommandResponseFormat
 ): AxiosPromise<IDeviceCommand> {
-  return restAuthGet<IDeviceCommand>(axios, `commands/${commandToken}`);
+  let query = randomSeedQuery();
+  if (format) {
+    // No format options available.
+  }
+  return restAuthGet<IDeviceCommand>(axios, `commands/${commandToken}${query}`);
 }
 
 /**

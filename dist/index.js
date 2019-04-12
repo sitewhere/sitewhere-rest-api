@@ -1081,9 +1081,11 @@
    * Get a device command by unique token.
    * @param axios
    * @param commandToken
+   * @param format
    */
-  function getDeviceCommand(axios$$1, commandToken) {
-      return restAuthGet(axios$$1, "commands/" + commandToken);
+  function getDeviceCommand(axios$$1, commandToken, format) {
+      var query = randomSeedQuery();
+      return restAuthGet(axios$$1, "commands/" + commandToken + query);
   }
   /**
    * Update an existing device command.

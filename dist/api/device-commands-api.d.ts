@@ -10,8 +10,9 @@ export declare function createDeviceCommand(axios: AxiosInstance, request: IDevi
  * Get a device command by unique token.
  * @param axios
  * @param commandToken
+ * @param format
  */
-export declare function getDeviceCommand(axios: AxiosInstance, commandToken: string): AxiosPromise<IDeviceCommand>;
+export declare function getDeviceCommand(axios: AxiosInstance, commandToken: string, format: IDeviceCommandResponseFormat): AxiosPromise<IDeviceCommand>;
 /**
  * Update an existing device command.
  * @param axios
