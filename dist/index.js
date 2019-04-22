@@ -757,7 +757,6 @@
           query += addFilter(format.includeArea, "includeArea");
           query += addFilter(format.includeAsset, "includeAsset");
       }
-      console.log("Criteria", criteria);
       if (criteria) {
           query += addStringFilter(criteria.areaToken, "areaToken");
           query += addStringFilter(criteria.assetToken, "assetToken");
