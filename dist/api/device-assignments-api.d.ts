@@ -1,7 +1,7 @@
 import { AxiosInstance, AxiosPromise } from "axios";
 import { IDeviceAssignmentCreateRequest, IDeviceAssignment, IDeviceAssignmentSearchCriteria, IDeviceAssignmentResponseFormat, IDeviceAssignmentBulkRequest, IDeviceAssignmentSearchResults } from "../model/device-assignments-model";
 import { IDateRangeSearchCriteria } from "../model/common-model";
-import { IDeviceMeasurementCreateRequest, IDeviceMeasurement, IDeviceLocationCreateRequest, IDeviceLocation, IDeviceAlertCreateRequest, IDeviceAlert, IDeviceCommandInvocationCreateRequest, IDeviceCommandInvocation, IDeviceCommandResponseCreateRequest, IDeviceCommandResponse, IDeviceStateChangeCreateRequest, IDeviceStateChange, IChartSeries, IDeviceMeasurementSearchResults, IDeviceLocationSearchResults, IDeviceAlertSearchResults, IDeviceCommandInvocationSearchResults, IDeviceCommandResponseSearchResults, IDeviceStateChangeSearchResults } from "../model/device-events-model";
+import { IDeviceMeasurementCreateRequest, IDeviceMeasurement, IDeviceLocationCreateRequest, IDeviceLocation, IDeviceAlertCreateRequest, IDeviceAlert, IDeviceCommandInvocationCreateRequest, IDeviceCommandInvocation, IDeviceCommandResponseCreateRequest, IDeviceCommandResponse, IDeviceStateChangeCreateRequest, IDeviceStateChange, IChartSeries, IDeviceMeasurementSearchResults, IDeviceMeasurementResponseFormat, IDeviceLocationSearchResults, IDeviceLocationResponseFormat, IDeviceAlertSearchResults, IDeviceAlertResponseFormat, IDeviceCommandInvocationSearchResults, IDeviceCommandInvocationResponseFormat, IDeviceCommandResponseSearchResults, IDeviceCommandResponseResponseFormat, IDeviceStateChangeSearchResults, IDeviceStateChangeResponseFormat } from "../model/device-events-model";
 /**
  * Create a new device assignment.
  * @param axios
@@ -59,29 +59,33 @@ export declare function createMeasurementForAssignment(axios: AxiosInstance, tok
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
-export declare function listMeasurementsForAssignment(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria): AxiosPromise<IDeviceMeasurementSearchResults>;
+export declare function listMeasurementsForAssignment(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria, format: IDeviceMeasurementResponseFormat): AxiosPromise<IDeviceMeasurementSearchResults>;
 /**
  * List measurements for assignment in chart series format.
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
-export declare function listMeasurementsForAssignmentAsChartSeries(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria): AxiosPromise<IChartSeries<number>>;
+export declare function listMeasurementsForAssignmentAsChartSeries(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria, format: IDeviceMeasurementResponseFormat): AxiosPromise<IChartSeries<number>>;
 /**
  * List measurements for multiple assignments based on criteria.
  * @param axios
  * @param bulk
  * @param criteria
+ * @param format
  */
-export declare function listBulkMeasurementsForAssignment(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria): AxiosPromise<IDeviceMeasurementSearchResults>;
+export declare function listBulkMeasurementsForAssignment(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria, format: IDeviceMeasurementResponseFormat): AxiosPromise<IDeviceMeasurementSearchResults>;
 /**
  * List measurements for multiple assignments in chart series format.
  * @param axios
  * @param bulk
  * @param criteria
+ * @param format
  */
-export declare function listBulkMeasurementsForAssignmentAsChartSeries(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria): AxiosPromise<IChartSeries<number>>;
+export declare function listBulkMeasurementsForAssignmentAsChartSeries(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria, format: IDeviceMeasurementResponseFormat): AxiosPromise<IChartSeries<number>>;
 /**
  * Create location for a device assignment.
  * @param axios
@@ -94,15 +98,17 @@ export declare function createLocationForAssignment(axios: AxiosInstance, token:
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
-export declare function listLocationsForAssignment(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria): AxiosPromise<IDeviceLocationSearchResults>;
+export declare function listLocationsForAssignment(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria, format: IDeviceLocationResponseFormat): AxiosPromise<IDeviceLocationSearchResults>;
 /**
  * List locations for multiple assignments based on criteria.
  * @param axios
  * @param bulk
  * @param criteria
+ * @param format
  */
-export declare function listBulkLocationsForAssignment(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria): AxiosPromise<IDeviceLocationSearchResults>;
+export declare function listBulkLocationsForAssignment(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria, format: IDeviceLocationResponseFormat): AxiosPromise<IDeviceLocationSearchResults>;
 /**
  * Create alert for a device assignment.
  * @param axios
@@ -115,15 +121,17 @@ export declare function createAlertForAssignment(axios: AxiosInstance, token: st
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
-export declare function listAlertsForAssignment(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria): AxiosPromise<IDeviceAlertSearchResults>;
+export declare function listAlertsForAssignment(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria, format?: IDeviceAlertResponseFormat): AxiosPromise<IDeviceAlertSearchResults>;
 /**
  * List alerts for multiple assignments based on criteria.
  * @param axios
  * @param bulk
  * @param criteria
+ * @param format
  */
-export declare function listBulkAlertsForAssignment(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria): AxiosPromise<IDeviceAlertSearchResults>;
+export declare function listBulkAlertsForAssignment(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria, format: IDeviceAlertResponseFormat): AxiosPromise<IDeviceAlertSearchResults>;
 /**
  * Create command invocation for a device assignment.
  * @param axios
@@ -144,15 +152,17 @@ export declare function scheduleCommandInvocationForAssignment(axios: AxiosInsta
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
-export declare function listCommandInvocationsForAssignment(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria): AxiosPromise<IDeviceCommandInvocationSearchResults>;
+export declare function listCommandInvocationsForAssignment(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria, format: IDeviceCommandInvocationResponseFormat): AxiosPromise<IDeviceCommandInvocationSearchResults>;
 /**
  * List command invocations for multiple assignments based on criteria.
  * @param axios
  * @param bulk
  * @param criteria
+ * @param format
  */
-export declare function listBulkCommandInvocationsForAssignment(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria): AxiosPromise<IDeviceCommandInvocationSearchResults>;
+export declare function listBulkCommandInvocationsForAssignment(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria, format: IDeviceCommandInvocationResponseFormat): AxiosPromise<IDeviceCommandInvocationSearchResults>;
 /**
  * Create command response for a device assignment.
  * @param axios
@@ -165,15 +175,17 @@ export declare function createCommandResponseForAssignment(axios: AxiosInstance,
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
-export declare function listCommandResponsesForAssignment(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria): AxiosPromise<IDeviceCommandResponseSearchResults>;
+export declare function listCommandResponsesForAssignment(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria, format: IDeviceCommandResponseResponseFormat): AxiosPromise<IDeviceCommandResponseSearchResults>;
 /**
  * List command responses for multiple assignments based on criteria.
  * @param axios
  * @param bulk
  * @param criteria
+ * @param format
  */
-export declare function listBulkCommandResponsesForAssignment(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria): AxiosPromise<IDeviceCommandResponseSearchResults>;
+export declare function listBulkCommandResponsesForAssignment(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria, format: IDeviceCommandResponseResponseFormat): AxiosPromise<IDeviceCommandResponseSearchResults>;
 /**
  * Create state change for a device assignment.
  * @param axios
@@ -186,12 +198,14 @@ export declare function createStateChangeForAssignment(axios: AxiosInstance, tok
  * @param axios
  * @param token
  * @param criteria
+ * @param format
  */
-export declare function listStateChangesForAssignment(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria): AxiosPromise<IDeviceStateChangeSearchResults>;
+export declare function listStateChangesForAssignment(axios: AxiosInstance, token: string, criteria: IDateRangeSearchCriteria, format: IDeviceStateChangeResponseFormat): AxiosPromise<IDeviceStateChangeSearchResults>;
 /**
  * List state changes for multiple assignments based on criteria.
  * @param axios
  * @param bulk
  * @param criteria
+ * @param format
  */
-export declare function listBulkStateChangesForAssignment(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria): AxiosPromise<IDeviceStateChangeSearchResults>;
+export declare function listBulkStateChangesForAssignment(axios: AxiosInstance, bulk: IDeviceAssignmentBulkRequest, criteria: IDateRangeSearchCriteria, format: IDeviceStateChangeResponseFormat): AxiosPromise<IDeviceStateChangeSearchResults>;

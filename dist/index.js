@@ -812,8 +812,9 @@
    * @param axios
    * @param token
    * @param criteria
+   * @param format
    */
-  function listMeasurementsForAssignment(axios$$1, token, criteria) {
+  function listMeasurementsForAssignment(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -825,8 +826,9 @@
    * @param axios
    * @param token
    * @param criteria
+   * @param format
    */
-  function listMeasurementsForAssignmentAsChartSeries(axios$$1, token, criteria) {
+  function listMeasurementsForAssignmentAsChartSeries(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -838,8 +840,9 @@
    * @param axios
    * @param bulk
    * @param criteria
+   * @param format
    */
-  function listBulkMeasurementsForAssignment(axios$$1, bulk, criteria) {
+  function listBulkMeasurementsForAssignment(axios$$1, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -851,8 +854,9 @@
    * @param axios
    * @param bulk
    * @param criteria
+   * @param format
    */
-  function listBulkMeasurementsForAssignmentAsChartSeries(axios$$1, bulk, criteria) {
+  function listBulkMeasurementsForAssignmentAsChartSeries(axios$$1, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -873,8 +877,9 @@
    * @param axios
    * @param token
    * @param criteria
+   * @param format
    */
-  function listLocationsForAssignment(axios$$1, token, criteria) {
+  function listLocationsForAssignment(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -886,8 +891,9 @@
    * @param axios
    * @param bulk
    * @param criteria
+   * @param format
    */
-  function listBulkLocationsForAssignment(axios$$1, bulk, criteria) {
+  function listBulkLocationsForAssignment(axios$$1, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -908,8 +914,9 @@
    * @param axios
    * @param token
    * @param criteria
+   * @param format
    */
-  function listAlertsForAssignment(axios$$1, token, criteria) {
+  function listAlertsForAssignment(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -921,8 +928,9 @@
    * @param axios
    * @param bulk
    * @param criteria
+   * @param format
    */
-  function listBulkAlertsForAssignment(axios$$1, bulk, criteria) {
+  function listBulkAlertsForAssignment(axios$$1, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -953,8 +961,9 @@
    * @param axios
    * @param token
    * @param criteria
+   * @param format
    */
-  function listCommandInvocationsForAssignment(axios$$1, token, criteria) {
+  function listCommandInvocationsForAssignment(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -966,8 +975,9 @@
    * @param axios
    * @param bulk
    * @param criteria
+   * @param format
    */
-  function listBulkCommandInvocationsForAssignment(axios$$1, bulk, criteria) {
+  function listBulkCommandInvocationsForAssignment(axios$$1, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -988,8 +998,9 @@
    * @param axios
    * @param token
    * @param criteria
+   * @param format
    */
-  function listCommandResponsesForAssignment(axios$$1, token, criteria) {
+  function listCommandResponsesForAssignment(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -1001,8 +1012,9 @@
    * @param axios
    * @param bulk
    * @param criteria
+   * @param format
    */
-  function listBulkCommandResponsesForAssignment(axios$$1, bulk, criteria) {
+  function listBulkCommandResponsesForAssignment(axios$$1, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -1023,8 +1035,9 @@
    * @param axios
    * @param token
    * @param criteria
+   * @param format
    */
-  function listStateChangesForAssignment(axios$$1, token, criteria) {
+  function listStateChangesForAssignment(axios$$1, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
@@ -1036,8 +1049,9 @@
    * @param axios
    * @param bulk
    * @param criteria
+   * @param format
    */
-  function listBulkStateChangesForAssignment(axios$$1, bulk, criteria) {
+  function listBulkStateChangesForAssignment(axios$$1, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
