@@ -12,8 +12,9 @@ export declare function createDeviceAssignment(axios: AxiosInstance, request: ID
  * Get a device assignment by unique token.
  * @param axios
  * @param token
+ * @param format
  */
-export declare function getDeviceAssignment(axios: AxiosInstance, token: string): AxiosPromise<IDeviceAssignment>;
+export declare function getDeviceAssignment(axios: AxiosInstance, token: string, format: IDeviceAssignmentResponseFormat): AxiosPromise<IDeviceAssignment>;
 /**
  * Update an existing device assignment.
  * @param axios

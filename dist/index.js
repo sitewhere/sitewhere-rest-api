@@ -730,9 +730,17 @@
    * Get a device assignment by unique token.
    * @param axios
    * @param token
+   * @param format
    */
-  function getDeviceAssignment(axios$$1, token) {
-      return restAuthGet(axios$$1, "assignments/" + token);
+  function getDeviceAssignment(axios$$1, token, format) {
+      var query = randomSeedQuery();
+      if (format) {
+          query += addFilter(format.includeArea, "includeArea");
+          query += addFilter(format.includeAsset, "includeAsset");
+          query += addFilter(format.includeCustomer, "includeCustomer");
+          query += addFilter(format.includeDevice, "includeDevice");
+      }
+      return restAuthGet(axios$$1, "assignments/" + token + query);
   }
   /**
    * Update an existing device assignment.

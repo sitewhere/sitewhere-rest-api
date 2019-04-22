@@ -59,12 +59,21 @@ export function createDeviceAssignment(
  * Get a device assignment by unique token.
  * @param axios
  * @param token
+ * @param format
  */
 export function getDeviceAssignment(
   axios: AxiosInstance,
-  token: string
+  token: string,
+  format: IDeviceAssignmentResponseFormat
 ): AxiosPromise<IDeviceAssignment> {
-  return restAuthGet<IDeviceAssignment>(axios, `assignments/${token}`);
+  let query = randomSeedQuery();
+  if (format) {
+    query += addFilter(format.includeArea, "includeArea");
+    query += addFilter(format.includeAsset, "includeAsset");
+    query += addFilter(format.includeCustomer, "includeCustomer");
+    query += addFilter(format.includeDevice, "includeDevice");
+  }
+  return restAuthGet<IDeviceAssignment>(axios, `assignments/${token}${query}`);
 }
 
 /**
