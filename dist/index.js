@@ -1296,9 +1296,11 @@
    * Get a device status by unique token.
    * @param axios
    * @param token
+   * @param format
    */
-  function getDeviceStatus(axios$$1, token) {
-      return restAuthGet(axios$$1, "statuses/" + token);
+  function getDeviceStatus(axios$$1, token, format) {
+      var query = randomSeedQuery();
+      return restAuthGet(axios$$1, "statuses/" + token + query);
   }
   /**
    * Update an existing device status.

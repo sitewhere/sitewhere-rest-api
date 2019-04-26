@@ -32,12 +32,18 @@ export function createDeviceStatus(
  * Get a device status by unique token.
  * @param axios
  * @param token
+ * @param format
  */
 export function getDeviceStatus(
   axios: AxiosInstance,
-  token: string
+  token: string,
+  format: IDeviceStatusResponseFormat
 ): AxiosPromise<IDeviceStatus> {
-  return restAuthGet<IDeviceStatus>(axios, `statuses/${token}`);
+  let query = randomSeedQuery();
+  if (format) {
+    // No format options available.
+  }
+  return restAuthGet<IDeviceStatus>(axios, `statuses/${token}${query}`);
 }
 
 /**

@@ -10,8 +10,9 @@ export declare function createDeviceStatus(axios: AxiosInstance, request: IDevic
  * Get a device status by unique token.
  * @param axios
  * @param token
+ * @param format
  */
-export declare function getDeviceStatus(axios: AxiosInstance, token: string): AxiosPromise<IDeviceStatus>;
+export declare function getDeviceStatus(axios: AxiosInstance, token: string, format: IDeviceStatusResponseFormat): AxiosPromise<IDeviceStatus>;
 /**
  * Update an existing device status.
  * @param axios
