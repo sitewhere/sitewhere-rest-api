@@ -16,6 +16,32 @@ export enum DeviceContainerPolicy {
 }
 
 /**
+ * Base class for nested device elements.
+ */
+export interface IDeviceElement {
+  name: string;
+  path: string;
+}
+
+/**
+ * Slot within a device unit.
+ */
+export interface IDeviceSlot extends IDeviceElement {}
+
+/**
+ * Used to group related device slots into a logical unit.
+ */
+export interface IDeviceUnit extends IDeviceElement {
+  deviceSlots: IDeviceSlot[];
+  deviceUnits: IDeviceUnit[];
+}
+
+/**
+ * Hierarchical schema that defines structure of device that contains other devices.
+ */
+export interface IDeviceElementSchema extends IDeviceUnit {}
+
+/**
  * Used to create or update a device type.
  */
 export interface IDeviceTypeCreateRequest
@@ -30,7 +56,7 @@ export interface IDeviceTypeCreateRequest
  */
 export interface IDeviceType extends IBrandedEntity, IAccessible {
   containerPolicy: DeviceContainerPolicy;
-  deviceElementSchema: any;
+  deviceElementSchema: IDeviceElementSchema;
 }
 
 /**
