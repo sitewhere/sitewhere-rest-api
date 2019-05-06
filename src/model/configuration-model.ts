@@ -86,7 +86,7 @@ export interface IConfigurationModel {
   defaultXmlNamespace: string;
   rootRoleId: string;
   elementsByRole: { [id: string]: IElementNode[] };
-  rolesById: { [id: string]: IElementRole[] };
+  rolesById: { [id: string]: IElementRole };
 }
 
 /**

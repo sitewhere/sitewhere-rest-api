@@ -85,7 +85,7 @@ export interface IConfigurationModel {
         [id: string]: IElementNode[];
     };
     rolesById: {
-        [id: string]: IElementRole[];
+        [id: string]: IElementRole;
     };
 }
 /**
