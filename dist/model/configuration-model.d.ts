@@ -51,7 +51,9 @@ export interface IAttributeNode extends IXmlNode {
  * Node for a configuration element.
  */
 export interface IElementNode extends IXmlNode {
+    id?: string;
     attributes?: IAttributeNode[];
+    indexAttribute?: string;
     role: string;
     onDeleteWarning: string;
     specializes: {
