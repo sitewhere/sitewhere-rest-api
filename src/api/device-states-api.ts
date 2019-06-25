@@ -1,6 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
 import {
-  IDeviceState,
   IDeviceStateResponseFormat,
   IDeviceStateSearchCriteria,
   IDeviceStateSearchResults

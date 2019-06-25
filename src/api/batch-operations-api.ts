@@ -5,7 +5,6 @@ import {
   IBatchOperationResponseFormat,
   IBatchOperationElementResponseFormat,
   IBatchCommandInvocationRequest,
-  IBatchElement,
   IBatchCommandForCriteriaRequest,
   IBatchOperationSearchResults,
   IBatchElementSearchResults

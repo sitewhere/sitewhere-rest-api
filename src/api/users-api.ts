@@ -14,8 +14,7 @@ import {
   restAuthPost,
   restAuthPut,
   restAuthDelete,
-  randomSeedQuery,
-  addFilter
+  randomSeedQuery
 } from "../rest";
 
 /**

@@ -1,8 +1,6 @@
 import {
-  uuid,
   IPersistentEntityCreateRequest,
   IPersistentEntity,
-  IAccessible,
   ISearchCriteria,
   ISearchResults,
   IResponseFormat
