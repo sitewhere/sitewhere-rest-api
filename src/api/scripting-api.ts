@@ -33,8 +33,8 @@ export function getScriptTemplateContent(
   axios: AxiosInstance,
   identifier: string,
   templateId: string
-): AxiosPromise<IScriptTemplate> {
-  return restAuthGet<IScriptTemplate>(
+): AxiosPromise<string> {
+  return restAuthGet<string>(
     axios,
     `instance/microservice/${identifier}/scripting/templates/${templateId}`
   );

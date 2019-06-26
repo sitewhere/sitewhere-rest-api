@@ -12,7 +12,7 @@ export declare function listScriptTemplates(axios: AxiosInstance, identifier: st
  * @param identifier
  * @param templateId
  */
-export declare function getScriptTemplateContent(axios: AxiosInstance, identifier: string, templateId: string): AxiosPromise<IScriptTemplate>;
+export declare function getScriptTemplateContent(axios: AxiosInstance, identifier: string, templateId: string): AxiosPromise<string>;
 /**
  * List metadata for scripts associated with a global microservice.
  * @param axios
