@@ -13,7 +13,8 @@ import {
 import {
   createPagingQuery,
   ISearchCriteria,
-  IDateRangeSearchCriteria
+  IDateRangeSearchCriteria,
+  ITreeNode
 } from "../model/common-model";
 import {
   restAuthGet,
@@ -103,6 +104,15 @@ export function listAreas(
     query += createPagingQuery(criteria);
   }
   return restAuthGet<IAreaSearchResults>(axios, `areas${query}`);
+}
+
+/**
+ * Get all areas as a tree structure.
+ * @param axios
+ */
+export function getAreasTree(axios: AxiosInstance): AxiosPromise<ITreeNode[]> {
+  let query = randomSeedQuery();
+  return restAuthGet<ITreeNode[]>(axios, `areas/tree${query}`);
 }
 
 /**

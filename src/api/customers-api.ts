@@ -13,7 +13,8 @@ import {
 import {
   createPagingQuery,
   ISearchCriteria,
-  IDateRangeSearchCriteria
+  IDateRangeSearchCriteria,
+  ITreeNode
 } from "../model/common-model";
 import {
   restAuthGet,
@@ -102,6 +103,17 @@ export function listCustomers(
     query += createPagingQuery(criteria);
   }
   return restAuthGet<ICustomerSearchResults>(axios, `customers${query}`);
+}
+
+/**
+ * Get all customers as a tree structure.
+ * @param axios
+ */
+export function getCustomersTree(
+  axios: AxiosInstance
+): AxiosPromise<ITreeNode[]> {
+  let query = randomSeedQuery();
+  return restAuthGet<ITreeNode[]>(axios, `customers/tree${query}`);
 }
 
 /**

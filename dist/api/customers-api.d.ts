@@ -1,7 +1,7 @@
 import { AxiosInstance, AxiosPromise } from "axios";
 import { ICustomerCreateRequest, ICustomer, ICustomerSearchCriteria, ICustomerResponseFormat, ICustomerSearchResults } from "../model/customers-model";
 import { IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults } from "../model/device-assignments-model";
-import { ISearchCriteria, IDateRangeSearchCriteria } from "../model/common-model";
+import { ISearchCriteria, IDateRangeSearchCriteria, ITreeNode } from "../model/common-model";
 import { IDeviceMeasurementSearchResults, IDeviceLocationSearchResults, IDeviceAlertSearchResults, IDeviceMeasurementResponseFormat, IDeviceLocationResponseFormat, IDeviceAlertResponseFormat } from "../model/device-events-model";
 /**
  * Create a new customer.
@@ -29,6 +29,11 @@ export declare function updateCustomer(axios: AxiosInstance, token: string, requ
  * @param format
  */
 export declare function listCustomers(axios: AxiosInstance, criteria?: ICustomerSearchCriteria, format?: ICustomerResponseFormat): AxiosPromise<ICustomerSearchResults>;
+/**
+ * Get all customers as a tree structure.
+ * @param axios
+ */
+export declare function getCustomersTree(axios: AxiosInstance): AxiosPromise<ITreeNode[]>;
 /**
  * Delete an existing customer.
  * @param axios

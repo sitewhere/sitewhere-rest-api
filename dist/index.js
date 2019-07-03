@@ -267,6 +267,14 @@
       return restAuthGet(axios$$1, "areas" + query);
   }
   /**
+   * Get all areas as a tree structure.
+   * @param axios
+   */
+  function getAreasTree(axios$$1) {
+      var query = randomSeedQuery();
+      return restAuthGet(axios$$1, "areas/tree" + query);
+  }
+  /**
    * Delete an existing area.
    * @param axios
    * @param token
@@ -339,6 +347,7 @@
     getArea: getArea,
     updateArea: updateArea,
     listAreas: listAreas,
+    getAreasTree: getAreasTree,
     deleteArea: deleteArea,
     listAssignmentsForArea: listAssignmentsForArea,
     listMeasurementsForArea: listMeasurementsForArea,
@@ -636,6 +645,14 @@
       return restAuthGet(axios$$1, "customers" + query);
   }
   /**
+   * Get all customers as a tree structure.
+   * @param axios
+   */
+  function getCustomersTree(axios$$1) {
+      var query = randomSeedQuery();
+      return restAuthGet(axios$$1, "customers/tree" + query);
+  }
+  /**
    * Delete an existing customer.
    * @param axios
    * @param token
@@ -711,6 +728,7 @@
     getCustomer: getCustomer,
     updateCustomer: updateCustomer,
     listCustomers: listCustomers,
+    getCustomersTree: getCustomersTree,
     deleteCustomer: deleteCustomer,
     listAssignmentsForCustomer: listAssignmentsForCustomer,
     listMeasurementsForCustomer: listMeasurementsForCustomer,

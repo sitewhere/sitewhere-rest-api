@@ -115,6 +115,16 @@ export interface ISearchResults<T> {
 }
 
 /**
+ * Node in a tree structure.
+ */
+export interface ITreeNode {
+  token: string;
+  name: string;
+  icon?: string;
+  children?: ITreeNode[];
+}
+
+/**
  * Interface for location information.
  */
 export interface ILocation {

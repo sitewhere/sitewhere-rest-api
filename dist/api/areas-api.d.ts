@@ -1,7 +1,7 @@
 import { AxiosInstance, AxiosPromise } from "axios";
 import { IAreaCreateRequest, IArea, IAreaSearchCriteria, IAreaResponseFormat, IAreaSearchResults } from "../model/areas-model";
 import { IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults } from "../model/device-assignments-model";
-import { ISearchCriteria, IDateRangeSearchCriteria } from "../model/common-model";
+import { ISearchCriteria, IDateRangeSearchCriteria, ITreeNode } from "../model/common-model";
 import { IDeviceMeasurementSearchResults, IDeviceLocationSearchResults, IDeviceAlertSearchResults, IDeviceMeasurementResponseFormat, IDeviceLocationResponseFormat, IDeviceAlertResponseFormat } from "../model/device-events-model";
 /**
  * Create a new area.
@@ -30,6 +30,11 @@ export declare function updateArea(axios: AxiosInstance, token: string, request:
  * @param format
  */
 export declare function listAreas(axios: AxiosInstance, criteria?: IAreaSearchCriteria, format?: IAreaResponseFormat): AxiosPromise<IAreaSearchResults>;
+/**
+ * Get all areas as a tree structure.
+ * @param axios
+ */
+export declare function getAreasTree(axios: AxiosInstance): AxiosPromise<ITreeNode[]>;
 /**
  * Delete an existing area.
  * @param axios
