@@ -68,6 +68,20 @@ export interface IBoundsProvider {
 }
 
 /**
+ * Common interface for creating entities that have parent/child relationships.
+ */
+export interface ITreeEntityCreateRequest {
+  parentToken: string;
+}
+
+/**
+ * Entity with parent/child relationships.
+ */
+export interface ITreeEntity {
+  parentId: uuid;
+}
+
+/**
  * Interface for creating persistent model object with branding information.
  */
 export interface IBrandedEntityCreateRequest
@@ -84,6 +98,11 @@ export interface IBrandedEntity
     IColorProvider,
     IIconProvider,
     IImageProvider {}
+
+/**
+ * Tree entity with branding information.
+ */
+export interface IBrandedTreeEntity extends IBrandedEntity, ITreeEntity {}
 
 /**
  * Base interface for response format configuration.

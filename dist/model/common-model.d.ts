@@ -59,6 +59,18 @@ export interface IBoundsProvider {
     bounds: ILocation[];
 }
 /**
+ * Common interface for creating entities that have parent/child relationships.
+ */
+export interface ITreeEntityCreateRequest {
+    parentToken: string;
+}
+/**
+ * Entity with parent/child relationships.
+ */
+export interface ITreeEntity {
+    parentId: uuid;
+}
+/**
  * Interface for creating persistent model object with branding information.
  */
 export interface IBrandedEntityCreateRequest extends IPersistentEntityCreateRequest, IColorProvider, IIconProvider, IImageProvider {
@@ -67,6 +79,11 @@ export interface IBrandedEntityCreateRequest extends IPersistentEntityCreateRequ
  * Interface for persistent model object with branding information.
  */
 export interface IBrandedEntity extends IPersistentEntity, IColorProvider, IIconProvider, IImageProvider {
+}
+/**
+ * Tree entity with branding information.
+ */
+export interface IBrandedTreeEntity extends IBrandedEntity, ITreeEntity {
 }
 /**
  * Base interface for response format configuration.

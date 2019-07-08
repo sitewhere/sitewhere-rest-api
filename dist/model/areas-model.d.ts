@@ -1,10 +1,9 @@
-import { uuid, IBrandedEntityCreateRequest, IBrandedEntity, IAccessible, IBoundsProvider, ISearchCriteria, ISearchResults, IResponseFormat } from "./common-model";
+import { uuid, IBrandedEntityCreateRequest, IBrandedTreeEntity, IAccessible, IBoundsProvider, ISearchCriteria, ISearchResults, IResponseFormat, ITreeEntityCreateRequest } from "./common-model";
 /**
  * Used to create or update an area.
  */
-export interface IAreaCreateRequest extends IBrandedEntityCreateRequest, IAccessible, IBoundsProvider {
+export interface IAreaCreateRequest extends IBrandedEntityCreateRequest, IAccessible, IBoundsProvider, ITreeEntityCreateRequest {
     areaTypeToken: string;
-    parentAreaToken: string;
 }
 /**
  * Response format for area records.
@@ -30,7 +29,6 @@ export interface IAreaSearchResults extends ISearchResults<IArea> {
 /**
  * Area information.
  */
-export interface IArea extends IBrandedEntity, IAccessible, IBoundsProvider {
+export interface IArea extends IBrandedTreeEntity, IAccessible, IBoundsProvider {
     areaTypeId: uuid;
-    parentAreaId: uuid;
 }

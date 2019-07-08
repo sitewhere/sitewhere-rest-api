@@ -1,11 +1,12 @@
 import {
   IBrandedEntityCreateRequest,
-  IBrandedEntity,
+  IBrandedTreeEntity,
   IAccessible,
   ISearchCriteria,
   ISearchResults,
   IResponseFormat,
-  uuid
+  uuid,
+  ITreeEntityCreateRequest
 } from "./common-model";
 
 /**
@@ -13,17 +14,16 @@ import {
  */
 export interface ICustomerCreateRequest
   extends IBrandedEntityCreateRequest,
-    IAccessible {
+    IAccessible,
+    ITreeEntityCreateRequest {
   customerTypeToken: string;
-  parentCustomerToken: string;
 }
 
 /**
  * Customer information.
  */
-export interface ICustomer extends IBrandedEntity, IAccessible {
+export interface ICustomer extends IBrandedTreeEntity, IAccessible {
   customerTypeId: uuid;
-  parentCustomerId: uuid;
 }
 
 /**

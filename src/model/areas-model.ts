@@ -1,12 +1,13 @@
 import {
   uuid,
   IBrandedEntityCreateRequest,
-  IBrandedEntity,
+  IBrandedTreeEntity,
   IAccessible,
   IBoundsProvider,
   ISearchCriteria,
   ISearchResults,
-  IResponseFormat
+  IResponseFormat,
+  ITreeEntityCreateRequest
 } from "./common-model";
 
 /**
@@ -15,9 +16,9 @@ import {
 export interface IAreaCreateRequest
   extends IBrandedEntityCreateRequest,
     IAccessible,
-    IBoundsProvider {
+    IBoundsProvider,
+    ITreeEntityCreateRequest {
   areaTypeToken: string;
-  parentAreaToken: string;
 }
 
 /**
@@ -46,7 +47,9 @@ export interface IAreaSearchResults extends ISearchResults<IArea> {}
 /**
  * Area information.
  */
-export interface IArea extends IBrandedEntity, IAccessible, IBoundsProvider {
+export interface IArea
+  extends IBrandedTreeEntity,
+    IAccessible,
+    IBoundsProvider {
   areaTypeId: uuid;
-  parentAreaId: uuid;
 }

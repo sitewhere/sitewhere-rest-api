@@ -1,17 +1,15 @@
-import { IBrandedEntityCreateRequest, IBrandedEntity, IAccessible, ISearchCriteria, ISearchResults, IResponseFormat, uuid } from "./common-model";
+import { IBrandedEntityCreateRequest, IBrandedTreeEntity, IAccessible, ISearchCriteria, ISearchResults, IResponseFormat, uuid, ITreeEntityCreateRequest } from "./common-model";
 /**
  * Used to create or update a customer.
  */
-export interface ICustomerCreateRequest extends IBrandedEntityCreateRequest, IAccessible {
+export interface ICustomerCreateRequest extends IBrandedEntityCreateRequest, IAccessible, ITreeEntityCreateRequest {
     customerTypeToken: string;
-    parentCustomerToken: string;
 }
 /**
  * Customer information.
  */
-export interface ICustomer extends IBrandedEntity, IAccessible {
+export interface ICustomer extends IBrandedTreeEntity, IAccessible {
     customerTypeId: uuid;
-    parentCustomerId: uuid;
 }
 /**
  * Response format for customer records.
