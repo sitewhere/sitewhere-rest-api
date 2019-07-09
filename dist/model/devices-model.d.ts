@@ -39,7 +39,6 @@ export interface IDeviceResponseFormat extends IResponseFormat {
  */
 export interface IDeviceSearchCriteria extends ISearchCriteria {
     excludeAssigned?: boolean;
-    areaToken?: string;
     deviceTypeToken?: string;
 }
 /**

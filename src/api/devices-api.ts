@@ -83,7 +83,6 @@ export function listDevices(
   }
   if (criteria) {
     query += addFilter(criteria.excludeAssigned, "excludeAssigned");
-    query += addStringFilter(criteria.areaToken, "area");
     query += addStringFilter(criteria.deviceTypeToken, "deviceType");
     query += createPagingQuery(criteria);
   }
