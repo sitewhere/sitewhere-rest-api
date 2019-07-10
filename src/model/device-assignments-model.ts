@@ -66,12 +66,12 @@ export interface IDeviceAssignmentSimpleCriteria extends ISearchCriteria {
  * Search criteria for device assignments.
  */
 export interface IDeviceAssignmentSearchCriteria extends ISearchCriteria {
-  status?: DeviceAssignmentStatus;
-  deviceId?: uuid;
-  deviceTypeIds?: uuid[];
-  customerIds?: uuid[];
-  areaIds?: uuid[];
-  assetIds?: uuid[];
+  statuses?: DeviceAssignmentStatus[];
+  deviceTokens?: string[];
+  deviceTypeTokens?: string[];
+  customerTokens?: string[];
+  areaTokens?: string[];
+  assetTokens?: string[];
 }
 
 /**
