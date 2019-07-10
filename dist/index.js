@@ -80,8 +80,8 @@
    * @param axios
    * @param path
    */
-  function restAuthGet(axios$$1, path) {
-      return axios$$1.get(path);
+  function restAuthGet(axios, path) {
+      return axios.get(path);
   }
   /**
    * Perform a REST post call.
@@ -90,8 +90,8 @@
    * @param path
    * @param payload
    */
-  function restAuthPost(axios$$1, path, payload) {
-      return axios$$1.post(path, payload);
+  function restAuthPost(axios, path, payload) {
+      return axios.post(path, payload);
   }
   /**
    * Perform a REST put call.
@@ -100,8 +100,8 @@
    * @param path
    * @param payload
    */
-  function restAuthPut(axios$$1, path, payload) {
-      return axios$$1.put(path, payload);
+  function restAuthPut(axios, path, payload) {
+      return axios.put(path, payload);
   }
   /**
    * Perform a REST delete call.
@@ -109,8 +109,8 @@
    * @param axios
    * @param path
    */
-  function restAuthDelete(axios$$1, path) {
-      return axios$$1.delete(path);
+  function restAuthDelete(axios, path) {
+      return axios.delete(path);
   }
   /**
    * Add a filter onto an existing query.
@@ -155,8 +155,8 @@
    * @param axios
    * @param request
    */
-  function createAreaType(axios$$1, request) {
-      return restAuthPost(axios$$1, "areatypes", request);
+  function createAreaType(axios, request) {
+      return restAuthPost(axios, "areatypes", request);
   }
   /**
    * Get an area type by unique token.
@@ -164,12 +164,12 @@
    * @param token
    * @param format
    */
-  function getAreaType(axios$$1, token, format) {
+  function getAreaType(axios, token, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeContainedAreaTypes, "includeContainedAreaTypes");
       }
-      return restAuthGet(axios$$1, "areatypes/" + token + query);
+      return restAuthGet(axios, "areatypes/" + token + query);
   }
   /**
    * Update an existing area type.
@@ -177,8 +177,8 @@
    * @param token
    * @param request
    */
-  function updateAreaType(axios$$1, token, request) {
-      return restAuthPut(axios$$1, "areatypes/" + token, request);
+  function updateAreaType(axios, token, request) {
+      return restAuthPut(axios, "areatypes/" + token, request);
   }
   /**
    * List area types that match the given criteria.
@@ -186,7 +186,7 @@
    * @param criteria
    * @param format
    */
-  function listAreaTypes(axios$$1, criteria, format) {
+  function listAreaTypes(axios, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeContainedAreaTypes, "includeContainedAreaTypes");
@@ -194,15 +194,15 @@
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "areatypes" + query);
+      return restAuthGet(axios, "areatypes" + query);
   }
   /**
    * Delete an existing area type.
    * @param axios
    * @param token
    */
-  function deleteAreaType(axios$$1, token) {
-      return restAuthDelete(axios$$1, "areatypes/" + token);
+  function deleteAreaType(axios, token) {
+      return restAuthDelete(axios, "areatypes/" + token);
   }
 
   var AreaTypesApi = /*#__PURE__*/Object.freeze({
@@ -218,8 +218,8 @@
    * @param axios
    * @param request
    */
-  function createArea(axios$$1, request) {
-      return restAuthPost(axios$$1, "areas", request);
+  function createArea(axios, request) {
+      return restAuthPost(axios, "areas", request);
   }
   /**
    * Get an area by unique token.
@@ -227,14 +227,14 @@
    * @param token
    * @param format
    */
-  function getArea(axios$$1, token, format) {
+  function getArea(axios, token, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeAreaType, "includeAreaType");
           query += addFilter(format.includeAssignments, "includeAssignments");
           query += addFilter(format.includeZones, "includeZones");
       }
-      return restAuthGet(axios$$1, "areas/" + token + query);
+      return restAuthGet(axios, "areas/" + token + query);
   }
   /**
    * Update an existing area.
@@ -242,8 +242,8 @@
    * @param token
    * @param request
    */
-  function updateArea(axios$$1, token, request) {
-      return restAuthPut(axios$$1, "areas/" + token, request);
+  function updateArea(axios, token, request) {
+      return restAuthPut(axios, "areas/" + token, request);
   }
   /**
    * List areas that match the given criteria.
@@ -251,7 +251,7 @@
    * @param criteria
    * @param format
    */
-  function listAreas(axios$$1, criteria, format) {
+  function listAreas(axios, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeAreaType, "includeAreaType");
@@ -264,23 +264,23 @@
           query += addStringFilter(criteria.areaTypeToken, "areaTypeToken");
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "areas" + query);
+      return restAuthGet(axios, "areas" + query);
   }
   /**
    * Get all areas as a tree structure.
    * @param axios
    */
-  function getAreasTree(axios$$1) {
+  function getAreasTree(axios) {
       var query = randomSeedQuery();
-      return restAuthGet(axios$$1, "areas/tree" + query);
+      return restAuthGet(axios, "areas/tree" + query);
   }
   /**
    * Delete an existing area.
    * @param axios
    * @param token
    */
-  function deleteArea(axios$$1, token) {
-      return restAuthDelete(axios$$1, "areas/" + token);
+  function deleteArea(axios, token) {
+      return restAuthDelete(axios, "areas/" + token);
   }
   /**
    * List assignments associated with an area.
@@ -289,7 +289,7 @@
    * @param criteria
    * @param format
    */
-  function listAssignmentsForArea(axios$$1, token, criteria, format) {
+  function listAssignmentsForArea(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeDevice, "includeDevice");
@@ -300,7 +300,7 @@
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "areas/" + token + "/assignments" + query);
+      return restAuthGet(axios, "areas/" + token + "/assignments" + query);
   }
   /**
    * List measurement events associated with area.
@@ -308,12 +308,12 @@
    * @param token
    * @param criteria
    */
-  function listMeasurementsForArea(axios$$1, token, criteria, format) {
+  function listMeasurementsForArea(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "areas/" + token + "/measurements" + query);
+      return restAuthGet(axios, "areas/" + token + "/measurements" + query);
   }
   /**
    * List location events associated with area.
@@ -321,12 +321,12 @@
    * @param token
    * @param criteria
    */
-  function listLocationsForArea(axios$$1, token, criteria, format) {
+  function listLocationsForArea(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "areas/" + token + "/locations" + query);
+      return restAuthGet(axios, "areas/" + token + "/locations" + query);
   }
   /**
    * List alert events associated with area.
@@ -334,12 +334,12 @@
    * @param token
    * @param criteria
    */
-  function listAlertsForArea(axios$$1, token, criteria, format) {
+  function listAlertsForArea(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "areas/" + token + "/alerts" + query);
+      return restAuthGet(axios, "areas/" + token + "/alerts" + query);
   }
 
   var AreasApi = /*#__PURE__*/Object.freeze({
@@ -360,8 +360,8 @@
    * @param axios
    * @param request
    */
-  function createAssetType(axios$$1, request) {
-      return restAuthPost(axios$$1, "assettypes", request);
+  function createAssetType(axios, request) {
+      return restAuthPost(axios, "assettypes", request);
   }
   /**
    * Get an asset type by unique token.
@@ -369,9 +369,9 @@
    * @param token
    * @param format
    */
-  function getAssetType(axios$$1, token, format) {
+  function getAssetType(axios, token, format) {
       var query = randomSeedQuery();
-      return restAuthGet(axios$$1, "assettypes/" + token + query);
+      return restAuthGet(axios, "assettypes/" + token + query);
   }
   /**
    * Update an existing asset type.
@@ -379,8 +379,8 @@
    * @param token
    * @param request
    */
-  function updateAssetType(axios$$1, token, request) {
-      return restAuthPut(axios$$1, "assettypes/" + token, request);
+  function updateAssetType(axios, token, request) {
+      return restAuthPut(axios, "assettypes/" + token, request);
   }
   /**
    * List asset types that match the given criteria.
@@ -388,20 +388,20 @@
    * @param criteria
    * @param format
    */
-  function listAssetTypes(axios$$1, criteria, format) {
+  function listAssetTypes(axios, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "assettypes" + query);
+      return restAuthGet(axios, "assettypes" + query);
   }
   /**
    * Delete an existing asset type.
    * @param axios
    * @param token
    */
-  function deleteAssetType(axios$$1, token) {
-      return restAuthDelete(axios$$1, "assettypes/" + token);
+  function deleteAssetType(axios, token) {
+      return restAuthDelete(axios, "assettypes/" + token);
   }
 
   var AssetTypesApi = /*#__PURE__*/Object.freeze({
@@ -417,8 +417,8 @@
    * @param axios
    * @param request
    */
-  function createAsset(axios$$1, request) {
-      return restAuthPost(axios$$1, "assets", request);
+  function createAsset(axios, request) {
+      return restAuthPost(axios, "assets", request);
   }
   /**
    * Get an asset by unique token.
@@ -426,12 +426,12 @@
    * @param token
    * @param format
    */
-  function getAsset(axios$$1, token, format) {
+  function getAsset(axios, token, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeAssetType, "includeAssetType");
       }
-      return restAuthGet(axios$$1, "assets/" + token + query);
+      return restAuthGet(axios, "assets/" + token + query);
   }
   /**
    * Update an existing asset.
@@ -439,8 +439,8 @@
    * @param token
    * @param request
    */
-  function updateAsset(axios$$1, token, request) {
-      return restAuthPut(axios$$1, "assets/" + token, request);
+  function updateAsset(axios, token, request) {
+      return restAuthPut(axios, "assets/" + token, request);
   }
   /**
    * List assets that match the given criteria.
@@ -448,7 +448,7 @@
    * @param criteria
    * @param format
    */
-  function listAssets(axios$$1, criteria, format) {
+  function listAssets(axios, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeAssetType, "includeAssetType");
@@ -457,15 +457,15 @@
           query += addStringFilter(criteria.assetTypeToken, "assetTypeToken");
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "assets" + query);
+      return restAuthGet(axios, "assets" + query);
   }
   /**
    * Delete an existing asset.
    * @param axios
    * @param token
    */
-  function deleteAsset(axios$$1, token) {
-      return restAuthDelete(axios$$1, "assets/" + token);
+  function deleteAsset(axios, token) {
+      return restAuthDelete(axios, "assets/" + token);
   }
 
   var AssetsApi = /*#__PURE__*/Object.freeze({
@@ -481,8 +481,8 @@
    * @param axios
    * @param token
    */
-  function getBatchOperation(axios$$1, token) {
-      return restAuthGet(axios$$1, "batch/" + token);
+  function getBatchOperation(axios, token) {
+      return restAuthGet(axios, "batch/" + token);
   }
   /**
    * List batch operations that match the given criteria.
@@ -490,17 +490,17 @@
    * @param criteria
    * @param format
    */
-  function listBatchOperations(axios$$1, criteria, format) {
+  function listBatchOperations(axios, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "batch" + query);
+      return restAuthGet(axios, "batch" + query);
   }
   /**
    * List elements for a batch operation that match the given criteria.
    */
-  function listBatchOperationElements(axios$$1, token, criteria, format) {
+  function listBatchOperationElements(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeDevice, "includeDevice");
@@ -508,23 +508,23 @@
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "batch/" + token + "/elements" + query);
+      return restAuthGet(axios, "batch/" + token + "/elements" + query);
   }
   /**
    * Create a batch command invocation.
    * @param axios
    * @param request
    */
-  function createBatchCommandInvocation(axios$$1, request) {
-      return restAuthPost(axios$$1, "batch/command", request);
+  function createBatchCommandInvocation(axios, request) {
+      return restAuthPost(axios, "batch/command", request);
   }
   /**
    * Create batch command invocation based on devices that match criteria.
    * @param axios
    * @param request
    */
-  function createBatchCommandForCriteria(axios$$1, request) {
-      return restAuthPost(axios$$1, "batch/command/criteria", request);
+  function createBatchCommandForCriteria(axios, request) {
+      return restAuthPost(axios, "batch/command/criteria", request);
   }
 
   var BatchOperationsApi = /*#__PURE__*/Object.freeze({
@@ -540,8 +540,8 @@
    * @param axios
    * @param request
    */
-  function createCustomerType(axios$$1, request) {
-      return restAuthPost(axios$$1, "customertypes", request);
+  function createCustomerType(axios, request) {
+      return restAuthPost(axios, "customertypes", request);
   }
   /**
    * Get a customer type by unique token.
@@ -549,9 +549,9 @@
    * @param token
    * @param format
    */
-  function getCustomerType(axios$$1, token, format) {
+  function getCustomerType(axios, token, format) {
       var query = randomSeedQuery();
-      return restAuthGet(axios$$1, "customertypes/" + token + query);
+      return restAuthGet(axios, "customertypes/" + token + query);
   }
   /**
    * Update an existing customer type.
@@ -559,8 +559,8 @@
    * @param token
    * @param request
    */
-  function updateCustomerType(axios$$1, token, request) {
-      return restAuthPut(axios$$1, "customertypes/" + token, request);
+  function updateCustomerType(axios, token, request) {
+      return restAuthPut(axios, "customertypes/" + token, request);
   }
   /**
    * List customer types that match the given criteria.
@@ -568,7 +568,7 @@
    * @param criteria
    * @param format
    */
-  function listCustomerTypes(axios$$1, criteria, format) {
+  function listCustomerTypes(axios, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeContainedCustomerTypes, "includeContainedCustomerTypes");
@@ -576,15 +576,15 @@
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "customertypes" + query);
+      return restAuthGet(axios, "customertypes" + query);
   }
   /**
    * Delete an existing customer type.
    * @param axios
    * @param token
    */
-  function deleteCustomerType(axios$$1, token) {
-      return restAuthDelete(axios$$1, "customertypes/" + token);
+  function deleteCustomerType(axios, token) {
+      return restAuthDelete(axios, "customertypes/" + token);
   }
 
   var CustomerTypesApi = /*#__PURE__*/Object.freeze({
@@ -600,21 +600,21 @@
    * @param axios
    * @param request
    */
-  function createCustomer(axios$$1, request) {
-      return restAuthPost(axios$$1, "customers", request);
+  function createCustomer(axios, request) {
+      return restAuthPost(axios, "customers", request);
   }
   /**
    * Get a customer by unique token.
    * @param axios
    * @param token
    */
-  function getCustomer(axios$$1, token, format) {
+  function getCustomer(axios, token, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeCustomerType, "includeCustomerType");
           query += addFilter(format.includeParentCustomer, "includeParentCustomer");
       }
-      return restAuthGet(axios$$1, "customers/" + token + query);
+      return restAuthGet(axios, "customers/" + token + query);
   }
   /**
    * Update an existing customer.
@@ -622,8 +622,8 @@
    * @param token
    * @param request
    */
-  function updateCustomer(axios$$1, token, request) {
-      return restAuthPut(axios$$1, "customers/" + token, request);
+  function updateCustomer(axios, token, request) {
+      return restAuthPut(axios, "customers/" + token, request);
   }
   /**
    * List customers that match the given criteria.
@@ -631,7 +631,7 @@
    * @param criteria
    * @param format
    */
-  function listCustomers(axios$$1, criteria, format) {
+  function listCustomers(axios, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeCustomerType, "includeCustomerType");
@@ -642,23 +642,23 @@
           query += addStringFilter(criteria.customerTypeToken, "customerTypeToken");
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "customers" + query);
+      return restAuthGet(axios, "customers" + query);
   }
   /**
    * Get all customers as a tree structure.
    * @param axios
    */
-  function getCustomersTree(axios$$1) {
+  function getCustomersTree(axios) {
       var query = randomSeedQuery();
-      return restAuthGet(axios$$1, "customers/tree" + query);
+      return restAuthGet(axios, "customers/tree" + query);
   }
   /**
    * Delete an existing customer.
    * @param axios
    * @param token
    */
-  function deleteCustomer(axios$$1, token) {
-      return restAuthDelete(axios$$1, "customers/" + token);
+  function deleteCustomer(axios, token) {
+      return restAuthDelete(axios, "customers/" + token);
   }
   /**
    * List assignments associated with a customer.
@@ -667,7 +667,7 @@
    * @param criteria
    * @param format
    */
-  function listAssignmentsForCustomer(axios$$1, token, criteria, format) {
+  function listAssignmentsForCustomer(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeDevice, "includeDevice");
@@ -678,7 +678,7 @@
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "customers/" + token + "/assignments" + query);
+      return restAuthGet(axios, "customers/" + token + "/assignments" + query);
   }
   /**
    * List measurement events associated with customer.
@@ -687,12 +687,12 @@
    * @param criteria
    * @param format
    */
-  function listMeasurementsForCustomer(axios$$1, token, criteria, format) {
+  function listMeasurementsForCustomer(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "customers/" + token + "/measurements" + query);
+      return restAuthGet(axios, "customers/" + token + "/measurements" + query);
   }
   /**
    * List location events associated with customer.
@@ -701,12 +701,12 @@
    * @param criteria
    * @param format
    */
-  function listLocationsForCustomer(axios$$1, token, criteria, format) {
+  function listLocationsForCustomer(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "customers/" + token + "/locations" + query);
+      return restAuthGet(axios, "customers/" + token + "/locations" + query);
   }
   /**
    * List alert events associated with customer.
@@ -715,12 +715,12 @@
    * @param criteria
    * @param format
    */
-  function listAlertsForCustomer(axios$$1, token, criteria, format) {
+  function listAlertsForCustomer(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "customers/" + token + "/alerts" + query);
+      return restAuthGet(axios, "customers/" + token + "/alerts" + query);
   }
 
   var CustomersApi = /*#__PURE__*/Object.freeze({
@@ -741,8 +741,8 @@
    * @param axios
    * @param request
    */
-  function createDeviceAssignment(axios$$1, request) {
-      return restAuthPost(axios$$1, "assignments", request);
+  function createDeviceAssignment(axios, request) {
+      return restAuthPost(axios, "assignments", request);
   }
   /**
    * Get a device assignment by unique token.
@@ -750,7 +750,7 @@
    * @param token
    * @param format
    */
-  function getDeviceAssignment(axios$$1, token, format) {
+  function getDeviceAssignment(axios, token, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeArea, "includeArea");
@@ -758,7 +758,7 @@
           query += addFilter(format.includeCustomer, "includeCustomer");
           query += addFilter(format.includeDevice, "includeDevice");
       }
-      return restAuthGet(axios$$1, "assignments/" + token + query);
+      return restAuthGet(axios, "assignments/" + token + query);
   }
   /**
    * Update an existing device assignment.
@@ -766,8 +766,8 @@
    * @param deviceTypeToken
    * @param request
    */
-  function updateDeviceAssignment(axios$$1, token, request) {
-      return restAuthPut(axios$$1, "assignments/" + token, request);
+  function updateDeviceAssignment(axios, token, request) {
+      return restAuthPut(axios, "assignments/" + token, request);
   }
   /**
    * List device assignments that match the given criteria.
@@ -775,7 +775,7 @@
    * @param criteria
    * @param format
    */
-  function listDeviceAssignments(axios$$1, criteria, format) {
+  function listDeviceAssignments(axios, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeDevice, "includeDevice");
@@ -790,7 +790,7 @@
           query += addStringFilter(criteria.deviceToken, "deviceToken");
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "assignments" + query);
+      return restAuthGet(axios, "assignments" + query);
   }
   /**
    * Perform an advanced search on device assignments.
@@ -798,7 +798,7 @@
    * @param criteria
    * @param format
    */
-  function searchDeviceAssignments(axios$$1, criteria, format) {
+  function searchDeviceAssignments(axios, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeDevice, "includeDevice");
@@ -806,31 +806,31 @@
           query += addFilter(format.includeArea, "includeArea");
           query += addFilter(format.includeAsset, "includeAsset");
       }
-      return restAuthPost(axios$$1, "assignments/search" + query, criteria);
+      return restAuthPost(axios, "assignments/search" + query, criteria);
   }
   /**
    * Delete an existing device assignment.
    * @param axios
    * @param token
    */
-  function deleteDeviceAssignment(axios$$1, token) {
-      return restAuthDelete(axios$$1, "assignments/" + token);
+  function deleteDeviceAssignment(axios, token) {
+      return restAuthDelete(axios, "assignments/" + token);
   }
   /**
    * Release an active device assignment.
    * @param axios
    * @param token
    */
-  function releaseDeviceAssignment(axios$$1, token) {
-      return restAuthPost(axios$$1, "assignments/" + token + "/end", null);
+  function releaseDeviceAssignment(axios, token) {
+      return restAuthPost(axios, "assignments/" + token + "/end", null);
   }
   /**
    * Mark a device assignment as missing.
    * @param axios
    * @param token
    */
-  function missingDeviceAssignment(axios$$1, token) {
-      return restAuthPost(axios$$1, "assignments/" + token + "/missing", null);
+  function missingDeviceAssignment(axios, token) {
+      return restAuthPost(axios, "assignments/" + token + "/missing", null);
   }
   /**
    * Create measurement for a device assignment.
@@ -838,8 +838,8 @@
    * @param token
    * @param request
    */
-  function createMeasurementForAssignment(axios$$1, token, request) {
-      return restAuthPost(axios$$1, "assignments/" + token + "/measurements", request);
+  function createMeasurementForAssignment(axios, token, request) {
+      return restAuthPost(axios, "assignments/" + token + "/measurements", request);
   }
   /**
    * List measurements for assignment based on criteria.
@@ -848,12 +848,12 @@
    * @param criteria
    * @param format
    */
-  function listMeasurementsForAssignment(axios$$1, token, criteria, format) {
+  function listMeasurementsForAssignment(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthGet(axios$$1, "assignments/" + token + "/measurements" + query);
+      return restAuthGet(axios, "assignments/" + token + "/measurements" + query);
   }
   /**
    * List measurements for assignment in chart series format.
@@ -862,12 +862,12 @@
    * @param criteria
    * @param format
    */
-  function listMeasurementsForAssignmentAsChartSeries(axios$$1, token, criteria, format) {
+  function listMeasurementsForAssignmentAsChartSeries(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthGet(axios$$1, "assignments/" + token + "/measurements/series" + query);
+      return restAuthGet(axios, "assignments/" + token + "/measurements/series" + query);
   }
   /**
    * List measurements for multiple assignments based on criteria.
@@ -876,12 +876,12 @@
    * @param criteria
    * @param format
    */
-  function listBulkMeasurementsForAssignment(axios$$1, bulk, criteria, format) {
+  function listBulkMeasurementsForAssignment(axios, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthPost(axios$$1, "/assignments/bulk/measurements" + query, bulk);
+      return restAuthPost(axios, "/assignments/bulk/measurements" + query, bulk);
   }
   /**
    * List measurements for multiple assignments in chart series format.
@@ -890,12 +890,12 @@
    * @param criteria
    * @param format
    */
-  function listBulkMeasurementsForAssignmentAsChartSeries(axios$$1, bulk, criteria, format) {
+  function listBulkMeasurementsForAssignmentAsChartSeries(axios, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthPost(axios$$1, "/assignments/bulk/measurements/series" + query, bulk);
+      return restAuthPost(axios, "/assignments/bulk/measurements/series" + query, bulk);
   }
   /**
    * Create location for a device assignment.
@@ -903,8 +903,8 @@
    * @param token
    * @param request
    */
-  function createLocationForAssignment(axios$$1, token, request) {
-      return restAuthPost(axios$$1, "assignments/" + token + "/locations", request);
+  function createLocationForAssignment(axios, token, request) {
+      return restAuthPost(axios, "assignments/" + token + "/locations", request);
   }
   /**
    * List locations for assignment based on criteria.
@@ -913,12 +913,12 @@
    * @param criteria
    * @param format
    */
-  function listLocationsForAssignment(axios$$1, token, criteria, format) {
+  function listLocationsForAssignment(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthGet(axios$$1, "assignments/" + token + "/locations" + query);
+      return restAuthGet(axios, "assignments/" + token + "/locations" + query);
   }
   /**
    * List locations for multiple assignments based on criteria.
@@ -927,12 +927,12 @@
    * @param criteria
    * @param format
    */
-  function listBulkLocationsForAssignment(axios$$1, bulk, criteria, format) {
+  function listBulkLocationsForAssignment(axios, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthPost(axios$$1, "/assignments/bulk/locations" + query, bulk);
+      return restAuthPost(axios, "/assignments/bulk/locations" + query, bulk);
   }
   /**
    * Create alert for a device assignment.
@@ -940,8 +940,8 @@
    * @param token
    * @param request
    */
-  function createAlertForAssignment(axios$$1, token, request) {
-      return restAuthPost(axios$$1, "assignments/" + token + "/alerts", request);
+  function createAlertForAssignment(axios, token, request) {
+      return restAuthPost(axios, "assignments/" + token + "/alerts", request);
   }
   /**
    * List alerts for assignment based on criteria.
@@ -950,12 +950,12 @@
    * @param criteria
    * @param format
    */
-  function listAlertsForAssignment(axios$$1, token, criteria, format) {
+  function listAlertsForAssignment(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthGet(axios$$1, "assignments/" + token + "/alerts" + query);
+      return restAuthGet(axios, "assignments/" + token + "/alerts" + query);
   }
   /**
    * List alerts for multiple assignments based on criteria.
@@ -964,12 +964,12 @@
    * @param criteria
    * @param format
    */
-  function listBulkAlertsForAssignment(axios$$1, bulk, criteria, format) {
+  function listBulkAlertsForAssignment(axios, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthPost(axios$$1, "/assignments/bulk/alerts" + query, bulk);
+      return restAuthPost(axios, "/assignments/bulk/alerts" + query, bulk);
   }
   /**
    * Create command invocation for a device assignment.
@@ -977,8 +977,8 @@
    * @param token
    * @param request
    */
-  function createCommandInvocationForAssignment(axios$$1, token, request) {
-      return restAuthPost(axios$$1, "assignments/" + token + "/invocations", request);
+  function createCommandInvocationForAssignment(axios, token, request) {
+      return restAuthPost(axios, "assignments/" + token + "/invocations", request);
   }
   /**
    * Schedule the creation of a command invocation for a future time.
@@ -987,8 +987,8 @@
    * @param scheduleToken
    * @param request
    */
-  function scheduleCommandInvocationForAssignment(axios$$1, assignmentToken, scheduleToken, request) {
-      return restAuthPost(axios$$1, "assignments/" + assignmentToken + "/invocations/schedules/" + scheduleToken, request);
+  function scheduleCommandInvocationForAssignment(axios, assignmentToken, scheduleToken, request) {
+      return restAuthPost(axios, "assignments/" + assignmentToken + "/invocations/schedules/" + scheduleToken, request);
   }
   /**
    * List command invocations for assignment based on criteria.
@@ -997,12 +997,12 @@
    * @param criteria
    * @param format
    */
-  function listCommandInvocationsForAssignment(axios$$1, token, criteria, format) {
+  function listCommandInvocationsForAssignment(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthGet(axios$$1, "assignments/" + token + "/invocations" + query);
+      return restAuthGet(axios, "assignments/" + token + "/invocations" + query);
   }
   /**
    * List command invocations for multiple assignments based on criteria.
@@ -1011,12 +1011,12 @@
    * @param criteria
    * @param format
    */
-  function listBulkCommandInvocationsForAssignment(axios$$1, bulk, criteria, format) {
+  function listBulkCommandInvocationsForAssignment(axios, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthPost(axios$$1, "/assignments/bulk/invocations" + query, bulk);
+      return restAuthPost(axios, "/assignments/bulk/invocations" + query, bulk);
   }
   /**
    * Create command response for a device assignment.
@@ -1024,8 +1024,8 @@
    * @param token
    * @param request
    */
-  function createCommandResponseForAssignment(axios$$1, token, request) {
-      return restAuthPost(axios$$1, "assignments/" + token + "/responses", request);
+  function createCommandResponseForAssignment(axios, token, request) {
+      return restAuthPost(axios, "assignments/" + token + "/responses", request);
   }
   /**
    * List command responses for assignment based on criteria.
@@ -1034,12 +1034,12 @@
    * @param criteria
    * @param format
    */
-  function listCommandResponsesForAssignment(axios$$1, token, criteria, format) {
+  function listCommandResponsesForAssignment(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthGet(axios$$1, "assignments/" + token + "/responses" + query);
+      return restAuthGet(axios, "assignments/" + token + "/responses" + query);
   }
   /**
    * List command responses for multiple assignments based on criteria.
@@ -1048,12 +1048,12 @@
    * @param criteria
    * @param format
    */
-  function listBulkCommandResponsesForAssignment(axios$$1, bulk, criteria, format) {
+  function listBulkCommandResponsesForAssignment(axios, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthPost(axios$$1, "/assignments/bulk/responses" + query, bulk);
+      return restAuthPost(axios, "/assignments/bulk/responses" + query, bulk);
   }
   /**
    * Create state change for a device assignment.
@@ -1061,8 +1061,8 @@
    * @param token
    * @param request
    */
-  function createStateChangeForAssignment(axios$$1, token, request) {
-      return restAuthPost(axios$$1, "assignments/" + token + "/statechanges", request);
+  function createStateChangeForAssignment(axios, token, request) {
+      return restAuthPost(axios, "assignments/" + token + "/statechanges", request);
   }
   /**
    * List state changes for assignment based on criteria.
@@ -1071,12 +1071,12 @@
    * @param criteria
    * @param format
    */
-  function listStateChangesForAssignment(axios$$1, token, criteria, format) {
+  function listStateChangesForAssignment(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthGet(axios$$1, "assignments/" + token + "/statechanges" + query);
+      return restAuthGet(axios, "assignments/" + token + "/statechanges" + query);
   }
   /**
    * List state changes for multiple assignments based on criteria.
@@ -1085,12 +1085,12 @@
    * @param criteria
    * @param format
    */
-  function listBulkStateChangesForAssignment(axios$$1, bulk, criteria, format) {
+  function listBulkStateChangesForAssignment(axios, bulk, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createDateRangeQuery(criteria);
       }
-      return restAuthPost(axios$$1, "/assignments/bulk/statechanges" + query, bulk);
+      return restAuthPost(axios, "/assignments/bulk/statechanges" + query, bulk);
   }
 
   var DeviceAssignmentsApi = /*#__PURE__*/Object.freeze({
@@ -1130,8 +1130,8 @@
    * @param axios
    * @param request
    */
-  function createDeviceCommand(axios$$1, request) {
-      return restAuthPost(axios$$1, "commands", request);
+  function createDeviceCommand(axios, request) {
+      return restAuthPost(axios, "commands", request);
   }
   /**
    * Get a device command by unique token.
@@ -1139,9 +1139,9 @@
    * @param commandToken
    * @param format
    */
-  function getDeviceCommand(axios$$1, commandToken, format) {
+  function getDeviceCommand(axios, commandToken, format) {
       var query = randomSeedQuery();
-      return restAuthGet(axios$$1, "commands/" + commandToken + query);
+      return restAuthGet(axios, "commands/" + commandToken + query);
   }
   /**
    * Update an existing device command.
@@ -1149,8 +1149,8 @@
    * @param commandToken
    * @param request
    */
-  function updateDeviceCommand(axios$$1, commandToken, request) {
-      return restAuthPut(axios$$1, "commands/" + commandToken, request);
+  function updateDeviceCommand(axios, commandToken, request) {
+      return restAuthPut(axios, "commands/" + commandToken, request);
   }
   /**
    * List device commands that match the given criteria.
@@ -1158,13 +1158,13 @@
    * @param criteria
    * @param format
    */
-  function listDeviceCommands(axios$$1, criteria, format) {
+  function listDeviceCommands(axios, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += addStringFilter(criteria.deviceTypeToken, "deviceTypeToken");
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "commands" + query);
+      return restAuthGet(axios, "commands" + query);
   }
   /**
    * List device commands that match the given criteria
@@ -1173,21 +1173,21 @@
    * @param criteria
    * @param format
    */
-  function listDeviceCommandsForNamespace(axios$$1, criteria, format) {
+  function listDeviceCommandsForNamespace(axios, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += addStringFilter(criteria.deviceTypeToken, "deviceTypeToken");
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "commands/namespaces" + query);
+      return restAuthGet(axios, "commands/namespaces" + query);
   }
   /**
    * Delete an existing device command.
    * @param axios
    * @param commandToken
    */
-  function deleteDeviceCommand(axios$$1, commandToken) {
-      return restAuthDelete(axios$$1, "commands/" + commandToken);
+  function deleteDeviceCommand(axios, commandToken) {
+      return restAuthDelete(axios, "commands/" + commandToken);
   }
 
   var DeviceCommandsApi = /*#__PURE__*/Object.freeze({
@@ -1204,8 +1204,8 @@
    * @param axios
    * @param request
    */
-  function createDeviceGroup(axios$$1, request) {
-      return restAuthPost(axios$$1, "devicegroups", request);
+  function createDeviceGroup(axios, request) {
+      return restAuthPost(axios, "devicegroups", request);
   }
   /**
    * Get a device group by unique token.
@@ -1213,9 +1213,9 @@
    * @param token
    * @param format
    */
-  function getDeviceGroup(axios$$1, token, format) {
+  function getDeviceGroup(axios, token, format) {
       var query = randomSeedQuery();
-      return restAuthGet(axios$$1, "devicegroups/" + token + query);
+      return restAuthGet(axios, "devicegroups/" + token + query);
   }
   /**
    * Update an existing device group.
@@ -1223,8 +1223,8 @@
    * @param token
    * @param request
    */
-  function updateDeviceGroup(axios$$1, token, request) {
-      return restAuthPut(axios$$1, "devicegroups/" + token, request);
+  function updateDeviceGroup(axios, token, request) {
+      return restAuthPut(axios, "devicegroups/" + token, request);
   }
   /**
    * List device groups that match the given criteria.
@@ -1232,29 +1232,29 @@
    * @param criteria
    * @param format
    */
-  function listDeviceGroups(axios$$1, criteria, format) {
+  function listDeviceGroups(axios, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += addStringFilter(criteria.role, "role");
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "devicegroups" + query);
+      return restAuthGet(axios, "devicegroups" + query);
   }
   /**
    * Delete an existing device group.
    * @param axios
    * @param token
    */
-  function deleteDeviceGroup(axios$$1, token) {
-      return restAuthDelete(axios$$1, "devicegroups/" + token);
+  function deleteDeviceGroup(axios, token) {
+      return restAuthDelete(axios, "devicegroups/" + token);
   }
   /**
    * Create a device group element.
    * @param axios
    * @param request
    */
-  function createDeviceGroupElement(axios$$1, token, request) {
-      return restAuthPost(axios$$1, "devicegroups/" + token + "/elements", request);
+  function createDeviceGroupElement(axios, token, request) {
+      return restAuthPost(axios, "devicegroups/" + token + "/elements", request);
   }
   /**
    * List device group elements that match the given criteria.
@@ -1263,7 +1263,7 @@
    * @param criteria
    * @param format
    */
-  function listDeviceGroupElements(axios$$1, token, criteria, format) {
+  function listDeviceGroupElements(axios, token, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeDetails, "includeDetails");
@@ -1272,7 +1272,7 @@
           query += addStringFilter(criteria.deviceGroupToken, "groupToken");
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "devicegroups/" + token + "/elements" + query);
+      return restAuthGet(axios, "devicegroups/" + token + "/elements" + query);
   }
   /**
    * Delete an existing device group element.
@@ -1280,8 +1280,8 @@
    * @param token
    * @param elementId
    */
-  function deleteDeviceGroupElement(axios$$1, token, elementId) {
-      return restAuthDelete(axios$$1, "devicegroups/" + token + "/elements/" + elementId);
+  function deleteDeviceGroupElement(axios, token, elementId) {
+      return restAuthDelete(axios, "devicegroups/" + token + "/elements/" + elementId);
   }
 
   var DeviceGroupsApi = /*#__PURE__*/Object.freeze({
@@ -1301,7 +1301,7 @@
    * @param criteria
    * @param format
    */
-  function searchDeviceStates(axios$$1, criteria, format) {
+  function searchDeviceStates(axios, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeArea, "includeArea");
@@ -1312,7 +1312,7 @@
           query += addFilter(format.includeDeviceType, "includeDeviceType");
           query += addFilter(format.includeEventDetails, "includeEventDetails");
       }
-      return restAuthPost(axios$$1, "devicestates/search" + query, criteria);
+      return restAuthPost(axios, "devicestates/search" + query, criteria);
   }
 
   var DeviceStatesApi = /*#__PURE__*/Object.freeze({
@@ -1324,8 +1324,8 @@
    * @param axios
    * @param request
    */
-  function createDeviceStatus(axios$$1, request) {
-      return restAuthPost(axios$$1, "statuses", request);
+  function createDeviceStatus(axios, request) {
+      return restAuthPost(axios, "statuses", request);
   }
   /**
    * Get a device status by unique token.
@@ -1333,9 +1333,9 @@
    * @param token
    * @param format
    */
-  function getDeviceStatus(axios$$1, token, format) {
+  function getDeviceStatus(axios, token, format) {
       var query = randomSeedQuery();
-      return restAuthGet(axios$$1, "statuses/" + token + query);
+      return restAuthGet(axios, "statuses/" + token + query);
   }
   /**
    * Update an existing device status.
@@ -1343,8 +1343,8 @@
    * @param token
    * @param request
    */
-  function updateDeviceStatus(axios$$1, token, request) {
-      return restAuthPut(axios$$1, "statuses/" + token, request);
+  function updateDeviceStatus(axios, token, request) {
+      return restAuthPut(axios, "statuses/" + token, request);
   }
   /**
    * List device statuses that match the given criteria.
@@ -1352,21 +1352,21 @@
    * @param criteria
    * @param format
    */
-  function listDeviceStatuses(axios$$1, criteria, format) {
+  function listDeviceStatuses(axios, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += addStringFilter(criteria.deviceTypeToken, "deviceTypeToken");
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "statuses" + query);
+      return restAuthGet(axios, "statuses" + query);
   }
   /**
    * Delete an existing device status.
    * @param axios
    * @param token
    */
-  function deleteDeviceStatus(axios$$1, token) {
-      return restAuthDelete(axios$$1, "statuses/" + token);
+  function deleteDeviceStatus(axios, token) {
+      return restAuthDelete(axios, "statuses/" + token);
   }
 
   var DeviceStatusesApi = /*#__PURE__*/Object.freeze({
@@ -1382,20 +1382,20 @@
    * @param axios
    * @param request
    */
-  function createDeviceType(axios$$1, request) {
-      return restAuthPost(axios$$1, "devicetypes", request);
+  function createDeviceType(axios, request) {
+      return restAuthPost(axios, "devicetypes", request);
   }
   /**
    * Get a device type by unique token.
    * @param axios
    * @param token
    */
-  function getDeviceType(axios$$1, token, format) {
+  function getDeviceType(axios, token, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeAsset, "includeAsset");
       }
-      return restAuthGet(axios$$1, "devicetypes/" + token + query);
+      return restAuthGet(axios, "devicetypes/" + token + query);
   }
   /**
    * Update an existing device type.
@@ -1403,8 +1403,8 @@
    * @param deviceTypeToken
    * @param request
    */
-  function updateDeviceType(axios$$1, deviceTypeToken, request) {
-      return restAuthPut(axios$$1, "devicetypes/" + deviceTypeToken, request);
+  function updateDeviceType(axios, deviceTypeToken, request) {
+      return restAuthPut(axios, "devicetypes/" + deviceTypeToken, request);
   }
   /**
    * List device types that match the given criteria.
@@ -1412,20 +1412,20 @@
    * @param criteria
    * @param format
    */
-  function listDeviceTypes(axios$$1, criteria, format) {
+  function listDeviceTypes(axios, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "devicetypes" + query);
+      return restAuthGet(axios, "devicetypes" + query);
   }
   /**
    * Delete an existing device type.
    * @param axios
    * @param deviceTypeToken
    */
-  function deleteDeviceType(axios$$1, deviceTypeToken) {
-      return restAuthDelete(axios$$1, "devicetypes/" + deviceTypeToken);
+  function deleteDeviceType(axios, deviceTypeToken) {
+      return restAuthDelete(axios, "devicetypes/" + deviceTypeToken);
   }
 
   var DeviceTypesApi = /*#__PURE__*/Object.freeze({
@@ -1441,21 +1441,21 @@
    * @param axios
    * @param request
    */
-  function createDevice(axios$$1, request) {
-      return restAuthPost(axios$$1, "devices", request);
+  function createDevice(axios, request) {
+      return restAuthPost(axios, "devices", request);
   }
   /**
    * Get a device by unique token.
    * @param axios
    * @param deviceToken
    */
-  function getDevice(axios$$1, token, format) {
+  function getDevice(axios, token, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeDeviceType, "includeDeviceType");
           query += addFilter(format.includeAssignment, "includeAssignment");
       }
-      return restAuthGet(axios$$1, "devices/" + token + query);
+      return restAuthGet(axios, "devices/" + token + query);
   }
   /**
    * Update an existing device.
@@ -1463,8 +1463,8 @@
    * @param deviceToken
    * @param request
    */
-  function updateDevice(axios$$1, deviceToken, request) {
-      return restAuthPut(axios$$1, "devices/" + deviceToken, request);
+  function updateDevice(axios, deviceToken, request) {
+      return restAuthPut(axios, "devices/" + deviceToken, request);
   }
   /**
    * List devices that match the given criteria.
@@ -1472,7 +1472,7 @@
    * @param criteria
    * @param format
    */
-  function listDevices(axios$$1, criteria, format) {
+  function listDevices(axios, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeDeviceType, "includeDeviceType");
@@ -1483,15 +1483,15 @@
           query += addStringFilter(criteria.deviceTypeToken, "deviceType");
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "devices" + query);
+      return restAuthGet(axios, "devices" + query);
   }
   /**
    * Delete an existing device.
    * @param axios
    * @param deviceToken
    */
-  function deleteDevice(axios$$1, deviceToken) {
-      return restAuthDelete(axios$$1, "devices/" + deviceToken);
+  function deleteDevice(axios, deviceToken) {
+      return restAuthDelete(axios, "devices/" + deviceToken);
   }
   /**
    * List devices that match the given criteria.
@@ -1499,7 +1499,7 @@
    * @param criteria
    * @param format
    */
-  function listDeviceAssignmentHistory(axios$$1, deviceToken, criteria, format) {
+  function listDeviceAssignmentHistory(axios, deviceToken, criteria, format) {
       var query = randomSeedQuery();
       if (format) {
           query += addFilter(format.includeDevice, "includeDevice");
@@ -1510,7 +1510,7 @@
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "devices/" + deviceToken + "/assignments" + query);
+      return restAuthGet(axios, "devices/" + deviceToken + "/assignments" + query);
   }
 
   var DevicesApi = /*#__PURE__*/Object.freeze({
@@ -1526,22 +1526,22 @@
    * Get instance topology including both global and multitenant microservices.
    * @param axios
    */
-  function getTopology(axios$$1) {
-      return restAuthGet(axios$$1, "instance/topology");
+  function getTopology(axios) {
+      return restAuthGet(axios, "instance/topology");
   }
   /**
    * Get elements in the instance topology that are global in scope.
    * @param axios
    */
-  function getGlobalTopology(axios$$1) {
-      return restAuthGet(axios$$1, "instance/topology/global");
+  function getGlobalTopology(axios) {
+      return restAuthGet(axios, "instance/topology/global");
   }
   /**
    * Get elements in the instance topology that are multitenant in scope.
    * @param axios
    */
-  function getTenantTopology(axios$$1) {
-      return restAuthGet(axios$$1, "instance/topology/tenant");
+  function getTenantTopology(axios) {
+      return restAuthGet(axios, "instance/topology/tenant");
   }
   /**
    * Get summary of runtime state for a tenant.
@@ -1549,24 +1549,24 @@
    * @param identifier
    * @param tenantToken
    */
-  function getTenantRuntimeState(axios$$1, identifier, tenantToken) {
-      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/state");
+  function getTenantRuntimeState(axios, identifier, tenantToken) {
+      return restAuthGet(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/state");
   }
   /**
    * Get configuration model for a given microservice identifier.
    * @param axios
    * @param identifier
    */
-  function getConfigurationModel(axios$$1, identifier) {
-      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/configuration/model");
+  function getConfigurationModel(axios, identifier) {
+      return restAuthGet(axios, "instance/microservice/" + identifier + "/configuration/model");
   }
   /**
    * Get configuration for global microservice based on identifier.
    * @param axios
    * @param identifier
    */
-  function getGlobalConfiguration(axios$$1, identifier) {
-      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/configuration");
+  function getGlobalConfiguration(axios, identifier) {
+      return restAuthGet(axios, "instance/microservice/" + identifier + "/configuration");
   }
   /**
    * Update configuration for global microservice based on identifier.
@@ -1574,16 +1574,16 @@
    * @param identifier
    * @param config
    */
-  function updateGlobalConfiguration(axios$$1, identifier, config) {
-      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/configuration", config);
+  function updateGlobalConfiguration(axios, identifier, config) {
+      return restAuthPost(axios, "instance/microservice/" + identifier + "/configuration", config);
   }
   /**
    * Get configuration for tenant microservice based on identifier.
    * @param axios
    * @param identifier
    */
-  function getTenantConfiguration(axios$$1, identifier, tenantToken) {
-      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/configuration");
+  function getTenantConfiguration(axios, identifier, tenantToken) {
+      return restAuthGet(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/configuration");
   }
   /**
    * Update configuration for tenant microservice based on identifier.
@@ -1591,8 +1591,8 @@
    * @param identifier
    * @param config
    */
-  function updateTenantConfiguration(axios$$1, identifier, tenantToken, config) {
-      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/configuration", config);
+  function updateTenantConfiguration(axios, identifier, tenantToken, config) {
+      return restAuthPost(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/configuration", config);
   }
 
   var InstanceApi = /*#__PURE__*/Object.freeze({
@@ -1612,16 +1612,16 @@
    * @param axios
    * @param request
    */
-  function createSchedule(axios$$1, request) {
-      return restAuthPost(axios$$1, "schedules", request);
+  function createSchedule(axios, request) {
+      return restAuthPost(axios, "schedules", request);
   }
   /**
    * Get a schedule by unique token.
    * @param axios
    * @param token
    */
-  function getSchedule(axios$$1, token) {
-      return restAuthGet(axios$$1, "schedules/" + token);
+  function getSchedule(axios, token) {
+      return restAuthGet(axios, "schedules/" + token);
   }
   /**
    * Update an existing schedule.
@@ -1629,8 +1629,8 @@
    * @param token
    * @param request
    */
-  function updateSchedule(axios$$1, token, request) {
-      return restAuthPut(axios$$1, "schedules/" + token, request);
+  function updateSchedule(axios, token, request) {
+      return restAuthPut(axios, "schedules/" + token, request);
   }
   /**
    * List schedules that match the given criteria.
@@ -1638,20 +1638,20 @@
    * @param criteria
    * @param format
    */
-  function listSchedules(axios$$1, criteria, format) {
+  function listSchedules(axios, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "schedules" + query);
+      return restAuthGet(axios, "schedules" + query);
   }
   /**
    * Delete an existing schedule.
    * @param axios
    * @param token
    */
-  function deleteSchedule(axios$$1, token) {
-      return restAuthDelete(axios$$1, "schedules/" + token);
+  function deleteSchedule(axios, token) {
+      return restAuthDelete(axios, "schedules/" + token);
   }
 
   var SchedulesApi = /*#__PURE__*/Object.freeze({
@@ -1667,8 +1667,8 @@
    * @param axios
    * @param identifier
    */
-  function listScriptTemplates(axios$$1, identifier) {
-      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/scripting/templates");
+  function listScriptTemplates(axios, identifier) {
+      return restAuthGet(axios, "instance/microservice/" + identifier + "/scripting/templates");
   }
   /**
    * Get content for a script template.
@@ -1676,16 +1676,16 @@
    * @param identifier
    * @param templateId
    */
-  function getScriptTemplateContent(axios$$1, identifier, templateId) {
-      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/scripting/templates/" + templateId);
+  function getScriptTemplateContent(axios, identifier, templateId) {
+      return restAuthGet(axios, "instance/microservice/" + identifier + "/scripting/templates/" + templateId);
   }
   /**
    * List metadata for scripts associated with a global microservice.
    * @param axios
    * @param identifier
    */
-  function listGlobalScriptMetadata(axios$$1, identifier) {
-      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts");
+  function listGlobalScriptMetadata(axios, identifier) {
+      return restAuthGet(axios, "instance/microservice/" + identifier + "/scripting/scripts");
   }
   /**
    * Get metadata for a global script.
@@ -1693,8 +1693,8 @@
    * @param identifier
    * @param scriptId
    */
-  function getGlobalScriptMetadata(axios$$1, identifier, scriptId) {
-      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId);
+  function getGlobalScriptMetadata(axios, identifier, scriptId) {
+      return restAuthGet(axios, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId);
   }
   /**
    * Create a global script.
@@ -1702,8 +1702,8 @@
    * @param identifier
    * @param request
    */
-  function createGlobalScript(axios$$1, identifier, request) {
-      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts", request);
+  function createGlobalScript(axios, identifier, request) {
+      return restAuthPost(axios, "instance/microservice/" + identifier + "/scripting/scripts", request);
   }
   /**
    * Get content for a global script.
@@ -1712,8 +1712,8 @@
    * @param scriptId
    * @param versionId
    */
-  function getGlobalScriptContent(axios$$1, identifier, scriptId, versionId) {
-      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/content");
+  function getGlobalScriptContent(axios, identifier, scriptId, versionId) {
+      return restAuthGet(axios, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/content");
   }
   /**
    * Update an existing global script.
@@ -1723,8 +1723,8 @@
    * @param versionId
    * @param request
    */
-  function updateGlobalScript(axios$$1, identifier, scriptId, versionId, request) {
-      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId, request);
+  function updateGlobalScript(axios, identifier, scriptId, versionId, request) {
+      return restAuthPost(axios, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId, request);
   }
   /**
    * Clone an existing global script.
@@ -1734,8 +1734,8 @@
    * @param versionId
    * @param request
    */
-  function cloneGlobalScript(axios$$1, identifier, scriptId, versionId, request) {
-      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/clone", request);
+  function cloneGlobalScript(axios, identifier, scriptId, versionId, request) {
+      return restAuthPost(axios, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/clone", request);
   }
   /**
    * Activate a global script.
@@ -1744,8 +1744,8 @@
    * @param scriptId
    * @param versionId
    */
-  function activateGlobalScript(axios$$1, identifier, scriptId, versionId) {
-      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", null);
+  function activateGlobalScript(axios, identifier, scriptId, versionId) {
+      return restAuthPost(axios, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", null);
   }
   /**
    * Delete a global script and its version history.
@@ -1753,8 +1753,8 @@
    * @param identifier
    * @param scriptId
    */
-  function deleteGlobalScript(axios$$1, identifier, scriptId) {
-      return restAuthDelete(axios$$1, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId);
+  function deleteGlobalScript(axios, identifier, scriptId) {
+      return restAuthDelete(axios, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId);
   }
   /**
    * List metadata for microservice tenant scripts.
@@ -1762,8 +1762,8 @@
    * @param identifier
    * @param tenantToken
    */
-  function listTenantScriptMetadata(axios$$1, identifier, tenantToken) {
-      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts");
+  function listTenantScriptMetadata(axios, identifier, tenantToken) {
+      return restAuthGet(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts");
   }
   /**
    * Get metadata for a given microservice tenant script.
@@ -1772,8 +1772,8 @@
    * @param tenantToken
    * @param scriptId
    */
-  function getTenantScriptMetadata(axios$$1, identifier, tenantToken, scriptId) {
-      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId);
+  function getTenantScriptMetadata(axios, identifier, tenantToken, scriptId) {
+      return restAuthGet(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId);
   }
   /**
    * Create a new script for a microservice tenant.
@@ -1782,8 +1782,8 @@
    * @param tenantToken
    * @param request
    */
-  function createTenantScript(axios$$1, identifier, tenantToken, request) {
-      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts", request);
+  function createTenantScript(axios, identifier, tenantToken, request) {
+      return restAuthPost(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts", request);
   }
   /**
    * Get content associated with a microservice tenant script.
@@ -1793,8 +1793,8 @@
    * @param scriptId
    * @param versionId
    */
-  function getTenantScriptContent(axios$$1, identifier, tenantToken, scriptId, versionId) {
-      return restAuthGet(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/content");
+  function getTenantScriptContent(axios, identifier, tenantToken, scriptId, versionId) {
+      return restAuthGet(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/content");
   }
   /**
    * Update an existing microservice tenant script.
@@ -1805,8 +1805,8 @@
    * @param versionId
    * @param request
    */
-  function updateTenantScript(axios$$1, identifier, tenantToken, scriptId, versionId, request) {
-      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId, request);
+  function updateTenantScript(axios, identifier, tenantToken, scriptId, versionId, request) {
+      return restAuthPost(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId, request);
   }
   /**
    * Clone an existing microservice tenant script.
@@ -1817,8 +1817,8 @@
    * @param versionId
    * @param request
    */
-  function cloneTenantScript(axios$$1, identifier, tenantToken, scriptId, versionId, request) {
-      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/clone", request);
+  function cloneTenantScript(axios, identifier, tenantToken, scriptId, versionId, request) {
+      return restAuthPost(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/clone", request);
   }
   /**
    * Activate a given version of a microservice tenant script.
@@ -1828,8 +1828,8 @@
    * @param scriptId
    * @param versionId
    */
-  function activateTenantScript(axios$$1, identifier, tenantToken, scriptId, versionId) {
-      return restAuthPost(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", null);
+  function activateTenantScript(axios, identifier, tenantToken, scriptId, versionId) {
+      return restAuthPost(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", null);
   }
   /**
    * Delete a microservice tenant script and its version history.
@@ -1838,8 +1838,8 @@
    * @param tenantToken
    * @param scriptId
    */
-  function deleteTenantScript(axios$$1, identifier, tenantToken, scriptId) {
-      return restAuthDelete(axios$$1, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId);
+  function deleteTenantScript(axios, identifier, tenantToken, scriptId) {
+      return restAuthDelete(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId);
   }
 
   var ScriptingApi = /*#__PURE__*/Object.freeze({
@@ -1868,8 +1868,8 @@
    * @param axios
    * @param request
    */
-  function createTenant(axios$$1, request) {
-      return restAuthPost(axios$$1, "tenants", request);
+  function createTenant(axios, request) {
+      return restAuthPost(axios, "tenants", request);
   }
   /**
    * Get a tenant by unique token.
@@ -1877,9 +1877,9 @@
    * @param token
    * @param format
    */
-  function getTenant(axios$$1, token, format) {
+  function getTenant(axios, token, format) {
       var query = randomSeedQuery();
-      return restAuthGet(axios$$1, "tenants/" + token + query);
+      return restAuthGet(axios, "tenants/" + token + query);
   }
   /**
    * Update an existing tenant.
@@ -1887,8 +1887,8 @@
    * @param token
    * @param request
    */
-  function updateTenant(axios$$1, token, request) {
-      return restAuthPut(axios$$1, "tenants/" + token, request);
+  function updateTenant(axios, token, request) {
+      return restAuthPut(axios, "tenants/" + token, request);
   }
   /**
    * List tenants that match the given criteria.
@@ -1896,34 +1896,34 @@
    * @param criteria
    * @param format
    */
-  function listTenants(axios$$1, criteria, format) {
+  function listTenants(axios, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "tenants" + query);
+      return restAuthGet(axios, "tenants" + query);
   }
   /**
    * Delete an existing tenant.
    * @param axios
    * @param token
    */
-  function deleteTenant(axios$$1, token) {
-      return restAuthDelete(axios$$1, "tenants/" + token);
+  function deleteTenant(axios, token) {
+      return restAuthDelete(axios, "tenants/" + token);
   }
   /**
    * List available tenant templates.
    * @param axios
    */
-  function listTenantTemplates(axios$$1) {
-      return restAuthGet(axios$$1, "tenants/templates");
+  function listTenantTemplates(axios) {
+      return restAuthGet(axios, "tenants/templates");
   }
   /**
    * List available dataset templates.
    * @param axios
    */
-  function listDatasetTemplates(axios$$1) {
-      return restAuthGet(axios$$1, "tenants/datasets");
+  function listDatasetTemplates(axios) {
+      return restAuthGet(axios, "tenants/datasets");
   }
 
   var TenantsApi = /*#__PURE__*/Object.freeze({
@@ -1941,8 +1941,8 @@
    * @param axios
    * @param request
    */
-  function createUser(axios$$1, request) {
-      return restAuthPost(axios$$1, "users", request);
+  function createUser(axios, request) {
+      return restAuthPost(axios, "users", request);
   }
   /**
    * Get a user by username.
@@ -1950,9 +1950,9 @@
    * @param username
    * @param format
    */
-  function getUser(axios$$1, username, format) {
+  function getUser(axios, username, format) {
       var query = randomSeedQuery();
-      return restAuthGet(axios$$1, "users/" + username + query);
+      return restAuthGet(axios, "users/" + username + query);
   }
   /**
    * Update an existing user.
@@ -1960,8 +1960,8 @@
    * @param username
    * @param request
    */
-  function updateUser(axios$$1, username, request) {
-      return restAuthPut(axios$$1, "users/" + username, request);
+  function updateUser(axios, username, request) {
+      return restAuthPut(axios, "users/" + username, request);
   }
   /**
    * List users that match the given criteria.
@@ -1969,35 +1969,35 @@
    * @param criteria
    * @param format
    */
-  function listUsers(axios$$1, criteria, format) {
+  function listUsers(axios, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "users" + query);
+      return restAuthGet(axios, "users" + query);
   }
   /**
    * Delete an existing user.
    * @param axios
    * @param username
    */
-  function deleteUser(axios$$1, username) {
-      return restAuthDelete(axios$$1, "users/" + username);
+  function deleteUser(axios, username) {
+      return restAuthDelete(axios, "users/" + username);
   }
   /**
    * Get granted authorities associated with user.
    * @param axios
    * @param username
    */
-  function getAuthoritiesForUsername(axios$$1, username) {
-      return restAuthGet(axios$$1, "users/" + username + "/authorities");
+  function getAuthoritiesForUsername(axios, username) {
+      return restAuthGet(axios, "users/" + username + "/authorities");
   }
   /**
    * Get records representing granted authority hierarchy.
    * @param axios
    */
-  function getAuthoritiesHierarchy(axios$$1) {
-      return restAuthGet(axios$$1, "/authorities/hierarchy");
+  function getAuthoritiesHierarchy(axios) {
+      return restAuthGet(axios, "/authorities/hierarchy");
   }
 
   var UsersApi = /*#__PURE__*/Object.freeze({
@@ -2015,16 +2015,16 @@
    * @param axios
    * @param request
    */
-  function createZone(axios$$1, request) {
-      return restAuthPost(axios$$1, "zones", request);
+  function createZone(axios, request) {
+      return restAuthPost(axios, "zones", request);
   }
   /**
    * Get a zone by unique token.
    * @param axios
    * @param zoneToken
    */
-  function getZone(axios$$1, zoneToken) {
-      return restAuthGet(axios$$1, "zones/" + zoneToken);
+  function getZone(axios, zoneToken) {
+      return restAuthGet(axios, "zones/" + zoneToken);
   }
   /**
    * Update an existing zone.
@@ -2032,8 +2032,8 @@
    * @param zoneToken
    * @param request
    */
-  function updateZone(axios$$1, zoneToken, request) {
-      return restAuthPut(axios$$1, "zones/" + zoneToken, request);
+  function updateZone(axios, zoneToken, request) {
+      return restAuthPut(axios, "zones/" + zoneToken, request);
   }
   /**
    * List zones that match the given criteria.
@@ -2041,21 +2041,21 @@
    * @param criteria
    * @param format
    */
-  function listZones(axios$$1, criteria, format) {
+  function listZones(axios, criteria, format) {
       var query = randomSeedQuery();
       if (criteria) {
           query += addStringFilter(criteria.areaToken, "areaToken");
           query += createPagingQuery(criteria);
       }
-      return restAuthGet(axios$$1, "zones" + query);
+      return restAuthGet(axios, "zones" + query);
   }
   /**
    * Delete an existing zone.
    * @param axios
    * @param zoneToken
    */
-  function deleteZone(axios$$1, zoneToken) {
-      return restAuthDelete(axios$$1, "zones/" + zoneToken);
+  function deleteZone(axios, zoneToken) {
+      return restAuthDelete(axios, "zones/" + zoneToken);
   }
 
   var ZonesApi = /*#__PURE__*/Object.freeze({
@@ -2070,8 +2070,8 @@
    * Get a JWT. (Reqires basic authentication)
    * @param axios
    */
-  function getJwt(axios$$1) {
-      return restAuthGet(axios$$1, "jwt");
+  function getJwt(axios) {
+      return restAuthGet(axios, "jwt");
   }
 
   var JwtApi = /*#__PURE__*/Object.freeze({
@@ -2260,11 +2260,11 @@
       Jwt: JwtApi
   };
 
-  exports.Auth = Auth;
   exports.API = API;
+  exports.Auth = Auth;
   exports.AuthAPI = AuthAPI;
-  exports.createPagingQuery = createPagingQuery;
   exports.createDateRangeQuery = createDateRangeQuery;
+  exports.createPagingQuery = createPagingQuery;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
