@@ -40,13 +40,24 @@ export interface IDeviceAssignmentResponseFormat extends IResponseFormat {
     includeAsset?: boolean;
 }
 /**
- * Search criteria for device assignments.
+ * Simplified search criteria for device assignments.
  */
-export interface IDeviceAssignmentSearchCriteria extends ISearchCriteria {
+export interface IDeviceAssignmentSimpleCriteria extends ISearchCriteria {
     deviceToken?: string;
     customerToken?: string;
     areaToken?: string;
     assetToken?: string;
+}
+/**
+ * Search criteria for device assignments.
+ */
+export interface IDeviceAssignmentSearchCriteria extends ISearchCriteria {
+    status?: DeviceAssignmentStatus;
+    deviceId?: uuid;
+    deviceTypeIds?: uuid[];
+    customerIds?: uuid[];
+    areaIds?: uuid[];
+    assetIds?: uuid[];
 }
 /**
  * Search results for device assignments.

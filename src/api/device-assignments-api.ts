@@ -2,6 +2,7 @@ import { AxiosInstance, AxiosPromise } from "axios";
 import {
   IDeviceAssignmentCreateRequest,
   IDeviceAssignment,
+  IDeviceAssignmentSimpleCriteria,
   IDeviceAssignmentSearchCriteria,
   IDeviceAssignmentResponseFormat,
   IDeviceAssignmentBulkRequest,
@@ -104,7 +105,7 @@ export function updateDeviceAssignment(
  */
 export function listDeviceAssignments(
   axios: AxiosInstance,
-  criteria?: IDeviceAssignmentSearchCriteria,
+  criteria?: IDeviceAssignmentSimpleCriteria,
   format?: IDeviceAssignmentResponseFormat
 ): AxiosPromise<IDeviceAssignmentSearchResults> {
   let query = randomSeedQuery();
