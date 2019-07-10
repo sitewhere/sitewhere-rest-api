@@ -128,6 +128,31 @@ export function listDeviceAssignments(
 }
 
 /**
+ * Perform an advanced search on device assignments.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+export function searchDeviceAssignments(
+  axios: AxiosInstance,
+  criteria?: IDeviceAssignmentSearchCriteria,
+  format?: IDeviceAssignmentResponseFormat
+): AxiosPromise<IDeviceAssignmentSearchResults> {
+  let query = randomSeedQuery();
+  if (format) {
+    query += addFilter(format.includeDevice, "includeDevice");
+    query += addFilter(format.includeCustomer, "includeCustomer");
+    query += addFilter(format.includeArea, "includeArea");
+    query += addFilter(format.includeAsset, "includeAsset");
+  }
+  return restAuthPost<IDeviceAssignmentSearchResults>(
+    axios,
+    `assignments/search${query}`,
+    criteria
+  );
+}
+
+/**
  * Delete an existing device assignment.
  * @param axios
  * @param token
