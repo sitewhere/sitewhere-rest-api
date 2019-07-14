@@ -31,7 +31,7 @@ export interface IDeviceCreateRequest extends IPersistentEntityCreateRequest {
  */
 export interface IDevice extends IPersistentEntity {
   deviceTypeId: uuid;
-  deviceAssignmentId?: uuid;
+  activeDeviceAssignmentIds?: uuid[];
   parentDeviceId?: uuid;
   comments?: string;
   status?: string;
