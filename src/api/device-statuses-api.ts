@@ -1,20 +1,11 @@
 import { AxiosInstance, AxiosPromise } from "axios";
 import {
-  IDeviceStatusCreateRequest,
-  IDeviceStatus,
   IDeviceStatusSearchCriteria,
   IDeviceStatusResponseFormat,
   IDeviceStatusSearchResults
 } from "../model/device-statuses-model";
 import { createPagingQuery } from "../model/common-model";
-import {
-  restAuthGet,
-  restAuthPost,
-  restAuthPut,
-  restAuthDelete,
-  randomSeedQuery,
-  addStringFilter
-} from "../rest";
+import { restAuthGet, randomSeedQuery, addStringFilter } from "../rest";
 
 /**
  * List device statuses that match the given criteria.
