@@ -1,69 +1,12 @@
 import { AxiosInstance, AxiosPromise } from "axios";
 import {
-  IDeviceCommandCreateRequest,
-  IDeviceCommand,
   IDeviceCommandSearchCriteria,
   IDeviceCommandResponseFormat,
   IDeviceCommandSearchResults,
   IDeviceCommandNamespaceSearchResults
 } from "../model/device-commands-model";
 import { createPagingQuery } from "../model/common-model";
-import {
-  restAuthGet,
-  restAuthPost,
-  restAuthPut,
-  restAuthDelete,
-  randomSeedQuery,
-  addStringFilter
-} from "../rest";
-
-/**
- * Create a new device command.
- * @param axios
- * @param request
- */
-export function createDeviceCommand(
-  axios: AxiosInstance,
-  request: IDeviceCommandCreateRequest
-): AxiosPromise<IDeviceCommand> {
-  return restAuthPost<IDeviceCommand>(axios, "commands", request);
-}
-
-/**
- * Get a device command by unique token.
- * @param axios
- * @param commandToken
- * @param format
- */
-export function getDeviceCommand(
-  axios: AxiosInstance,
-  commandToken: string,
-  format: IDeviceCommandResponseFormat
-): AxiosPromise<IDeviceCommand> {
-  let query = randomSeedQuery();
-  if (format) {
-    // No format options available.
-  }
-  return restAuthGet<IDeviceCommand>(axios, `commands/${commandToken}${query}`);
-}
-
-/**
- * Update an existing device command.
- * @param axios
- * @param commandToken
- * @param request
- */
-export function updateDeviceCommand(
-  axios: AxiosInstance,
-  commandToken: string,
-  request: IDeviceCommandCreateRequest
-): AxiosPromise<IDeviceCommand> {
-  return restAuthPut<IDeviceCommand>(
-    axios,
-    `commands/${commandToken}`,
-    request
-  );
-}
+import { restAuthGet, randomSeedQuery, addStringFilter } from "../rest";
 
 /**
  * List device commands that match the given criteria.
@@ -111,16 +54,4 @@ export function listDeviceCommandsForNamespace(
     axios,
     `commands/namespaces${query}`
   );
-}
-
-/**
- * Delete an existing device command.
- * @param axios
- * @param commandToken
- */
-export function deleteDeviceCommand(
-  axios: AxiosInstance,
-  commandToken: string
-): AxiosPromise<IDeviceCommand> {
-  return restAuthDelete<IDeviceCommand>(axios, `commands/${commandToken}`);
 }

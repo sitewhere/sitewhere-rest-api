@@ -220,7 +220,7 @@ export interface IDeviceCommandInvocation extends IDeviceEvent {
   initiatorId: string;
   target: CommandTarget;
   targetId: string;
-  commandToken: string;
+  deviceCommandId: uuid;
   parameterValues: {};
 }
 

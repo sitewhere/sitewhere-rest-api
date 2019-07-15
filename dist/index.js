@@ -1126,33 +1126,6 @@
   });
 
   /**
-   * Create a new device command.
-   * @param axios
-   * @param request
-   */
-  function createDeviceCommand(axios, request) {
-      return restAuthPost(axios, "commands", request);
-  }
-  /**
-   * Get a device command by unique token.
-   * @param axios
-   * @param commandToken
-   * @param format
-   */
-  function getDeviceCommand(axios, commandToken, format) {
-      var query = randomSeedQuery();
-      return restAuthGet(axios, "commands/" + commandToken + query);
-  }
-  /**
-   * Update an existing device command.
-   * @param axios
-   * @param commandToken
-   * @param request
-   */
-  function updateDeviceCommand(axios, commandToken, request) {
-      return restAuthPut(axios, "commands/" + commandToken, request);
-  }
-  /**
    * List device commands that match the given criteria.
    * @param axios
    * @param criteria
@@ -1181,22 +1154,10 @@
       }
       return restAuthGet(axios, "commands/namespaces" + query);
   }
-  /**
-   * Delete an existing device command.
-   * @param axios
-   * @param commandToken
-   */
-  function deleteDeviceCommand(axios, commandToken) {
-      return restAuthDelete(axios, "commands/" + commandToken);
-  }
 
   var DeviceCommandsApi = /*#__PURE__*/Object.freeze({
-    createDeviceCommand: createDeviceCommand,
-    getDeviceCommand: getDeviceCommand,
-    updateDeviceCommand: updateDeviceCommand,
     listDeviceCommands: listDeviceCommands,
-    listDeviceCommandsForNamespace: listDeviceCommandsForNamespace,
-    deleteDeviceCommand: deleteDeviceCommand
+    listDeviceCommandsForNamespace: listDeviceCommandsForNamespace
   });
 
   /**
@@ -1320,33 +1281,6 @@
   });
 
   /**
-   * Create a new device status.
-   * @param axios
-   * @param request
-   */
-  function createDeviceStatus(axios, request) {
-      return restAuthPost(axios, "statuses", request);
-  }
-  /**
-   * Get a device status by unique token.
-   * @param axios
-   * @param token
-   * @param format
-   */
-  function getDeviceStatus(axios, token, format) {
-      var query = randomSeedQuery();
-      return restAuthGet(axios, "statuses/" + token + query);
-  }
-  /**
-   * Update an existing device status.
-   * @param axios
-   * @param token
-   * @param request
-   */
-  function updateDeviceStatus(axios, token, request) {
-      return restAuthPut(axios, "statuses/" + token, request);
-  }
-  /**
    * List device statuses that match the given criteria.
    * @param axios
    * @param criteria
@@ -1360,21 +1294,9 @@
       }
       return restAuthGet(axios, "statuses" + query);
   }
-  /**
-   * Delete an existing device status.
-   * @param axios
-   * @param token
-   */
-  function deleteDeviceStatus(axios, token) {
-      return restAuthDelete(axios, "statuses/" + token);
-  }
 
   var DeviceStatusesApi = /*#__PURE__*/Object.freeze({
-    createDeviceStatus: createDeviceStatus,
-    getDeviceStatus: getDeviceStatus,
-    updateDeviceStatus: updateDeviceStatus,
-    listDeviceStatuses: listDeviceStatuses,
-    deleteDeviceStatus: deleteDeviceStatus
+    listDeviceStatuses: listDeviceStatuses
   });
 
   /**
@@ -1427,13 +1349,99 @@
   function deleteDeviceType(axios, deviceTypeToken) {
       return restAuthDelete(axios, "devicetypes/" + deviceTypeToken);
   }
+  /**
+   * Create a new device command.
+   * @param axios
+   * @param deviceTypeToken
+   * @param request
+   */
+  function createDeviceCommand(axios, deviceTypeToken, request) {
+      return restAuthPost(axios, "devicetypes/" + deviceTypeToken + "/commands", request);
+  }
+  /**
+   * Get a device command by unique token.
+   * @param axios
+   * @param deviceTypeToken
+   * @param commandToken
+   * @param format
+   */
+  function getDeviceCommand(axios, deviceTypeToken, commandToken, format) {
+      var query = randomSeedQuery();
+      return restAuthGet(axios, "devicetypes/" + deviceTypeToken + "/commands/" + commandToken + query);
+  }
+  /**
+   * Update an existing device command.
+   * @param axios
+   * @param deviceTypeToken
+   * @param commandToken
+   * @param request
+   */
+  function updateDeviceCommand(axios, deviceTypeToken, commandToken, request) {
+      return restAuthPut(axios, "devicetypes/" + deviceTypeToken + "/commands/" + commandToken, request);
+  }
+  /**
+   * Delete an existing device command.
+   * @param axios
+   * @param deviceTypeToken
+   * @param commandToken
+   */
+  function deleteDeviceCommand(axios, deviceTypeToken, commandToken) {
+      return restAuthDelete(axios, "devicetypes/" + deviceTypeToken + "/commands/" + commandToken);
+  }
+  /**
+   * Create a new device status.
+   * @param axios
+   * @param deviceTypeToken
+   * @param request
+   */
+  function createDeviceStatus(axios, deviceTypeToken, request) {
+      return restAuthPost(axios, "devicetypes/" + deviceTypeToken + "/statuses", request);
+  }
+  /**
+   * Get a device status by unique token.
+   * @param axios
+   * @param deviceTypeToken
+   * @param statusToken
+   * @param format
+   */
+  function getDeviceStatus(axios, deviceTypeToken, statusToken, format) {
+      var query = randomSeedQuery();
+      return restAuthGet(axios, "devicetypes/" + deviceTypeToken + "/statuses/" + statusToken + query);
+  }
+  /**
+   * Update an existing device status.
+   * @param axios
+   * @param deviceTypeToken
+   * @param statusToken
+   * @param request
+   */
+  function updateDeviceStatus(axios, deviceTypeToken, statusToken, request) {
+      return restAuthPut(axios, "devicetypes/" + deviceTypeToken + "/statuses/" + statusToken, request);
+  }
+  /**
+   * Delete an existing device status.
+   * @param axios
+   * @param deviceTypeToken
+   * @param statusToken
+   */
+  function deleteDeviceStatus(axios, deviceTypeToken, statusToken) {
+      return restAuthDelete(axios, "devicetypes/" + deviceTypeToken + "/statuses/" + statusToken);
+  }
 
   var DeviceTypesApi = /*#__PURE__*/Object.freeze({
     createDeviceType: createDeviceType,
     getDeviceType: getDeviceType,
     updateDeviceType: updateDeviceType,
     listDeviceTypes: listDeviceTypes,
-    deleteDeviceType: deleteDeviceType
+    deleteDeviceType: deleteDeviceType,
+    createDeviceCommand: createDeviceCommand,
+    getDeviceCommand: getDeviceCommand,
+    updateDeviceCommand: updateDeviceCommand,
+    deleteDeviceCommand: deleteDeviceCommand,
+    createDeviceStatus: createDeviceStatus,
+    getDeviceStatus: getDeviceStatus,
+    updateDeviceStatus: updateDeviceStatus,
+    deleteDeviceStatus: deleteDeviceStatus
   });
 
   /**
