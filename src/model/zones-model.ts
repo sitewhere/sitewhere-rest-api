@@ -14,10 +14,12 @@ import {
  */
 export interface IZoneCreateRequest
   extends IPersistentEntityCreateRequest,
-    IColorProvider,
     IBoundsProvider {
   areaToken: string;
   name: string;
+  borderColor: string;
+  fillColor: string;
+  opacity: number;
 }
 
 /**
@@ -40,10 +42,10 @@ export interface IZoneSearchResults extends ISearchResults<IZone> {}
 /**
  * Zone information.
  */
-export interface IZone
-  extends IPersistentEntity,
-    IColorProvider,
-    IBoundsProvider {
+export interface IZone extends IPersistentEntity, IBoundsProvider {
   areaId: uuid;
   name: string;
+  borderColor: string;
+  fillColor: string;
+  opacity: number;
 }

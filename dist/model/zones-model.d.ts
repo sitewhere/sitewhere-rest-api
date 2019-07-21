@@ -1,10 +1,13 @@
-import { uuid, IPersistentEntityCreateRequest, IPersistentEntity, IBoundsProvider, IColorProvider, ISearchCriteria, ISearchResults, IResponseFormat } from "./common-model";
+import { uuid, IPersistentEntityCreateRequest, IPersistentEntity, IBoundsProvider, ISearchCriteria, ISearchResults, IResponseFormat } from "./common-model";
 /**
  * Used to create or update a zone.
  */
-export interface IZoneCreateRequest extends IPersistentEntityCreateRequest, IColorProvider, IBoundsProvider {
+export interface IZoneCreateRequest extends IPersistentEntityCreateRequest, IBoundsProvider {
     areaToken: string;
     name: string;
+    borderColor: string;
+    fillColor: string;
+    opacity: number;
 }
 /**
  * Response format for zone records.
@@ -25,7 +28,10 @@ export interface IZoneSearchResults extends ISearchResults<IZone> {
 /**
  * Zone information.
  */
-export interface IZone extends IPersistentEntity, IColorProvider, IBoundsProvider {
+export interface IZone extends IPersistentEntity, IBoundsProvider {
     areaId: uuid;
     name: string;
+    borderColor: string;
+    fillColor: string;
+    opacity: number;
 }
