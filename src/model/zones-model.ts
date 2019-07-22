@@ -3,7 +3,6 @@ import {
   IPersistentEntityCreateRequest,
   IPersistentEntity,
   IBoundsProvider,
-  IColorProvider,
   ISearchCriteria,
   ISearchResults,
   IResponseFormat
