@@ -17,8 +17,9 @@ export interface IZoneCreateRequest
   areaToken: string;
   name: string;
   borderColor: string;
+  borderOpacity: number;
   fillColor: string;
-  opacity: number;
+  fillOpacity: number;
 }
 
 /**
@@ -45,6 +46,7 @@ export interface IZone extends IPersistentEntity, IBoundsProvider {
   areaId: uuid;
   name: string;
   borderColor: string;
+  borderOpacity: number;
   fillColor: string;
-  opacity: number;
+  fillOpacity: number;
 }

@@ -6,8 +6,9 @@ export interface IZoneCreateRequest extends IPersistentEntityCreateRequest, IBou
     areaToken: string;
     name: string;
     borderColor: string;
+    borderOpacity: number;
     fillColor: string;
-    opacity: number;
+    fillOpacity: number;
 }
 /**
  * Response format for zone records.
@@ -32,6 +33,7 @@ export interface IZone extends IPersistentEntity, IBoundsProvider {
     areaId: uuid;
     name: string;
     borderColor: string;
+    borderOpacity: number;
     fillColor: string;
-    opacity: number;
+    fillOpacity: number;
 }
