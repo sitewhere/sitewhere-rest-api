@@ -5,7 +5,8 @@ import {
   IBatchOperationResponseFormat,
   IBatchOperationElementResponseFormat,
   IBatchCommandInvocationRequest,
-  IBatchCommandForCriteriaRequest,
+  IInvocationByDeviceCriteriaRequest,
+  IInvocationByAssignmentCriteriaRequest,
   IBatchOperationSearchResults,
   IBatchElementSearchResults
 } from "../model/batch-operations-model";
@@ -80,17 +81,33 @@ export function createBatchCommandInvocation(
 }
 
 /**
- * Create batch command invocation based on devices that match criteria.
+ * Create batch command invocations based on devices that match criteria.
  * @param axios
  * @param request
  */
-export function createBatchCommandForCriteria(
+export function createInvocationsByDeviceCriteria(
   axios: AxiosInstance,
-  request: IBatchCommandForCriteriaRequest
+  request: IInvocationByDeviceCriteriaRequest
 ): AxiosPromise<IBatchOperation> {
   return restAuthPost<IBatchOperation>(
     axios,
-    "batch/command/criteria",
+    "batch/command/criteria/device",
+    request
+  );
+}
+
+/**
+ * Create batch command invocations based on device assignments that match criteria.
+ * @param axios
+ * @param request
+ */
+export function createInvocationsByAssignmentCriteria(
+  axios: AxiosInstance,
+  request: IInvocationByAssignmentCriteriaRequest
+): AxiosPromise<IBatchOperation> {
+  return restAuthPost<IBatchOperation>(
+    axios,
+    "batch/command/criteria/assignment",
     request
   );
 }

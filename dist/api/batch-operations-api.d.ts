@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IBatchOperation, IBatchOperationSearchCriteria, IBatchOperationResponseFormat, IBatchOperationElementResponseFormat, IBatchCommandInvocationRequest, IBatchCommandForCriteriaRequest, IBatchOperationSearchResults, IBatchElementSearchResults } from "../model/batch-operations-model";
+import { IBatchOperation, IBatchOperationSearchCriteria, IBatchOperationResponseFormat, IBatchOperationElementResponseFormat, IBatchCommandInvocationRequest, IInvocationByDeviceCriteriaRequest, IInvocationByAssignmentCriteriaRequest, IBatchOperationSearchResults, IBatchElementSearchResults } from "../model/batch-operations-model";
 import { ISearchCriteria } from "../model/common-model";
 /**
  * Get an batch operation by unique token.
@@ -25,8 +25,14 @@ export declare function listBatchOperationElements(axios: AxiosInstance, token: 
  */
 export declare function createBatchCommandInvocation(axios: AxiosInstance, request: IBatchCommandInvocationRequest): AxiosPromise<IBatchOperation>;
 /**
- * Create batch command invocation based on devices that match criteria.
+ * Create batch command invocations based on devices that match criteria.
  * @param axios
  * @param request
  */
-export declare function createBatchCommandForCriteria(axios: AxiosInstance, request: IBatchCommandForCriteriaRequest): AxiosPromise<IBatchOperation>;
+export declare function createInvocationsByDeviceCriteria(axios: AxiosInstance, request: IInvocationByDeviceCriteriaRequest): AxiosPromise<IBatchOperation>;
+/**
+ * Create batch command invocations based on device assignments that match criteria.
+ * @param axios
+ * @param request
+ */
+export declare function createInvocationsByAssignmentCriteria(axios: AxiosInstance, request: IInvocationByAssignmentCriteriaRequest): AxiosPromise<IBatchOperation>;

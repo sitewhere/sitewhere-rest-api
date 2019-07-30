@@ -519,12 +519,20 @@
       return restAuthPost(axios, "batch/command", request);
   }
   /**
-   * Create batch command invocation based on devices that match criteria.
+   * Create batch command invocations based on devices that match criteria.
    * @param axios
    * @param request
    */
-  function createBatchCommandForCriteria(axios, request) {
-      return restAuthPost(axios, "batch/command/criteria", request);
+  function createInvocationsByDeviceCriteria(axios, request) {
+      return restAuthPost(axios, "batch/command/criteria/device", request);
+  }
+  /**
+   * Create batch command invocations based on device assignments that match criteria.
+   * @param axios
+   * @param request
+   */
+  function createInvocationsByAssignmentCriteria(axios, request) {
+      return restAuthPost(axios, "batch/command/criteria/assignment", request);
   }
 
   var BatchOperationsApi = /*#__PURE__*/Object.freeze({
@@ -532,7 +540,8 @@
     listBatchOperations: listBatchOperations,
     listBatchOperationElements: listBatchOperationElements,
     createBatchCommandInvocation: createBatchCommandInvocation,
-    createBatchCommandForCriteria: createBatchCommandForCriteria
+    createInvocationsByDeviceCriteria: createInvocationsByDeviceCriteria,
+    createInvocationsByAssignmentCriteria: createInvocationsByAssignmentCriteria
   });
 
   /**

@@ -99,23 +99,31 @@ export interface IBatchElementSearchResults
  */
 export interface IBatchCommandInvocationRequest {
   token?: string;
+  deviceTypeToken?: string;
   commandToken: string;
   parameterValues: {};
   deviceTokens: string[];
 }
 
 /**
- * Used to create a batch command request for the given criteria.
+ * Used to create batch command invocations for the given device criteria.
  */
-export interface IBatchCommandForCriteriaRequest {
+export interface IInvocationByDeviceCriteriaRequest {
   token?: string;
+  deviceTypeToken?: string;
   commandToken: string;
   parameterValues: {};
-  deviceTokens: string[];
+}
+
+/**
+ * Used to create batch command invocations for the given device assignment criteria.
+ */
+export interface IInvocationByAssignmentCriteriaRequest {
+  token?: string;
   deviceTypeToken?: string;
-  groupToken?: string;
-  groupsWithRole?: string;
-  areaToken?: string;
-  startDate: Date;
-  endDate: Date;
+  commandToken: string;
+  parameterValues: {};
+  customerTokens: string[];
+  areaTokens: string[];
+  assetTokens: string[];
 }
