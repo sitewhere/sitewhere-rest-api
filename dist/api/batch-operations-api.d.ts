@@ -5,8 +5,9 @@ import { ISearchCriteria } from "../model/common-model";
  * Get an batch operation by unique token.
  * @param axios
  * @param token
+ * @param format
  */
-export declare function getBatchOperation(axios: AxiosInstance, token: string): AxiosPromise<IBatchOperation>;
+export declare function getBatchOperation(axios: AxiosInstance, token: string, format: IBatchOperationResponseFormat): AxiosPromise<IBatchOperation>;
 /**
  * List batch operations that match the given criteria.
  * @param axios

@@ -17,11 +17,16 @@ import { restAuthGet, restAuthPost, randomSeedQuery, addFilter } from "../rest";
  * Get an batch operation by unique token.
  * @param axios
  * @param token
+ * @param format
  */
 export function getBatchOperation(
   axios: AxiosInstance,
-  token: string
+  token: string,
+  format: IBatchOperationResponseFormat
 ): AxiosPromise<IBatchOperation> {
+  if (format) {
+    // No response format options available.
+  }
   return restAuthGet<IBatchOperation>(axios, `batch/${token}`);
 }
 

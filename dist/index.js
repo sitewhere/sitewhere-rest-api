@@ -480,8 +480,9 @@
    * Get an batch operation by unique token.
    * @param axios
    * @param token
+   * @param format
    */
-  function getBatchOperation(axios, token) {
+  function getBatchOperation(axios, token, format) {
       return restAuthGet(axios, "batch/" + token);
   }
   /**
