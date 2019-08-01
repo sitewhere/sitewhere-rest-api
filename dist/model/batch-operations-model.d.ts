@@ -54,12 +54,6 @@ export declare enum ElementProcessingStatus {
     Succeeded = "Succeeded"
 }
 /**
- * Response format for batch operation element records.
- */
-export interface IBatchOperationElementResponseFormat extends IResponseFormat {
-    includeDevice?: boolean;
-}
-/**
  * Element that tracks processing for a batch operation.
  */
 export interface IBatchElement extends IMetadataProvider {
@@ -68,6 +62,17 @@ export interface IBatchElement extends IMetadataProvider {
     deviceId: uuid;
     processingStatus: ElementProcessingStatus;
     processedDate: Date;
+}
+/**
+ * Response format for batch operation element records.
+ */
+export interface IBatchElementResponseFormat extends IResponseFormat {
+    includeDevice?: boolean;
+}
+/**
+ * Search criteria for batch operations.
+ */
+export interface IBatchElementSearchCriteria extends ISearchCriteria {
 }
 /**
  * Search results that contain batch elements.

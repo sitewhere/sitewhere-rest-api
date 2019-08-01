@@ -3,11 +3,12 @@ import {
   IBatchOperation,
   IBatchOperationSearchCriteria,
   IBatchOperationResponseFormat,
-  IBatchOperationElementResponseFormat,
   IBatchCommandInvocationRequest,
   IInvocationByDeviceCriteriaRequest,
   IInvocationByAssignmentCriteriaRequest,
   IBatchOperationSearchResults,
+  IBatchElementSearchCriteria,
+  IBatchElementResponseFormat,
   IBatchElementSearchResults
 } from "../model/batch-operations-model";
 import { createPagingQuery, ISearchCriteria } from "../model/common-model";
@@ -57,8 +58,8 @@ export function listBatchOperations(
 export function listBatchOperationElements(
   axios: AxiosInstance,
   token: string,
-  criteria?: ISearchCriteria,
-  format?: IBatchOperationElementResponseFormat
+  criteria?: IBatchElementSearchCriteria,
+  format?: IBatchElementResponseFormat
 ): AxiosPromise<IBatchElementSearchResults> {
   let query = randomSeedQuery();
   if (format) {
