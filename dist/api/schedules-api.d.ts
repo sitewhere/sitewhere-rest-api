@@ -11,7 +11,7 @@ export declare function createSchedule(axios: AxiosInstance, request: IScheduleC
  * @param axios
  * @param token
  */
-export declare function getSchedule(axios: AxiosInstance, token: string): AxiosPromise<ISchedule>;
+export declare function getSchedule(axios: AxiosInstance, token: string, format: IScheduleResponseFormat): AxiosPromise<ISchedule>;
 /**
  * Update an existing schedule.
  * @param axios

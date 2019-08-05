@@ -1638,8 +1638,9 @@
    * @param axios
    * @param token
    */
-  function getSchedule(axios, token) {
-      return restAuthGet(axios, "schedules/" + token);
+  function getSchedule(axios, token, format) {
+      var query = randomSeedQuery();
+      return restAuthGet(axios, "schedules/" + token + query);
   }
   /**
    * Update an existing schedule.

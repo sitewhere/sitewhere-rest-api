@@ -34,9 +34,14 @@ export function createSchedule(
  */
 export function getSchedule(
   axios: AxiosInstance,
-  token: string
+  token: string,
+  format: IScheduleResponseFormat
 ): AxiosPromise<ISchedule> {
-  return restAuthGet<ISchedule>(axios, `schedules/${token}`);
+  let query = randomSeedQuery();
+  if (format) {
+    // No format options.
+  }
+  return restAuthGet<ISchedule>(axios, `schedules/${token}${query}`);
 }
 
 /**
