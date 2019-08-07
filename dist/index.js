@@ -1220,11 +1220,12 @@
       return restAuthDelete(axios, "devicegroups/" + token);
   }
   /**
-   * Create a device group element.
+   * Add one or more elements to a device group.
    * @param axios
+   * @param token
    * @param request
    */
-  function createDeviceGroupElement(axios, token, request) {
+  function createDeviceGroupElements(axios, token, request) {
       return restAuthPost(axios, "devicegroups/" + token + "/elements", request);
   }
   /**
@@ -1261,7 +1262,7 @@
     updateDeviceGroup: updateDeviceGroup,
     listDeviceGroups: listDeviceGroups,
     deleteDeviceGroup: deleteDeviceGroup,
-    createDeviceGroupElement: createDeviceGroupElement,
+    createDeviceGroupElements: createDeviceGroupElements,
     listDeviceGroupElements: listDeviceGroupElements,
     deleteDeviceGroupElement: deleteDeviceGroupElement
   });

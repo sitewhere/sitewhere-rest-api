@@ -101,14 +101,15 @@ export function deleteDeviceGroup(
 }
 
 /**
- * Create a device group element.
+ * Add one or more elements to a device group.
  * @param axios
+ * @param token
  * @param request
  */
-export function createDeviceGroupElement(
+export function createDeviceGroupElements(
   axios: AxiosInstance,
   token: string,
-  request: IDeviceGroupElementCreateRequest
+  request: IDeviceGroupElementCreateRequest[]
 ): AxiosPromise<IDeviceGroupElement> {
   return restAuthPost<IDeviceGroupElement>(
     axios,

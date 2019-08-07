@@ -34,11 +34,12 @@ export declare function listDeviceGroups(axios: AxiosInstance, criteria?: IDevic
  */
 export declare function deleteDeviceGroup(axios: AxiosInstance, token: string): AxiosPromise<IDeviceGroup>;
 /**
- * Create a device group element.
+ * Add one or more elements to a device group.
  * @param axios
+ * @param token
  * @param request
  */
-export declare function createDeviceGroupElement(axios: AxiosInstance, token: string, request: IDeviceGroupElementCreateRequest): AxiosPromise<IDeviceGroupElement>;
+export declare function createDeviceGroupElements(axios: AxiosInstance, token: string, request: IDeviceGroupElementCreateRequest[]): AxiosPromise<IDeviceGroupElement>;
 /**
  * List device group elements that match the given criteria.
  * @param axios
