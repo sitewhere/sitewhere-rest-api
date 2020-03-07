@@ -1,16 +1,23 @@
 import {
-  IBrandedEntityCreateRequest,
-  IBrandedEntity,
   ISearchCriteria,
   ISearchResults,
   IResponseFormat,
-  IAccessible
+  IAccessible,
+  IColorProvider,
+  IIconProvider,
+  IImageProvider,
+  IMetadataProvider
 } from "./common-model";
 
 /**
  * Used to create or update a tenant.
  */
-export interface ITenantCreateRequest extends IBrandedEntityCreateRequest {
+export interface ITenantCreateRequest
+  extends IColorProvider,
+    IIconProvider,
+    IImageProvider,
+    IMetadataProvider {
+  token: string;
   name: string;
   authenticationToken: string;
   authorizedUserIds: string[];
@@ -21,7 +28,12 @@ export interface ITenantCreateRequest extends IBrandedEntityCreateRequest {
 /**
  * Tenant information.
  */
-export interface ITenant extends IBrandedEntity {
+export interface ITenant
+  extends IColorProvider,
+    IIconProvider,
+    IImageProvider,
+    IMetadataProvider {
+  token: string;
   name: string;
   authenticationToken: string;
   authorizedUserIds: string[];
@@ -52,19 +64,9 @@ export interface ITenantTemplate extends IAccessible {
 }
 
 /**
- * Initializers used in dataset templates.
- */
-export interface IDatasetIntitializers {
-  deviceManagement: string[];
-  assetManagement: string[];
-  scheduleManagement: string[];
-}
-
-/**
  * Dataset template information.
  */
 export interface IDatasetTemplate {
   id: string;
   name: string;
-  initializers: IDatasetIntitializers;
 }

@@ -1,57 +1,25 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IConfigurationModel, IElementContent } from "../model/configuration-model";
-import { IInstanceTopologySummary, ITenantEngineState } from "../model/instance-model";
+import { IMicroserviceSummary, ITenantEngineConfiguration, IInstanceConfiguration } from "../model/instance-model";
 /**
- * Get instance topology including both global and multitenant microservices.
+ * Get the currently effective instance configuration.
  * @param axios
  */
-export declare function getTopology(axios: AxiosInstance): AxiosPromise<IInstanceTopologySummary[]>;
+export declare function getInstanceConfiguration(axios: AxiosInstance): AxiosPromise<IInstanceConfiguration>;
 /**
- * Get elements in the instance topology that are global in scope.
+ * Update global instance configuration.
+ * @param axios
+ * @param request
+ */
+export declare function updateInstanceConfiguration(axios: AxiosInstance, request: IInstanceConfiguration): AxiosPromise<IInstanceConfiguration>;
+/**
+ * Get a list of all microservices registered for instance.
  * @param axios
  */
-export declare function getGlobalTopology(axios: AxiosInstance): AxiosPromise<IInstanceTopologySummary[]>;
+export declare function getInstanceMicroservices(axios: AxiosInstance): AxiosPromise<IMicroserviceSummary[]>;
 /**
- * Get elements in the instance topology that are multitenant in scope.
+ * Get configuration information for a tenant engine.
  * @param axios
+ * @param functionalArea
+ * @param tenant
  */
-export declare function getTenantTopology(axios: AxiosInstance): AxiosPromise<IInstanceTopologySummary[]>;
-/**
- * Get summary of runtime state for a tenant.
- * @param axios
- * @param identifier
- * @param tenantToken
- */
-export declare function getTenantRuntimeState(axios: AxiosInstance, identifier: string, tenantToken: string): AxiosPromise<ITenantEngineState[]>;
-/**
- * Get configuration model for a given microservice identifier.
- * @param axios
- * @param identifier
- */
-export declare function getConfigurationModel(axios: AxiosInstance, identifier: string): AxiosPromise<IConfigurationModel>;
-/**
- * Get configuration for global microservice based on identifier.
- * @param axios
- * @param identifier
- */
-export declare function getGlobalConfiguration(axios: AxiosInstance, identifier: string): AxiosPromise<IElementContent>;
-/**
- * Update configuration for global microservice based on identifier.
- * @param axios
- * @param identifier
- * @param config
- */
-export declare function updateGlobalConfiguration(axios: AxiosInstance, identifier: string, config: IElementContent): AxiosPromise<void>;
-/**
- * Get configuration for tenant microservice based on identifier.
- * @param axios
- * @param identifier
- */
-export declare function getTenantConfiguration(axios: AxiosInstance, identifier: string, tenantToken: string): AxiosPromise<IElementContent>;
-/**
- * Update configuration for tenant microservice based on identifier.
- * @param axios
- * @param identifier
- * @param config
- */
-export declare function updateTenantConfiguration(axios: AxiosInstance, identifier: string, tenantToken: string, config: IElementContent): AxiosPromise<void>;
+export declare function getTenantEngineConfiguration(axios: AxiosInstance, functionalArea: string, tenant: string): AxiosPromise<ITenantEngineConfiguration>;

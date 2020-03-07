@@ -1542,88 +1542,42 @@
   });
 
   /**
-   * Get instance topology including both global and multitenant microservices.
+   * Get the currently effective instance configuration.
    * @param axios
    */
-  function getTopology(axios) {
-      return restAuthGet(axios, "instance/topology");
+  function getInstanceConfiguration(axios) {
+      return restAuthGet(axios, "instance/configuration");
   }
   /**
-   * Get elements in the instance topology that are global in scope.
+   * Update global instance configuration.
    * @param axios
+   * @param request
    */
-  function getGlobalTopology(axios) {
-      return restAuthGet(axios, "instance/topology/global");
+  function updateInstanceConfiguration(axios, request) {
+      return restAuthPut(axios, "instance/configuration", request);
   }
   /**
-   * Get elements in the instance topology that are multitenant in scope.
+   * Get a list of all microservices registered for instance.
    * @param axios
    */
-  function getTenantTopology(axios) {
-      return restAuthGet(axios, "instance/topology/tenant");
+  function getInstanceMicroservices(axios) {
+      return restAuthGet(axios, "instance/microservices");
   }
   /**
-   * Get summary of runtime state for a tenant.
+   * Get configuration information for a tenant engine.
    * @param axios
-   * @param identifier
-   * @param tenantToken
+   * @param functionalArea
+   * @param tenant
    */
-  function getTenantRuntimeState(axios, identifier, tenantToken) {
-      return restAuthGet(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/state");
-  }
-  /**
-   * Get configuration model for a given microservice identifier.
-   * @param axios
-   * @param identifier
-   */
-  function getConfigurationModel(axios, identifier) {
-      return restAuthGet(axios, "instance/microservice/" + identifier + "/configuration/model");
-  }
-  /**
-   * Get configuration for global microservice based on identifier.
-   * @param axios
-   * @param identifier
-   */
-  function getGlobalConfiguration(axios, identifier) {
-      return restAuthGet(axios, "instance/microservice/" + identifier + "/configuration");
-  }
-  /**
-   * Update configuration for global microservice based on identifier.
-   * @param axios
-   * @param identifier
-   * @param config
-   */
-  function updateGlobalConfiguration(axios, identifier, config) {
-      return restAuthPost(axios, "instance/microservice/" + identifier + "/configuration", config);
-  }
-  /**
-   * Get configuration for tenant microservice based on identifier.
-   * @param axios
-   * @param identifier
-   */
-  function getTenantConfiguration(axios, identifier, tenantToken) {
-      return restAuthGet(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/configuration");
-  }
-  /**
-   * Update configuration for tenant microservice based on identifier.
-   * @param axios
-   * @param identifier
-   * @param config
-   */
-  function updateTenantConfiguration(axios, identifier, tenantToken, config) {
-      return restAuthPost(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/configuration", config);
+  function getTenantEngineConfiguration(axios, functionalArea, tenant) {
+      return restAuthGet(axios, "instance/microservices/" + functionalArea + "/tenants/" + tenant + "/configuration");
   }
 
   var InstanceApi = /*#__PURE__*/Object.freeze({
-    getTopology: getTopology,
-    getGlobalTopology: getGlobalTopology,
-    getTenantTopology: getTenantTopology,
-    getTenantRuntimeState: getTenantRuntimeState,
-    getConfigurationModel: getConfigurationModel,
-    getGlobalConfiguration: getGlobalConfiguration,
-    updateGlobalConfiguration: updateGlobalConfiguration,
-    getTenantConfiguration: getTenantConfiguration,
-    updateTenantConfiguration: updateTenantConfiguration
+    getInstanceConfiguration: getInstanceConfiguration,
+    updateInstanceConfiguration: updateInstanceConfiguration,
+    getInstanceMicroservices: getInstanceMicroservices,
+    getTenantEngineConfiguration: getTenantEngineConfiguration
   });
 
   /**
@@ -2125,25 +2079,6 @@
       ElementProcessingStatus["Failed"] = "Failed";
       ElementProcessingStatus["Succeeded"] = "Succeeded";
   })(exports.ElementProcessingStatus || (exports.ElementProcessingStatus = {}));
-
-  /**
-   * Enumeration of node types.
-   */
-  (function (NodeType) {
-      NodeType["Element"] = "Element";
-      NodeType["Attribute"] = "Attribute";
-  })(exports.NodeType || (exports.NodeType = {}));
-  (function (AttributeType) {
-      AttributeType["String"] = "String";
-      AttributeType["Integer"] = "Integer";
-      AttributeType["Decimal"] = "Decimal";
-      AttributeType["Boolean"] = "Boolean";
-      AttributeType["Script"] = "Script";
-      AttributeType["DeviceTypeReference"] = "DeviceTypeReference";
-      AttributeType["CustomerReference"] = "CustomerReference";
-      AttributeType["AreaReference"] = "AreaReference";
-      AttributeType["AssetReference"] = "AssetReference";
-  })(exports.AttributeType || (exports.AttributeType = {}));
 
   /**
    * Enumeration of device assignment statuses.
