@@ -1572,12 +1572,23 @@
   function getTenantEngineConfiguration(axios, functionalArea, tenant) {
       return restAuthGet(axios, "instance/microservices/" + functionalArea + "/tenants/" + tenant + "/configuration");
   }
+  /**
+   * Update configuration information for a tenant engine.
+   * @param axios
+   * @param functionalArea
+   * @param tenant
+   * @param configuration
+   */
+  function updateTenantEngineConfiguration(axios, functionalArea, tenant, configuration) {
+      return restAuthPost(axios, "instance/microservices/" + functionalArea + "/tenants/" + tenant + "/configuration", configuration);
+  }
 
   var InstanceApi = /*#__PURE__*/Object.freeze({
     getInstanceConfiguration: getInstanceConfiguration,
     updateInstanceConfiguration: updateInstanceConfiguration,
     getInstanceMicroservices: getInstanceMicroservices,
-    getTenantEngineConfiguration: getTenantEngineConfiguration
+    getTenantEngineConfiguration: getTenantEngineConfiguration,
+    updateTenantEngineConfiguration: updateTenantEngineConfiguration
   });
 
   /**

@@ -4,7 +4,7 @@ import {
   ITenantEngineConfiguration,
   IInstanceConfiguration
 } from "../model/instance-model";
-import { restAuthGet, restAuthPut } from "../rest";
+import { restAuthGet, restAuthPut, restAuthPost } from "../rest";
 
 /**
  * Get the currently effective instance configuration.
@@ -56,5 +56,25 @@ export function getTenantEngineConfiguration(
   return restAuthGet<ITenantEngineConfiguration>(
     axios,
     `instance/microservices/${functionalArea}/tenants/${tenant}/configuration`
+  );
+}
+
+/**
+ * Update configuration information for a tenant engine.
+ * @param axios
+ * @param functionalArea
+ * @param tenant
+ * @param configuration
+ */
+export function updateTenantEngineConfiguration(
+  axios: AxiosInstance,
+  functionalArea: string,
+  tenant: string,
+  configuration: any
+): AxiosPromise<ITenantEngineConfiguration> {
+  return restAuthPost<ITenantEngineConfiguration>(
+    axios,
+    `instance/microservices/${functionalArea}/tenants/${tenant}/configuration`,
+    configuration
   );
 }

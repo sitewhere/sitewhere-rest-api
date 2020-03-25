@@ -23,3 +23,11 @@ export declare function getInstanceMicroservices(axios: AxiosInstance): AxiosPro
  * @param tenant
  */
 export declare function getTenantEngineConfiguration(axios: AxiosInstance, functionalArea: string, tenant: string): AxiosPromise<ITenantEngineConfiguration>;
+/**
+ * Update configuration information for a tenant engine.
+ * @param axios
+ * @param functionalArea
+ * @param tenant
+ * @param configuration
+ */
+export declare function updateTenantEngineConfiguration(axios: AxiosInstance, functionalArea: string, tenant: string, configuration: any): AxiosPromise<ITenantEngineConfiguration>;
