@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { ITenantCreateRequest, ITenant, ITenantSearchCriteria, ITenantResponseFormat, ITenantTemplate, IDatasetTemplate, ITenantSearchResults } from "../model/tenants-model";
+import { ITenantCreateRequest, ITenant, ITenantSearchCriteria, ITenantResponseFormat, ITenantConfigurationTemplate, ITenantDatasetTemplate, ITenantSearchResults } from "../model/tenants-model";
 /**
  * Create a new tenant.
  * @param axios
@@ -34,12 +34,12 @@ export declare function listTenants(axios: AxiosInstance, criteria?: ITenantSear
  */
 export declare function deleteTenant(axios: AxiosInstance, token: string): AxiosPromise<ITenant>;
 /**
- * List available tenant templates.
+ * List available tenant configuration templates.
  * @param axios
  */
-export declare function listTenantTemplates(axios: AxiosInstance): AxiosPromise<ITenantTemplate[]>;
+export declare function listTenantConfigurationTemplates(axios: AxiosInstance): AxiosPromise<ITenantConfigurationTemplate[]>;
 /**
- * List available dataset templates.
+ * List available tenant dataset templates.
  * @param axios
  */
-export declare function listDatasetTemplates(axios: AxiosInstance): AxiosPromise<IDatasetTemplate[]>;
+export declare function listTenantDatasetTemplates(axios: AxiosInstance): AxiosPromise<ITenantDatasetTemplate[]>;

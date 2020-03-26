@@ -1,4 +1,4 @@
-import { ISearchCriteria, ISearchResults, IResponseFormat, IAccessible, IColorProvider, IIconProvider, IImageProvider, IMetadataProvider } from "./common-model";
+import { ISearchCriteria, ISearchResults, IResponseFormat, IColorProvider, IIconProvider, IImageProvider, IMetadataProvider } from "./common-model";
 /**
  * Used to create or update a tenant.
  */
@@ -37,15 +37,18 @@ export interface ITenantSearchCriteria extends ISearchCriteria {
 export interface ITenantSearchResults extends ISearchResults<ITenant> {
 }
 /**
- * Tenant template information.
+ * Tenant configuration template information.
  */
-export interface ITenantTemplate extends IAccessible {
-    name: string;
-}
-/**
- * Dataset template information.
- */
-export interface IDatasetTemplate {
+export interface ITenantConfigurationTemplate {
     id: string;
     name: string;
+    description: string;
+}
+/**
+ * Tenant dataset template information.
+ */
+export interface ITenantDatasetTemplate {
+    id: string;
+    name: string;
+    description: string;
 }

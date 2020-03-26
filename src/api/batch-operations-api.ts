@@ -11,7 +11,7 @@ import {
   IBatchElementResponseFormat,
   IBatchElementSearchResults
 } from "../model/batch-operations-model";
-import { createPagingQuery, ISearchCriteria } from "../model/common-model";
+import { createPagingQuery } from "../model/common-model";
 import { restAuthGet, restAuthPost, randomSeedQuery, addFilter } from "../rest";
 
 /**

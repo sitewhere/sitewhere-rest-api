@@ -1897,18 +1897,18 @@
       return restAuthDelete(axios, "tenants/" + token);
   }
   /**
-   * List available tenant templates.
+   * List available tenant configuration templates.
    * @param axios
    */
-  function listTenantTemplates(axios) {
-      return restAuthGet(axios, "tenants/templates");
+  function listTenantConfigurationTemplates(axios) {
+      return restAuthGet(axios, "tenants/templates/configuration");
   }
   /**
-   * List available dataset templates.
+   * List available tenant dataset templates.
    * @param axios
    */
-  function listDatasetTemplates(axios) {
-      return restAuthGet(axios, "tenants/datasets");
+  function listTenantDatasetTemplates(axios) {
+      return restAuthGet(axios, "tenants/templates/dataset");
   }
 
   var TenantsApi = /*#__PURE__*/Object.freeze({
@@ -1917,8 +1917,8 @@
     updateTenant: updateTenant,
     listTenants: listTenants,
     deleteTenant: deleteTenant,
-    listTenantTemplates: listTenantTemplates,
-    listDatasetTemplates: listDatasetTemplates
+    listTenantConfigurationTemplates: listTenantConfigurationTemplates,
+    listTenantDatasetTemplates: listTenantDatasetTemplates
   });
 
   /**

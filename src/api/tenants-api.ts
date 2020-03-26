@@ -4,8 +4,8 @@ import {
   ITenant,
   ITenantSearchCriteria,
   ITenantResponseFormat,
-  ITenantTemplate,
-  IDatasetTemplate,
+  ITenantConfigurationTemplate,
+  ITenantDatasetTemplate,
   ITenantSearchResults
 } from "../model/tenants-model";
 import { createPagingQuery } from "../model/common-model";
@@ -95,21 +95,27 @@ export function deleteTenant(
 }
 
 /**
- * List available tenant templates.
+ * List available tenant configuration templates.
  * @param axios
  */
-export function listTenantTemplates(
+export function listTenantConfigurationTemplates(
   axios: AxiosInstance
-): AxiosPromise<ITenantTemplate[]> {
-  return restAuthGet<ITenantTemplate[]>(axios, `tenants/templates`);
+): AxiosPromise<ITenantConfigurationTemplate[]> {
+  return restAuthGet<ITenantConfigurationTemplate[]>(
+    axios,
+    `tenants/templates/configuration`
+  );
 }
 
 /**
- * List available dataset templates.
+ * List available tenant dataset templates.
  * @param axios
  */
-export function listDatasetTemplates(
+export function listTenantDatasetTemplates(
   axios: AxiosInstance
-): AxiosPromise<IDatasetTemplate[]> {
-  return restAuthGet<IDatasetTemplate[]>(axios, `tenants/datasets`);
+): AxiosPromise<ITenantDatasetTemplate[]> {
+  return restAuthGet<ITenantDatasetTemplate[]>(
+    axios,
+    `tenants/templates/dataset`
+  );
 }

@@ -2,7 +2,6 @@ import {
   ISearchCriteria,
   ISearchResults,
   IResponseFormat,
-  IAccessible,
   IColorProvider,
   IIconProvider,
   IImageProvider,
@@ -57,16 +56,19 @@ export interface ITenantSearchCriteria extends ISearchCriteria {}
 export interface ITenantSearchResults extends ISearchResults<ITenant> {}
 
 /**
- * Tenant template information.
+ * Tenant configuration template information.
  */
-export interface ITenantTemplate extends IAccessible {
+export interface ITenantConfigurationTemplate {
+  id: string;
   name: string;
+  description: string;
 }
 
 /**
- * Dataset template information.
+ * Tenant dataset template information.
  */
-export interface IDatasetTemplate {
+export interface ITenantDatasetTemplate {
   id: string;
   name: string;
+  description: string;
 }
