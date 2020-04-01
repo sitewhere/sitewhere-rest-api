@@ -1648,98 +1648,21 @@
   });
 
   /**
-   * List script templates for a microservice by identifier.
+   * List script categories for a functional area.
    * @param axios
    * @param identifier
    */
-  function listScriptTemplates(axios, identifier) {
-      return restAuthGet(axios, "instance/microservice/" + identifier + "/scripting/templates");
+  function listScriptCategories(axios, identifier) {
+      return restAuthGet(axios, "instance/microservices/" + identifier + "/scripting/categories");
   }
   /**
-   * Get content for a script template.
+   * List script templates for a functional area and in the given category.
    * @param axios
    * @param identifier
-   * @param templateId
+   * @param category
    */
-  function getScriptTemplateContent(axios, identifier, templateId) {
-      return restAuthGet(axios, "instance/microservice/" + identifier + "/scripting/templates/" + templateId);
-  }
-  /**
-   * List metadata for scripts associated with a global microservice.
-   * @param axios
-   * @param identifier
-   */
-  function listGlobalScriptMetadata(axios, identifier) {
-      return restAuthGet(axios, "instance/microservice/" + identifier + "/scripting/scripts");
-  }
-  /**
-   * Get metadata for a global script.
-   * @param axios
-   * @param identifier
-   * @param scriptId
-   */
-  function getGlobalScriptMetadata(axios, identifier, scriptId) {
-      return restAuthGet(axios, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId);
-  }
-  /**
-   * Create a global script.
-   * @param axios
-   * @param identifier
-   * @param request
-   */
-  function createGlobalScript(axios, identifier, request) {
-      return restAuthPost(axios, "instance/microservice/" + identifier + "/scripting/scripts", request);
-  }
-  /**
-   * Get content for a global script.
-   * @param axios
-   * @param identifier
-   * @param scriptId
-   * @param versionId
-   */
-  function getGlobalScriptContent(axios, identifier, scriptId, versionId) {
-      return restAuthGet(axios, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/content");
-  }
-  /**
-   * Update an existing global script.
-   * @param axios
-   * @param identifier
-   * @param scriptId
-   * @param versionId
-   * @param request
-   */
-  function updateGlobalScript(axios, identifier, scriptId, versionId, request) {
-      return restAuthPost(axios, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId, request);
-  }
-  /**
-   * Clone an existing global script.
-   * @param axios
-   * @param identifier
-   * @param scriptId
-   * @param versionId
-   * @param request
-   */
-  function cloneGlobalScript(axios, identifier, scriptId, versionId, request) {
-      return restAuthPost(axios, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/clone", request);
-  }
-  /**
-   * Activate a global script.
-   * @param axios
-   * @param identifier
-   * @param scriptId
-   * @param versionId
-   */
-  function activateGlobalScript(axios, identifier, scriptId, versionId) {
-      return restAuthPost(axios, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", null);
-  }
-  /**
-   * Delete a global script and its version history.
-   * @param axios
-   * @param identifier
-   * @param scriptId
-   */
-  function deleteGlobalScript(axios, identifier, scriptId) {
-      return restAuthDelete(axios, "instance/microservice/" + identifier + "/scripting/scripts/" + scriptId);
+  function listScriptTemplates(axios, identifier, category) {
+      return restAuthGet(axios, "instance/microservices/" + identifier + "/scripting/categories/" + category + "/templates");
   }
   /**
    * List metadata for microservice tenant scripts.
@@ -1747,8 +1670,8 @@
    * @param identifier
    * @param tenantToken
    */
-  function listTenantScriptMetadata(axios, identifier, tenantToken) {
-      return restAuthGet(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts");
+  function listTenantScripts(axios, identifier, tenantToken) {
+      return restAuthGet(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts");
   }
   /**
    * Get metadata for a given microservice tenant script.
@@ -1757,8 +1680,8 @@
    * @param tenantToken
    * @param scriptId
    */
-  function getTenantScriptMetadata(axios, identifier, tenantToken, scriptId) {
-      return restAuthGet(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId);
+  function getTenantScript(axios, identifier, tenantToken, scriptId) {
+      return restAuthGet(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId);
   }
   /**
    * Create a new script for a microservice tenant.
@@ -1768,7 +1691,7 @@
    * @param request
    */
   function createTenantScript(axios, identifier, tenantToken, request) {
-      return restAuthPost(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts", request);
+      return restAuthPost(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts", request);
   }
   /**
    * Get content associated with a microservice tenant script.
@@ -1779,7 +1702,7 @@
    * @param versionId
    */
   function getTenantScriptContent(axios, identifier, tenantToken, scriptId, versionId) {
-      return restAuthGet(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/content");
+      return restAuthGet(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/content");
   }
   /**
    * Update an existing microservice tenant script.
@@ -1791,7 +1714,7 @@
    * @param request
    */
   function updateTenantScript(axios, identifier, tenantToken, scriptId, versionId, request) {
-      return restAuthPost(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId, request);
+      return restAuthPost(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId, request);
   }
   /**
    * Clone an existing microservice tenant script.
@@ -1803,7 +1726,7 @@
    * @param request
    */
   function cloneTenantScript(axios, identifier, tenantToken, scriptId, versionId, request) {
-      return restAuthPost(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/clone", request);
+      return restAuthPost(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/clone", request);
   }
   /**
    * Activate a given version of a microservice tenant script.
@@ -1814,7 +1737,7 @@
    * @param versionId
    */
   function activateTenantScript(axios, identifier, tenantToken, scriptId, versionId) {
-      return restAuthPost(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", null);
+      return restAuthPost(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", null);
   }
   /**
    * Delete a microservice tenant script and its version history.
@@ -1824,22 +1747,14 @@
    * @param scriptId
    */
   function deleteTenantScript(axios, identifier, tenantToken, scriptId) {
-      return restAuthDelete(axios, "instance/microservice/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId);
+      return restAuthDelete(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId);
   }
 
   var ScriptingApi = /*#__PURE__*/Object.freeze({
+    listScriptCategories: listScriptCategories,
     listScriptTemplates: listScriptTemplates,
-    getScriptTemplateContent: getScriptTemplateContent,
-    listGlobalScriptMetadata: listGlobalScriptMetadata,
-    getGlobalScriptMetadata: getGlobalScriptMetadata,
-    createGlobalScript: createGlobalScript,
-    getGlobalScriptContent: getGlobalScriptContent,
-    updateGlobalScript: updateGlobalScript,
-    cloneGlobalScript: cloneGlobalScript,
-    activateGlobalScript: activateGlobalScript,
-    deleteGlobalScript: deleteGlobalScript,
-    listTenantScriptMetadata: listTenantScriptMetadata,
-    getTenantScriptMetadata: getTenantScriptMetadata,
+    listTenantScripts: listTenantScripts,
+    getTenantScript: getTenantScript,
     createTenantScript: createTenantScript,
     getTenantScriptContent: getTenantScriptContent,
     updateTenantScript: updateTenantScript,

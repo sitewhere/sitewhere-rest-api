@@ -1,11 +1,21 @@
-import { IAccessible } from "./common-model";
+/**
+ * Script category information.
+ */
+export interface IScriptCategory {
+  id: string;
+  name: string;
+  description: string;
+}
 
 /**
  * Script template information.
  */
-export interface IScriptTemplate extends IAccessible {
+export interface IScriptTemplate {
   id: string;
-  type: string;
+  name: string;
+  description: string;
+  interpreterType: string;
+  script: string;
 }
 
 /**
@@ -20,9 +30,11 @@ export interface IScriptVersion {
 /**
  * Metadata for a script.
  */
-export interface IScriptMetadata extends IAccessible {
+export interface IScriptMetadata {
   id: string;
-  type: string;
+  name: string;
+  category: string;
+  interpreterType: string;
   activeVersion: string;
   versions: IScriptVersion[];
 }
@@ -30,9 +42,12 @@ export interface IScriptMetadata extends IAccessible {
 /**
  * Information used to create a script.
  */
-export interface IScriptCreateRequest extends IAccessible {
+export interface IScriptCreateRequest {
   id: string;
-  type: string;
+  name: string;
+  category: string;
+  interpreterType: string;
+  description: string;
   content: string;
 }
 

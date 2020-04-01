@@ -9,184 +9,34 @@ import {
 } from "../model/scripting-model";
 
 /**
- * List script templates for a microservice by identifier.
+ * List script categories for a functional area.
  * @param axios
  * @param identifier
  */
-export function listScriptTemplates(
+export function listScriptCategories(
   axios: AxiosInstance,
   identifier: string
 ): AxiosPromise<IScriptTemplate[]> {
   return restAuthGet<IScriptTemplate[]>(
     axios,
-    `instance/microservice/${identifier}/scripting/templates`
+    `instance/microservices/${identifier}/scripting/categories`
   );
 }
 
 /**
- * Get content for a script template.
+ * List script templates for a functional area and in the given category.
  * @param axios
  * @param identifier
- * @param templateId
+ * @param category
  */
-export function getScriptTemplateContent(
+export function listScriptTemplates(
   axios: AxiosInstance,
   identifier: string,
-  templateId: string
-): AxiosPromise<string> {
-  return restAuthGet<string>(
+  category: string
+): AxiosPromise<IScriptTemplate[]> {
+  return restAuthGet<IScriptTemplate[]>(
     axios,
-    `instance/microservice/${identifier}/scripting/templates/${templateId}`
-  );
-}
-
-/**
- * List metadata for scripts associated with a global microservice.
- * @param axios
- * @param identifier
- */
-export function listGlobalScriptMetadata(
-  axios: AxiosInstance,
-  identifier: string
-): AxiosPromise<IScriptMetadata[]> {
-  return restAuthGet<IScriptMetadata[]>(
-    axios,
-    `instance/microservice/${identifier}/scripting/scripts`
-  );
-}
-
-/**
- * Get metadata for a global script.
- * @param axios
- * @param identifier
- * @param scriptId
- */
-export function getGlobalScriptMetadata(
-  axios: AxiosInstance,
-  identifier: string,
-  scriptId: string
-): AxiosPromise<IScriptMetadata> {
-  return restAuthGet<IScriptMetadata>(
-    axios,
-    `instance/microservice/${identifier}/scripting/scripts/${scriptId}`
-  );
-}
-
-/**
- * Create a global script.
- * @param axios
- * @param identifier
- * @param request
- */
-export function createGlobalScript(
-  axios: AxiosInstance,
-  identifier: string,
-  request: IScriptCreateRequest
-): AxiosPromise<IScriptMetadata> {
-  return restAuthPost<IScriptMetadata>(
-    axios,
-    `instance/microservice/${identifier}/scripting/scripts`,
-    request
-  );
-}
-
-/**
- * Get content for a global script.
- * @param axios
- * @param identifier
- * @param scriptId
- * @param versionId
- */
-export function getGlobalScriptContent(
-  axios: AxiosInstance,
-  identifier: string,
-  scriptId: string,
-  versionId: string
-): AxiosPromise<string> {
-  return restAuthGet<string>(
-    axios,
-    `instance/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}/content`
-  );
-}
-
-/**
- * Update an existing global script.
- * @param axios
- * @param identifier
- * @param scriptId
- * @param versionId
- * @param request
- */
-export function updateGlobalScript(
-  axios: AxiosInstance,
-  identifier: string,
-  scriptId: string,
-  versionId: string,
-  request: IScriptCreateRequest
-): AxiosPromise<IScriptMetadata> {
-  return restAuthPost<IScriptMetadata>(
-    axios,
-    `instance/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}`,
-    request
-  );
-}
-
-/**
- * Clone an existing global script.
- * @param axios
- * @param identifier
- * @param scriptId
- * @param versionId
- * @param request
- */
-export function cloneGlobalScript(
-  axios: AxiosInstance,
-  identifier: string,
-  scriptId: string,
-  versionId: string,
-  request: IScriptCloneRequest
-): AxiosPromise<IScriptVersion> {
-  return restAuthPost<IScriptVersion>(
-    axios,
-    `instance/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}/clone`,
-    request
-  );
-}
-
-/**
- * Activate a global script.
- * @param axios
- * @param identifier
- * @param scriptId
- * @param versionId
- */
-export function activateGlobalScript(
-  axios: AxiosInstance,
-  identifier: string,
-  scriptId: string,
-  versionId: string
-): AxiosPromise<IScriptMetadata> {
-  return restAuthPost<IScriptMetadata>(
-    axios,
-    `instance/microservice/${identifier}/scripting/scripts/${scriptId}/versions/${versionId}/activate`,
-    null
-  );
-}
-
-/**
- * Delete a global script and its version history.
- * @param axios
- * @param identifier
- * @param scriptId
- */
-export function deleteGlobalScript(
-  axios: AxiosInstance,
-  identifier: string,
-  scriptId: string
-): AxiosPromise<IScriptMetadata> {
-  return restAuthDelete<IScriptMetadata>(
-    axios,
-    `instance/microservice/${identifier}/scripting/scripts/${scriptId}`
+    `instance/microservices/${identifier}/scripting/categories/${category}/templates`
   );
 }
 
@@ -196,14 +46,14 @@ export function deleteGlobalScript(
  * @param identifier
  * @param tenantToken
  */
-export function listTenantScriptMetadata(
+export function listTenantScripts(
   axios: AxiosInstance,
   identifier: string,
   tenantToken: string
 ): AxiosPromise<IScriptMetadata[]> {
   return restAuthGet<IScriptMetadata[]>(
     axios,
-    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts`
+    `instance/microservices/${identifier}/tenants/${tenantToken}/scripting/scripts`
   );
 }
 
@@ -214,7 +64,7 @@ export function listTenantScriptMetadata(
  * @param tenantToken
  * @param scriptId
  */
-export function getTenantScriptMetadata(
+export function getTenantScript(
   axios: AxiosInstance,
   identifier: string,
   tenantToken: string,
@@ -222,7 +72,7 @@ export function getTenantScriptMetadata(
 ): AxiosPromise<IScriptMetadata> {
   return restAuthGet<IScriptMetadata>(
     axios,
-    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}`
+    `instance/microservices/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}`
   );
 }
 
@@ -241,7 +91,7 @@ export function createTenantScript(
 ): AxiosPromise<IScriptMetadata> {
   return restAuthPost<IScriptMetadata>(
     axios,
-    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts`,
+    `instance/microservices/${identifier}/tenants/${tenantToken}/scripting/scripts`,
     request
   );
 }
@@ -263,7 +113,7 @@ export function getTenantScriptContent(
 ): AxiosPromise<string> {
   return restAuthGet<string>(
     axios,
-    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/content`
+    `instance/microservices/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/content`
   );
 }
 
@@ -286,7 +136,7 @@ export function updateTenantScript(
 ): AxiosPromise<IScriptMetadata> {
   return restAuthPost<IScriptMetadata>(
     axios,
-    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}`,
+    `instance/microservices/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}`,
     request
   );
 }
@@ -310,7 +160,7 @@ export function cloneTenantScript(
 ): AxiosPromise<IScriptVersion> {
   return restAuthPost<IScriptVersion>(
     axios,
-    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/clone`,
+    `instance/microservices/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/clone`,
     request
   );
 }
@@ -332,7 +182,7 @@ export function activateTenantScript(
 ): AxiosPromise<IScriptMetadata> {
   return restAuthPost<IScriptMetadata>(
     axios,
-    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/activate`,
+    `instance/microservices/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/activate`,
     null
   );
 }
@@ -352,6 +202,6 @@ export function deleteTenantScript(
 ): AxiosPromise<IScriptMetadata> {
   return restAuthDelete<IScriptMetadata>(
     axios,
-    `instance/microservice/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}`
+    `instance/microservices/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}`
   );
 }
