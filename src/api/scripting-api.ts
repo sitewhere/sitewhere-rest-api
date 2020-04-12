@@ -5,7 +5,9 @@ import {
   IScriptMetadata,
   IScriptCreateRequest,
   IScriptVersion,
-  IScriptCloneRequest
+  IScriptCloneRequest,
+  IScriptActivationRequest,
+  IScriptCategory,
 } from "../model/scripting-model";
 
 /**
@@ -16,8 +18,8 @@ import {
 export function listScriptCategories(
   axios: AxiosInstance,
   identifier: string
-): AxiosPromise<IScriptTemplate[]> {
-  return restAuthGet<IScriptTemplate[]>(
+): AxiosPromise<IScriptCategory[]> {
+  return restAuthGet<IScriptCategory[]>(
     axios,
     `instance/microservices/${identifier}/scripting/categories`
   );
@@ -41,7 +43,7 @@ export function listScriptTemplates(
 }
 
 /**
- * List metadata for microservice tenant scripts.
+ * List tenant scripts for a functional area.
  * @param axios
  * @param identifier
  * @param tenantToken
@@ -54,6 +56,42 @@ export function listTenantScripts(
   return restAuthGet<IScriptMetadata[]>(
     axios,
     `instance/microservices/${identifier}/tenants/${tenantToken}/scripting/scripts`
+  );
+}
+
+/**
+ * List tenant scripts for functional area belonging to category.
+ * @param axios
+ * @param identifier
+ * @param tenantToken
+ * @param category
+ */
+export function listTenantScriptsForCategory(
+  axios: AxiosInstance,
+  identifier: string,
+  tenantToken: string,
+  category: string
+): AxiosPromise<IScriptMetadata[]> {
+  return restAuthGet<IScriptMetadata[]>(
+    axios,
+    `instance/microservices/${identifier}/tenants/${tenantToken}/scripting/categories/${category}`
+  );
+}
+
+/**
+ * List tenant scripts grouped by category.
+ * @param axios
+ * @param identifier
+ * @param tenantToken
+ */
+export function listTenantScriptsByCategory(
+  axios: AxiosInstance,
+  identifier: string,
+  tenantToken: string
+): AxiosPromise<IScriptCategory[]> {
+  return restAuthGet<IScriptCategory[]>(
+    axios,
+    `instance/microservices/${identifier}/tenants/${tenantToken}/scripting/categories`
   );
 }
 
@@ -180,10 +218,11 @@ export function activateTenantScript(
   scriptId: string,
   versionId: string
 ): AxiosPromise<IScriptMetadata> {
+  let activation: IScriptActivationRequest = {};
   return restAuthPost<IScriptMetadata>(
     axios,
     `instance/microservices/${identifier}/tenants/${tenantToken}/scripting/scripts/${scriptId}/versions/${versionId}/activate`,
-    null
+    activation
   );
 }
 

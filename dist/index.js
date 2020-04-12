@@ -1665,13 +1665,32 @@
       return restAuthGet(axios, "instance/microservices/" + identifier + "/scripting/categories/" + category + "/templates");
   }
   /**
-   * List metadata for microservice tenant scripts.
+   * List tenant scripts for a functional area.
    * @param axios
    * @param identifier
    * @param tenantToken
    */
   function listTenantScripts(axios, identifier, tenantToken) {
       return restAuthGet(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts");
+  }
+  /**
+   * List tenant scripts for functional area belonging to category.
+   * @param axios
+   * @param identifier
+   * @param tenantToken
+   * @param category
+   */
+  function listTenantScriptsForCategory(axios, identifier, tenantToken, category) {
+      return restAuthGet(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/categories/" + category);
+  }
+  /**
+   * List tenant scripts grouped by category.
+   * @param axios
+   * @param identifier
+   * @param tenantToken
+   */
+  function listTenantScriptsByCategory(axios, identifier, tenantToken) {
+      return restAuthGet(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/categories");
   }
   /**
    * Get metadata for a given microservice tenant script.
@@ -1737,7 +1756,8 @@
    * @param versionId
    */
   function activateTenantScript(axios, identifier, tenantToken, scriptId, versionId) {
-      return restAuthPost(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", null);
+      var activation = {};
+      return restAuthPost(axios, "instance/microservices/" + identifier + "/tenants/" + tenantToken + "/scripting/scripts/" + scriptId + "/versions/" + versionId + "/activate", activation);
   }
   /**
    * Delete a microservice tenant script and its version history.
@@ -1754,6 +1774,8 @@
     listScriptCategories: listScriptCategories,
     listScriptTemplates: listScriptTemplates,
     listTenantScripts: listTenantScripts,
+    listTenantScriptsForCategory: listTenantScriptsForCategory,
+    listTenantScriptsByCategory: listTenantScriptsByCategory,
     getTenantScript: getTenantScript,
     createTenantScript: createTenantScript,
     getTenantScriptContent: getTenantScriptContent,

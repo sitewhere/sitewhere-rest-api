@@ -1,12 +1,4 @@
 /**
- * Script category information.
- */
-export interface IScriptCategory {
-    id: string;
-    name: string;
-    description: string;
-}
-/**
  * Script template information.
  */
 export interface IScriptTemplate {
@@ -36,6 +28,15 @@ export interface IScriptMetadata {
     versions: IScriptVersion[];
 }
 /**
+ * Script category information.
+ */
+export interface IScriptCategory {
+    id: string;
+    name: string;
+    description: string;
+    scripts: IScriptMetadata[];
+}
+/**
  * Information used to create a script.
  */
 export interface IScriptCreateRequest {
@@ -51,4 +52,9 @@ export interface IScriptCreateRequest {
  */
 export interface IScriptCloneRequest {
     comment: string;
+}
+/**
+ * Information used to activate a script.
+ */
+export interface IScriptActivationRequest {
 }

@@ -1,11 +1,11 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IScriptTemplate, IScriptMetadata, IScriptCreateRequest, IScriptVersion, IScriptCloneRequest } from "../model/scripting-model";
+import { IScriptTemplate, IScriptMetadata, IScriptCreateRequest, IScriptVersion, IScriptCloneRequest, IScriptCategory } from "../model/scripting-model";
 /**
  * List script categories for a functional area.
  * @param axios
  * @param identifier
  */
-export declare function listScriptCategories(axios: AxiosInstance, identifier: string): AxiosPromise<IScriptTemplate[]>;
+export declare function listScriptCategories(axios: AxiosInstance, identifier: string): AxiosPromise<IScriptCategory[]>;
 /**
  * List script templates for a functional area and in the given category.
  * @param axios
@@ -14,12 +14,27 @@ export declare function listScriptCategories(axios: AxiosInstance, identifier: s
  */
 export declare function listScriptTemplates(axios: AxiosInstance, identifier: string, category: string): AxiosPromise<IScriptTemplate[]>;
 /**
- * List metadata for microservice tenant scripts.
+ * List tenant scripts for a functional area.
  * @param axios
  * @param identifier
  * @param tenantToken
  */
 export declare function listTenantScripts(axios: AxiosInstance, identifier: string, tenantToken: string): AxiosPromise<IScriptMetadata[]>;
+/**
+ * List tenant scripts for functional area belonging to category.
+ * @param axios
+ * @param identifier
+ * @param tenantToken
+ * @param category
+ */
+export declare function listTenantScriptsForCategory(axios: AxiosInstance, identifier: string, tenantToken: string, category: string): AxiosPromise<IScriptMetadata[]>;
+/**
+ * List tenant scripts grouped by category.
+ * @param axios
+ * @param identifier
+ * @param tenantToken
+ */
+export declare function listTenantScriptsByCategory(axios: AxiosInstance, identifier: string, tenantToken: string): AxiosPromise<IScriptCategory[]>;
 /**
  * Get metadata for a given microservice tenant script.
  * @param axios
