@@ -1,6 +1,6 @@
 {
   "name": "sitewhere-rest-api",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "description": "Provides promise-based access to SiteWhere REST APIs",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -28,12 +28,13 @@
   },
   "homepage": "https://github.com/sitewhere/sitewhere-rest-api#readme",
   "dependencies": {
-    "axios": "^0.18.1"
+    "axios": "^0.19.2"
   },
   "devDependencies": {
-    "rollup": "^1.16.7",
-    "rollup-plugin-typescript2": "^0.22.0",
-    "tslint": "^5.18.0",
-    "typescript": "^3.5.3"
+    "@types/node": "^13.13.4",
+    "rollup": "^2.7.6",
+    "rollup-plugin-typescript2": "^0.27.0",
+    "tslint": "^6.1.2",
+    "typescript": "^3.8.3"
   }
 }
