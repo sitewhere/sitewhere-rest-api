@@ -1,10 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var axios = _interopDefault(require('axios'));
+import axios from 'axios';
 
 /**
  * Create Axios request that uses basic authentication.
@@ -2025,15 +2019,17 @@ var JwtApi = /*#__PURE__*/Object.freeze({
 /**
  * Enumeration of asset categories.
  */
+var AssetCategory;
 (function (AssetCategory) {
     AssetCategory["Device"] = "Device";
     AssetCategory["Person"] = "Person";
     AssetCategory["Hardware"] = "Hardware";
-})(exports.AssetCategory || (exports.AssetCategory = {}));
+})(AssetCategory || (AssetCategory = {}));
 
 /**
  * Enumeration of batch operation status values.
  */
+var BatchOperationStatus;
 (function (BatchOperationStatus) {
     BatchOperationStatus["Unprocessed"] = "Unprocessed";
     BatchOperationStatus["Initializing"] = "Initializing";
@@ -2041,27 +2037,33 @@ var JwtApi = /*#__PURE__*/Object.freeze({
     BatchOperationStatus["InitializedWithErrors"] = "InitializedWithErrors";
     BatchOperationStatus["FinishedSuccessfully"] = "FinishedSuccessfully";
     BatchOperationStatus["FinishedWithErrors"] = "FinishedWithErrors";
-})(exports.BatchOperationStatus || (exports.BatchOperationStatus = {}));
+})(BatchOperationStatus || (BatchOperationStatus = {}));
+/**
+ * Enumeration of element processing status values.
+ */
+var ElementProcessingStatus;
 (function (ElementProcessingStatus) {
     ElementProcessingStatus["Unprocessed"] = "Unprocessed";
     ElementProcessingStatus["Initializing"] = "Initializing";
     ElementProcessingStatus["Processing"] = "Processing";
     ElementProcessingStatus["Failed"] = "Failed";
     ElementProcessingStatus["Succeeded"] = "Succeeded";
-})(exports.ElementProcessingStatus || (exports.ElementProcessingStatus = {}));
+})(ElementProcessingStatus || (ElementProcessingStatus = {}));
 
 /**
  * Enumeration of device assignment statuses.
  */
+var DeviceAssignmentStatus;
 (function (DeviceAssignmentStatus) {
     DeviceAssignmentStatus["Active"] = "Active";
     DeviceAssignmentStatus["Missing"] = "Missing";
     DeviceAssignmentStatus["Released"] = "Released";
-})(exports.DeviceAssignmentStatus || (exports.DeviceAssignmentStatus = {}));
+})(DeviceAssignmentStatus || (DeviceAssignmentStatus = {}));
 
 /**
  * Enumeration of parameter types.
  */
+var ParameterType;
 (function (ParameterType) {
     ParameterType["Double"] = "Double";
     ParameterType["Float"] = "Float";
@@ -2078,11 +2080,12 @@ var JwtApi = /*#__PURE__*/Object.freeze({
     ParameterType["Bool"] = "Bool";
     ParameterType["String"] = "String";
     ParameterType["Bytes"] = "Bytes";
-})(exports.ParameterType || (exports.ParameterType = {}));
+})(ParameterType || (ParameterType = {}));
 
 /**
  * Enumeration of device assignment statuses.
  */
+var DeviceEventType;
 (function (DeviceEventType) {
     DeviceEventType["Measurement"] = "Measurement";
     DeviceEventType["Location"] = "Location";
@@ -2090,38 +2093,56 @@ var JwtApi = /*#__PURE__*/Object.freeze({
     DeviceEventType["CommandInvocation"] = "CommandInvocation";
     DeviceEventType["CommandResponse"] = "CommandResponse";
     DeviceEventType["StateChange"] = "StateChange";
-})(exports.DeviceEventType || (exports.DeviceEventType = {}));
+})(DeviceEventType || (DeviceEventType = {}));
+/**
+ * Enumeration of alert sources.
+ */
+var AlertSource;
 (function (AlertSource) {
     AlertSource["Device"] = "Device";
     AlertSource["System"] = "System";
-})(exports.AlertSource || (exports.AlertSource = {}));
+})(AlertSource || (AlertSource = {}));
+/**
+ * Enumeration of alert levels.
+ */
+var AlertLevel;
 (function (AlertLevel) {
     AlertLevel["Info"] = "Info";
     AlertLevel["Warning"] = "Warning";
     AlertLevel["Error"] = "Error";
     AlertLevel["Critical"] = "Critical";
-})(exports.AlertLevel || (exports.AlertLevel = {}));
+})(AlertLevel || (AlertLevel = {}));
+/**
+ * Enumeration of command initiator values.
+ */
+var CommandInitiator;
 (function (CommandInitiator) {
     CommandInitiator["REST"] = "REST";
     CommandInitiator["BatchOperation"] = "BatchOperation";
     CommandInitiator["Script"] = "Script";
     CommandInitiator["Scheduler"] = "Scheduler";
-})(exports.CommandInitiator || (exports.CommandInitiator = {}));
+})(CommandInitiator || (CommandInitiator = {}));
+/**
+ * Enumeration of command target values.
+ */
+var CommandTarget;
 (function (CommandTarget) {
     CommandTarget["Assignment"] = "Assignment";
-})(exports.CommandTarget || (exports.CommandTarget = {}));
+})(CommandTarget || (CommandTarget = {}));
 
 /**
  * Enum of device container policy choices.
  */
+var DeviceContainerPolicy;
 (function (DeviceContainerPolicy) {
     DeviceContainerPolicy["Standalone"] = "Standalone";
     DeviceContainerPolicy["Composite"] = "Composite";
-})(exports.DeviceContainerPolicy || (exports.DeviceContainerPolicy = {}));
+})(DeviceContainerPolicy || (DeviceContainerPolicy = {}));
 
 /**
  * Enumeration of lifecycle statuses.
  */
+var LifecycleStatus;
 (function (LifecycleStatus) {
     LifecycleStatus["Initializing"] = "Initializing";
     LifecycleStatus["InitializationError"] = "InitializationError";
@@ -2136,24 +2157,26 @@ var JwtApi = /*#__PURE__*/Object.freeze({
     LifecycleStatus["Terminating"] = "Terminating";
     LifecycleStatus["Terminated"] = "Terminated";
     LifecycleStatus["LifecycleError"] = "LifecycleError";
-})(exports.LifecycleStatus || (exports.LifecycleStatus = {}));
+})(LifecycleStatus || (LifecycleStatus = {}));
 
 /**
  * Enumeration of trigger types.
  */
+var TriggerType;
 (function (TriggerType) {
     TriggerType["SimpleTrigger"] = "SimpleTrigger";
     TriggerType["CronTrigger"] = "CronTrigger";
-})(exports.TriggerType || (exports.TriggerType = {}));
+})(TriggerType || (TriggerType = {}));
 
 /**
  * Enumeration of user account status values.
  */
+var AccountStatus;
 (function (AccountStatus) {
     AccountStatus["AccountStatus"] = "A";
     AccountStatus["Expired"] = "E";
     AccountStatus["Locked"] = "L";
-})(exports.AccountStatus || (exports.AccountStatus = {}));
+})(AccountStatus || (AccountStatus = {}));
 
 /** Export authentication functions */
 var Auth = Authentication;
@@ -2185,8 +2208,4 @@ var AuthAPI = {
     Jwt: JwtApi
 };
 
-exports.API = API;
-exports.Auth = Auth;
-exports.AuthAPI = AuthAPI;
-exports.createDateRangeQuery = createDateRangeQuery;
-exports.createPagingQuery = createPagingQuery;
+export { API, AccountStatus, AlertLevel, AlertSource, AssetCategory, Auth, AuthAPI, BatchOperationStatus, CommandInitiator, CommandTarget, DeviceAssignmentStatus, DeviceContainerPolicy, DeviceEventType, ElementProcessingStatus, LifecycleStatus, ParameterType, TriggerType, createDateRangeQuery, createPagingQuery };
