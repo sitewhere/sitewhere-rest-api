@@ -20,6 +20,6 @@ export default [
     external: [
       "axios"
     ],
-    plugins: [typescript()]
+    plugins: [typescript({ verbosity: 2, clean: true })]
   }
 ];
