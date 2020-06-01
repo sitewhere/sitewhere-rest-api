@@ -1,8 +1,8 @@
 import {
   uuid,
   IPersistentEntityCreateRequest,
-  IPersistentEntity,
   IAccessible,
+  IBrandedEntity,
   ISearchCriteria,
   ISearchResults,
   IResponseFormat
@@ -13,14 +13,14 @@ import {
  */
 export interface IAreaTypeCreateRequest
   extends IPersistentEntityCreateRequest,
-    IAccessible {
+  IAccessible {
   containedAreaTypeTokens: string[];
 }
 
 /**
  * Area type information.
  */
-export interface IAreaType extends IPersistentEntity, IAccessible {
+export interface IAreaType extends IBrandedEntity, IAccessible {
   containedAreaTypeIds: uuid[];
 }
 
@@ -34,9 +34,9 @@ export interface IAreaTypeResponseFormat extends IResponseFormat {
 /**
  * Search criteria for area types.
  */
-export interface IAreaTypeSearchCriteria extends ISearchCriteria {}
+export interface IAreaTypeSearchCriteria extends ISearchCriteria { }
 
 /**
  * Search results for area types.
  */
-export interface IAreaTypeSearchResults extends ISearchResults<IAreaType> {}
+export interface IAreaTypeSearchResults extends ISearchResults<IAreaType> { }
