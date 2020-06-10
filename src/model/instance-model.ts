@@ -79,23 +79,37 @@ export interface IInfrastructureConfiguration {
 }
 
 /**
- * Relational database configuration.
+ * Common datastore configuration.
  */
-export interface IRdbConfiguration {
+export interface IDatastoreConfiguration {
   type: string;
   configuration: any;
 }
 
+/**
+ * Relational database configuration.
+ */
+export interface IRdbConfiguration extends IDatastoreConfiguration {
+}
+
+/**
+ * Time series database configuration.
+ */
+export interface ITimeSeriesConfiguration extends IDatastoreConfiguration {
+}
+
 /** Map of IRdbConfigurations by string id */
 export type IRdbConfigurationMap = { [index: string]: IRdbConfiguration };
+
+/** Map of ITimeSeriesConfiguration by string id */
+export type ITimeSeriesConfigurationMap = { [index: string]: ITimeSeriesConfiguration };
 
 /**
  * Persistence configuration defaults.
  */
 export interface IPersistenceConfigurations {
   rdbConfigurations: IRdbConfigurationMap;
-  influxDbConfigurations: any;
-  cassandraConfigurations: any;
+  timeSeriesConfigurations: ITimeSeriesConfigurationMap;
 }
 
 /**
