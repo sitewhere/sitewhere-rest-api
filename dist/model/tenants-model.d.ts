@@ -7,7 +7,7 @@ export interface ITenantCreateRequest extends IColorProvider, IIconProvider, IIm
     name: string;
     authenticationToken: string;
     authorizedUserIds: string[];
-    tenantTemplateId: string;
+    configurationTemplateId: string;
     datasetTemplateId: string;
 }
 /**
@@ -18,7 +18,7 @@ export interface ITenant extends IColorProvider, IIconProvider, IImageProvider, 
     name: string;
     authenticationToken: string;
     authorizedUserIds: string[];
-    tenantTemplateId: string;
+    configurationTemplateId: string;
     datasetTemplateId: string;
 }
 /**

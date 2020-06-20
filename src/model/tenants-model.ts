@@ -12,15 +12,12 @@ import {
  * Used to create or update a tenant.
  */
 export interface ITenantCreateRequest
-  extends IColorProvider,
-    IIconProvider,
-    IImageProvider,
-    IMetadataProvider {
+  extends IColorProvider, IIconProvider, IImageProvider, IMetadataProvider {
   token: string;
   name: string;
   authenticationToken: string;
   authorizedUserIds: string[];
-  tenantTemplateId: string;
+  configurationTemplateId: string;
   datasetTemplateId: string;
 }
 
@@ -28,32 +25,29 @@ export interface ITenantCreateRequest
  * Tenant information.
  */
 export interface ITenant
-  extends IColorProvider,
-    IIconProvider,
-    IImageProvider,
-    IMetadataProvider {
+  extends IColorProvider, IIconProvider, IImageProvider, IMetadataProvider {
   token: string;
   name: string;
   authenticationToken: string;
   authorizedUserIds: string[];
-  tenantTemplateId: string;
+  configurationTemplateId: string;
   datasetTemplateId: string;
 }
 
 /**
  * Response format for tenant records.
  */
-export interface ITenantResponseFormat extends IResponseFormat {}
+export interface ITenantResponseFormat extends IResponseFormat { }
 
 /**
  * Search criteria for tenants.
  */
-export interface ITenantSearchCriteria extends ISearchCriteria {}
+export interface ITenantSearchCriteria extends ISearchCriteria { }
 
 /**
  * Search results for tenants.
  */
-export interface ITenantSearchResults extends ISearchResults<ITenant> {}
+export interface ITenantSearchResults extends ISearchResults<ITenant> { }
 
 /**
  * Tenant configuration template information.
