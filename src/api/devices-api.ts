@@ -2,6 +2,7 @@ import { AxiosInstance, AxiosPromise } from "axios";
 import {
   IDeviceCreateRequest,
   IDevice,
+  IDeviceSummary,
   IDeviceSearchCriteria,
   IDeviceResponseFormat,
   IDeviceSearchResults
@@ -87,6 +88,25 @@ export function listDevices(
     query += createPagingQuery(criteria);
   }
   return restAuthGet<IDeviceSearchResults>(axios, `devices${query}`);
+}
+
+/**
+ * List summary data for devices that match the given criteria.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+export function listDeviceSummaries(
+  axios: AxiosInstance,
+  criteria?: IDeviceSearchCriteria
+): AxiosPromise<IDeviceSearchResults> {
+  let query = randomSeedQuery();
+  if (criteria) {
+    query += addFilter(criteria.excludeAssigned, "excludeAssigned");
+    query += addStringFilter(criteria.deviceTypeToken, "deviceType");
+    query += createPagingQuery(criteria);
+  }
+  return restAuthGet<IDeviceSearchResults>(axios, `devices/summaries${query}`);
 }
 
 /**

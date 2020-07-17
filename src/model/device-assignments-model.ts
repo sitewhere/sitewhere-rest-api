@@ -43,6 +43,24 @@ export interface IDeviceAssignment extends IPersistentEntity {
 }
 
 /**
+ * Device assignment summary information.
+ */
+export interface IDeviceAssignmentSummary extends IPersistentEntity {
+  customerId: uuid;
+  customerName: string;
+  customerImageUrl: string;
+  areaId: uuid;
+  areaName: string;
+  areaImageUrl: string;
+  assetId: uuid;
+  assetName: string;
+  assetImageUrl: string;
+  status?: DeviceAssignmentStatus;
+  activeDate?: Date;
+  releasedDate?: Date;
+}
+
+/**
  * Response format for device assignments.
  */
 export interface IDeviceAssignmentResponseFormat extends IResponseFormat {
@@ -78,7 +96,7 @@ export interface IDeviceAssignmentSearchCriteria extends ISearchCriteria {
  * Search results for device assignments.
  */
 export interface IDeviceAssignmentSearchResults
-  extends ISearchResults<IDeviceAssignment> {}
+  extends ISearchResults<IDeviceAssignment> { }
 
 /**
  * Provides list of tokens for bulk assignment request.

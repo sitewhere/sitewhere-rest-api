@@ -1519,6 +1519,21 @@ function listDevices(axios, criteria, format) {
     return restAuthGet(axios, "devices" + query);
 }
 /**
+ * List summary data for devices that match the given criteria.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+function listDeviceSummaries(axios, criteria) {
+    var query = randomSeedQuery();
+    if (criteria) {
+        query += addFilter(criteria.excludeAssigned, "excludeAssigned");
+        query += addStringFilter(criteria.deviceTypeToken, "deviceType");
+        query += createPagingQuery(criteria);
+    }
+    return restAuthGet(axios, "devices/summaries" + query);
+}
+/**
  * Delete an existing device.
  * @param axios
  * @param deviceToken
@@ -1552,6 +1567,7 @@ var DevicesApi = /*#__PURE__*/Object.freeze({
   getDevice: getDevice,
   updateDevice: updateDevice,
   listDevices: listDevices,
+  listDeviceSummaries: listDeviceSummaries,
   deleteDevice: deleteDevice,
   listDeviceAssignmentHistory: listDeviceAssignmentHistory
 });
