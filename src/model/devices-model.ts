@@ -74,3 +74,9 @@ export interface IDeviceSearchCriteria extends ISearchCriteria {
  * Search results for devices.
  */
 export interface IDeviceSearchResults extends ISearchResults<IDevice> { }
+
+/**
+ * Search results for device summaries.
+ */
+export interface IDeviceSummarySearchResults extends ISearchResults<IDeviceSummary> { }
+

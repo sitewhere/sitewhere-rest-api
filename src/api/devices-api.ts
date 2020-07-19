@@ -5,7 +5,8 @@ import {
   IDeviceSummary,
   IDeviceSearchCriteria,
   IDeviceResponseFormat,
-  IDeviceSearchResults
+  IDeviceSearchResults,
+  IDeviceSummarySearchResults
 } from "../model/devices-model";
 import {
   IDeviceAssignmentResponseFormat,
@@ -99,14 +100,14 @@ export function listDevices(
 export function listDeviceSummaries(
   axios: AxiosInstance,
   criteria?: IDeviceSearchCriteria
-): AxiosPromise<IDeviceSearchResults> {
+): AxiosPromise<IDeviceSummarySearchResults> {
   let query = randomSeedQuery();
   if (criteria) {
     query += addFilter(criteria.excludeAssigned, "excludeAssigned");
     query += addStringFilter(criteria.deviceTypeToken, "deviceType");
     query += createPagingQuery(criteria);
   }
-  return restAuthGet<IDeviceSearchResults>(axios, `devices/summaries${query}`);
+  return restAuthGet<IDeviceSummarySearchResults>(axios, `devices/summaries${query}`);
 }
 
 /**
