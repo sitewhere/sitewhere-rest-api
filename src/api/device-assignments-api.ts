@@ -154,6 +154,28 @@ export function searchDeviceAssignments(
 }
 
 /**
+ * Perform an advanced search on device assignment summaries.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+export function searchDeviceAssignmentSummaries(
+  axios: AxiosInstance,
+  criteria?: IDeviceAssignmentSearchCriteria,
+  format?: IDeviceAssignmentResponseFormat
+): AxiosPromise<IDeviceAssignmentSearchResults> {
+  let query = randomSeedQuery();
+  if (format) {
+    query += addFilter(format.includeAsset, "includeAsset");
+  }
+  return restAuthPost<IDeviceAssignmentSearchResults>(
+    axios,
+    `assignments/search/summaries${query}`,
+    criteria
+  );
+}
+
+/**
  * Delete an existing device assignment.
  * @param axios
  * @param token

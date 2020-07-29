@@ -34,6 +34,11 @@ export interface IDeviceAssignment extends IPersistentEntity {
  * Device assignment summary information.
  */
 export interface IDeviceAssignmentSummary extends IPersistentEntity {
+    deviceId: uuid;
+    deviceToken: string;
+    deviceTypeId: uuid;
+    deviceTypeName: string;
+    deviceTypeImageUrl: string;
     customerId: uuid;
     customerName: string;
     customerImageUrl: string;
@@ -80,6 +85,11 @@ export interface IDeviceAssignmentSearchCriteria extends ISearchCriteria {
  * Search results for device assignments.
  */
 export interface IDeviceAssignmentSearchResults extends ISearchResults<IDeviceAssignment> {
+}
+/**
+ * Search results for device assignment summaries.
+ */
+export interface IDeviceAssignmentSummarySearchResults extends ISearchResults<IDeviceAssignmentSummary> {
 }
 /**
  * Provides list of tokens for bulk assignment request.

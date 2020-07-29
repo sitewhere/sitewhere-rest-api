@@ -37,6 +37,13 @@ export declare function listDeviceAssignments(axios: AxiosInstance, criteria?: I
  */
 export declare function searchDeviceAssignments(axios: AxiosInstance, criteria?: IDeviceAssignmentSearchCriteria, format?: IDeviceAssignmentResponseFormat): AxiosPromise<IDeviceAssignmentSearchResults>;
 /**
+ * Perform an advanced search on device assignment summaries.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+export declare function searchDeviceAssignmentSummaries(axios: AxiosInstance, criteria?: IDeviceAssignmentSearchCriteria, format?: IDeviceAssignmentResponseFormat): AxiosPromise<IDeviceAssignmentSearchResults>;
+/**
  * Delete an existing device assignment.
  * @param axios
  * @param token

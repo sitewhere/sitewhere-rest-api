@@ -821,6 +821,19 @@ function searchDeviceAssignments(axios, criteria, format) {
     return restAuthPost(axios, "assignments/search" + query, criteria);
 }
 /**
+ * Perform an advanced search on device assignment summaries.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+function searchDeviceAssignmentSummaries(axios, criteria, format) {
+    var query = randomSeedQuery();
+    if (format) {
+        query += addFilter(format.includeAsset, "includeAsset");
+    }
+    return restAuthPost(axios, "assignments/search/summaries" + query, criteria);
+}
+/**
  * Delete an existing device assignment.
  * @param axios
  * @param token
@@ -1112,6 +1125,7 @@ var DeviceAssignmentsApi = /*#__PURE__*/Object.freeze({
   updateDeviceAssignment: updateDeviceAssignment,
   listDeviceAssignments: listDeviceAssignments,
   searchDeviceAssignments: searchDeviceAssignments,
+  searchDeviceAssignmentSummaries: searchDeviceAssignmentSummaries,
   deleteDeviceAssignment: deleteDeviceAssignment,
   releaseDeviceAssignment: releaseDeviceAssignment,
   missingDeviceAssignment: missingDeviceAssignment,
