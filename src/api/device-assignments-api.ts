@@ -6,7 +6,8 @@ import {
   IDeviceAssignmentSearchCriteria,
   IDeviceAssignmentResponseFormat,
   IDeviceAssignmentBulkRequest,
-  IDeviceAssignmentSearchResults
+  IDeviceAssignmentSearchResults,
+  IDeviceAssignmentSummarySearchResults
 } from "../model/device-assignments-model";
 import {
   createPagingQuery,
@@ -163,12 +164,12 @@ export function searchDeviceAssignmentSummaries(
   axios: AxiosInstance,
   criteria?: IDeviceAssignmentSearchCriteria,
   format?: IDeviceAssignmentResponseFormat
-): AxiosPromise<IDeviceAssignmentSearchResults> {
+): AxiosPromise<IDeviceAssignmentSummarySearchResults> {
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(format.includeAsset, "includeAsset");
   }
-  return restAuthPost<IDeviceAssignmentSearchResults>(
+  return restAuthPost<IDeviceAssignmentSummarySearchResults>(
     axios,
     `assignments/search/summaries${query}`,
     criteria

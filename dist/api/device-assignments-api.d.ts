@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IDeviceAssignmentCreateRequest, IDeviceAssignment, IDeviceAssignmentSimpleCriteria, IDeviceAssignmentSearchCriteria, IDeviceAssignmentResponseFormat, IDeviceAssignmentBulkRequest, IDeviceAssignmentSearchResults } from "../model/device-assignments-model";
+import { IDeviceAssignmentCreateRequest, IDeviceAssignment, IDeviceAssignmentSimpleCriteria, IDeviceAssignmentSearchCriteria, IDeviceAssignmentResponseFormat, IDeviceAssignmentBulkRequest, IDeviceAssignmentSearchResults, IDeviceAssignmentSummarySearchResults } from "../model/device-assignments-model";
 import { IDateRangeSearchCriteria } from "../model/common-model";
 import { IDeviceMeasurementCreateRequest, IDeviceMeasurement, IDeviceLocationCreateRequest, IDeviceLocation, IDeviceAlertCreateRequest, IDeviceAlert, IDeviceCommandInvocationCreateRequest, IDeviceCommandInvocation, IDeviceCommandResponseCreateRequest, IDeviceCommandResponse, IDeviceStateChangeCreateRequest, IDeviceStateChange, IChartSeries, IDeviceMeasurementSearchResults, IDeviceMeasurementResponseFormat, IDeviceLocationSearchResults, IDeviceLocationResponseFormat, IDeviceAlertSearchResults, IDeviceAlertResponseFormat, IDeviceCommandInvocationSearchResults, IDeviceCommandInvocationResponseFormat, IDeviceCommandResponseSearchResults, IDeviceCommandResponseResponseFormat, IDeviceStateChangeSearchResults, IDeviceStateChangeResponseFormat } from "../model/device-events-model";
 /**
@@ -42,7 +42,7 @@ export declare function searchDeviceAssignments(axios: AxiosInstance, criteria?:
  * @param criteria
  * @param format
  */
-export declare function searchDeviceAssignmentSummaries(axios: AxiosInstance, criteria?: IDeviceAssignmentSearchCriteria, format?: IDeviceAssignmentResponseFormat): AxiosPromise<IDeviceAssignmentSearchResults>;
+export declare function searchDeviceAssignmentSummaries(axios: AxiosInstance, criteria?: IDeviceAssignmentSearchCriteria, format?: IDeviceAssignmentResponseFormat): AxiosPromise<IDeviceAssignmentSummarySearchResults>;
 /**
  * Delete an existing device assignment.
  * @param axios
