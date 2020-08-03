@@ -1,4 +1,4 @@
-import { uuid, IBrandedEntityCreateRequest, IBrandedEntity, IAccessible, ISearchCriteria, ISearchResults, IResponseFormat } from "./common-model";
+import { IBrandedEntityCreateRequest, IBrandedEntity, IAccessible, ISearchCriteria, ISearchResults, IResponseFormat } from "./common-model";
 /**
  * Used to create or update a customer type.
  */
@@ -9,7 +9,7 @@ export interface ICustomerTypeCreateRequest extends IBrandedEntityCreateRequest,
  * Customer type information.
  */
 export interface ICustomerType extends IBrandedEntity, IAccessible {
-    containedCustomerTypeIds: uuid[];
+    containedCustomerTypes?: ICustomerType[];
 }
 /**
  * Response format for customer type records.

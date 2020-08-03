@@ -21,7 +21,7 @@ export interface IAreaTypeCreateRequest
  * Area type information.
  */
 export interface IAreaType extends IBrandedEntity, IAccessible {
-  containedAreaTypeIds: uuid[];
+  containedAreaTypes?: IAreaType[];
 }
 
 /**

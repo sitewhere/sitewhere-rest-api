@@ -1,4 +1,4 @@
-import { uuid, IPersistentEntityCreateRequest, IAccessible, IBrandedEntity, ISearchCriteria, ISearchResults, IResponseFormat } from "./common-model";
+import { IPersistentEntityCreateRequest, IAccessible, IBrandedEntity, ISearchCriteria, ISearchResults, IResponseFormat } from "./common-model";
 /**
  * Used to create or update an area type.
  */
@@ -9,7 +9,7 @@ export interface IAreaTypeCreateRequest extends IPersistentEntityCreateRequest, 
  * Area type information.
  */
 export interface IAreaType extends IBrandedEntity, IAccessible {
-    containedAreaTypeIds: uuid[];
+    containedAreaTypes?: IAreaType[];
 }
 /**
  * Response format for area type records.
