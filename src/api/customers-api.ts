@@ -8,7 +8,8 @@ import {
 } from "../model/customers-model";
 import {
   IDeviceAssignmentResponseFormat,
-  IDeviceAssignmentSearchResults
+  IDeviceAssignmentSearchResults,
+  IDeviceAssignmentSummarySearchResults
 } from "../model/device-assignments-model";
 import {
   createPagingQuery,
@@ -154,6 +155,32 @@ export function listAssignmentsForCustomer(
   return restAuthGet<IDeviceAssignmentSearchResults>(
     axios,
     `customers/${token}/assignments${query}`
+  );
+}
+
+/**
+ * List device assignments for customer in summary form.
+ * @param axios 
+ * @param token 
+ * @param criteria 
+ * @param format 
+ */
+export function listAssignmentSummariesForCustomer(
+  axios: AxiosInstance,
+  token: string,
+  criteria?: ISearchCriteria,
+  format?: IDeviceAssignmentResponseFormat
+): AxiosPromise<IDeviceAssignmentSummarySearchResults> {
+  let query = randomSeedQuery();
+  if (format) {
+    query += addFilter(format.includeAsset, "includeAsset");
+  }
+  if (criteria) {
+    query += createPagingQuery(criteria);
+  }
+  return restAuthGet<IDeviceAssignmentSummarySearchResults>(
+    axios,
+    `customers/${token}/assignments/summaries${query}`
   );
 }
 

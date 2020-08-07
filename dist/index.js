@@ -305,6 +305,23 @@ function listAssignmentsForArea(axios, token, criteria, format) {
     return restAuthGet(axios, "areas/" + token + "/assignments" + query);
 }
 /**
+ * List assignments for area in summary format.
+ * @param axios
+ * @param token
+ * @param criteria
+ * @param format
+ */
+function listAssignmentSummariesForArea(axios, token, criteria, format) {
+    var query = randomSeedQuery();
+    if (format) {
+        query += addFilter(format.includeAsset, "includeAsset");
+    }
+    if (criteria) {
+        query += createPagingQuery(criteria);
+    }
+    return restAuthGet(axios, "areas/" + token + "/assignments/summaries" + query);
+}
+/**
  * List measurement events associated with area.
  * @param axios
  * @param token
@@ -353,6 +370,7 @@ var AreasApi = /*#__PURE__*/Object.freeze({
   getAreasTree: getAreasTree,
   deleteArea: deleteArea,
   listAssignmentsForArea: listAssignmentsForArea,
+  listAssignmentSummariesForArea: listAssignmentSummariesForArea,
   listMeasurementsForArea: listMeasurementsForArea,
   listLocationsForArea: listLocationsForArea,
   listAlertsForArea: listAlertsForArea
@@ -698,6 +716,23 @@ function listAssignmentsForCustomer(axios, token, criteria, format) {
     return restAuthGet(axios, "customers/" + token + "/assignments" + query);
 }
 /**
+ * List device assignments for customer in summary form.
+ * @param axios
+ * @param token
+ * @param criteria
+ * @param format
+ */
+function listAssignmentSummariesForCustomer(axios, token, criteria, format) {
+    var query = randomSeedQuery();
+    if (format) {
+        query += addFilter(format.includeAsset, "includeAsset");
+    }
+    if (criteria) {
+        query += createPagingQuery(criteria);
+    }
+    return restAuthGet(axios, "customers/" + token + "/assignments/summaries" + query);
+}
+/**
  * List measurement events associated with customer.
  * @param axios
  * @param token
@@ -749,6 +784,7 @@ var CustomersApi = /*#__PURE__*/Object.freeze({
   getCustomersTree: getCustomersTree,
   deleteCustomer: deleteCustomer,
   listAssignmentsForCustomer: listAssignmentsForCustomer,
+  listAssignmentSummariesForCustomer: listAssignmentSummariesForCustomer,
   listMeasurementsForCustomer: listMeasurementsForCustomer,
   listLocationsForCustomer: listLocationsForCustomer,
   listAlertsForCustomer: listAlertsForCustomer
@@ -824,6 +860,9 @@ function searchDeviceAssignments(axios, criteria, format) {
         query += addFilter(format.includeArea, "includeArea");
         query += addFilter(format.includeAsset, "includeAsset");
     }
+    if (criteria) {
+        query += createPagingQuery(criteria);
+    }
     return restAuthPost(axios, "assignments/search" + query, criteria);
 }
 /**
@@ -836,6 +875,9 @@ function searchDeviceAssignmentSummaries(axios, criteria, format) {
     var query = randomSeedQuery();
     if (format) {
         query += addFilter(format.includeAsset, "includeAsset");
+    }
+    if (criteria) {
+        query += createPagingQuery(criteria);
     }
     return restAuthPost(axios, "assignments/search/summaries" + query, criteria);
 }

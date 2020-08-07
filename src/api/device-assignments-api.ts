@@ -147,6 +147,9 @@ export function searchDeviceAssignments(
     query += addFilter(format.includeArea, "includeArea");
     query += addFilter(format.includeAsset, "includeAsset");
   }
+  if (criteria) {
+    query += createPagingQuery(criteria);
+  }
   return restAuthPost<IDeviceAssignmentSearchResults>(
     axios,
     `assignments/search${query}`,
@@ -168,6 +171,9 @@ export function searchDeviceAssignmentSummaries(
   let query = randomSeedQuery();
   if (format) {
     query += addFilter(format.includeAsset, "includeAsset");
+  }
+  if (criteria) {
+    query += createPagingQuery(criteria);
   }
   return restAuthPost<IDeviceAssignmentSummarySearchResults>(
     axios,
