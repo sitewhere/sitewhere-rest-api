@@ -7,12 +7,20 @@ import {
 } from "./common-model";
 
 /**
- * Enumeration of user account status values.
+ * Granted authority in the system.
  */
-export enum AccountStatus {
-  AccountStatus = "A",
-  Expired = "E",
-  Locked = "L"
+export interface IGrantedAuthority {
+  authority: string;
+  description: string;
+}
+
+/**
+ * Role with a list of associated granted authorities.
+ */
+export interface IRole {
+  role: string;
+  description: string;
+  authorities: IGrantedAuthority[];
 }
 
 /**
@@ -23,8 +31,9 @@ export interface IUserCreateRequest extends IPersistentEntityCreateRequest {
   password: string;
   firstName: string;
   lastName: string;
-  status: AccountStatus;
-  authorities: string[];
+  email: string;
+  enabled: boolean;
+  roles: string[];
 }
 
 /**
@@ -32,45 +41,39 @@ export interface IUserCreateRequest extends IPersistentEntityCreateRequest {
  */
 export interface IUser extends IPersistentEntity {
   username: string;
-  hashedPassword: string;
   firstName: string;
   lastName: string;
-  lastLogin: Date;
-  status: AccountStatus;
-  authorities: string[];
+  email: string;
+  enabled: boolean;
+  roles: IRole[];
 }
 
 /**
  * Response format for user records.
  */
-export interface IUserResponseFormat extends IResponseFormat {}
+export interface IUserResponseFormat extends IResponseFormat { }
 
 /**
  * Search criteria for users.
  */
-export interface IUserSearchCriteria extends ISearchCriteria {}
+export interface IUserSearchCriteria extends ISearchCriteria { }
 
 /**
  * Search results for users.
  */
-export interface IUserSearchResults extends ISearchResults<IUser> {}
+export interface IUserSearchResults extends ISearchResults<IUser> { }
 
 /**
- * Granted authority information.
+ * Response format for role records.
  */
-export interface IGrantedAuthority {
-  authority: string;
-  description: string;
-  parent: string;
-  group: boolean;
-}
+export interface IRoleResponseFormat extends IResponseFormat { }
 
 /**
- * Used for displaying granted authority tree.
+ * Search criteria for roles.
  */
-export interface IGrantedAuthorityHierarchyNode {
-  id: string;
-  text: string;
-  group: string;
-  items: IGrantedAuthorityHierarchyNode[];
-}
+export interface IRoleSearchCriteria extends ISearchCriteria { }
+
+/**
+ * Search results for roles.
+ */
+export interface IRoleSearchResults extends ISearchResults<IRole> { }

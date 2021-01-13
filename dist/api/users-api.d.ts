@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IUserCreateRequest, IUser, IUserSearchCriteria, IUserResponseFormat, IGrantedAuthority, IGrantedAuthorityHierarchyNode, IUserSearchResults } from "../model/users-model";
+import { IUserCreateRequest, IUser, IUserSearchCriteria, IUserResponseFormat, IGrantedAuthority, IUserSearchResults, IRoleSearchCriteria, IRoleResponseFormat, IRoleSearchResults } from "../model/users-model";
 /**
  * Create a new user.
  * @param axios
@@ -34,13 +34,15 @@ export declare function listUsers(axios: AxiosInstance, criteria?: IUserSearchCr
  */
 export declare function deleteUser(axios: AxiosInstance, username: string): AxiosPromise<IUser>;
 /**
+ * List roles that match the given criteria.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+export declare function listRoles(axios: AxiosInstance, criteria?: IRoleSearchCriteria, format?: IRoleResponseFormat): AxiosPromise<IRoleSearchResults>;
+/**
  * Get granted authorities associated with user.
  * @param axios
  * @param username
  */
 export declare function getAuthoritiesForUsername(axios: AxiosInstance, username: string): AxiosPromise<IGrantedAuthority>;
-/**
- * Get records representing granted authority hierarchy.
- * @param axios
- */
-export declare function getAuthoritiesHierarchy(axios: AxiosInstance): AxiosPromise<IGrantedAuthorityHierarchyNode[]>;

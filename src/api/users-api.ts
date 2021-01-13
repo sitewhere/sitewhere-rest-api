@@ -5,8 +5,10 @@ import {
   IUserSearchCriteria,
   IUserResponseFormat,
   IGrantedAuthority,
-  IGrantedAuthorityHierarchyNode,
-  IUserSearchResults
+  IUserSearchResults,
+  IRoleSearchCriteria,
+  IRoleResponseFormat,
+  IRoleSearchResults
 } from "../model/users-model";
 import { createPagingQuery } from "../model/common-model";
 import {
@@ -95,6 +97,27 @@ export function deleteUser(
 }
 
 /**
+ * List roles that match the given criteria.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+export function listRoles(
+  axios: AxiosInstance,
+  criteria?: IRoleSearchCriteria,
+  format?: IRoleResponseFormat
+): AxiosPromise<IRoleSearchResults> {
+  let query = randomSeedQuery();
+  if (format) {
+    // No response format options available.
+  }
+  if (criteria) {
+    query += createPagingQuery(criteria);
+  }
+  return restAuthGet<IRoleSearchResults>(axios, `roles${query}`);
+}
+
+/**
  * Get granted authorities associated with user.
  * @param axios
  * @param username
@@ -104,17 +127,4 @@ export function getAuthoritiesForUsername(
   username: string
 ): AxiosPromise<IGrantedAuthority> {
   return restAuthGet<IGrantedAuthority>(axios, `users/${username}/authorities`);
-}
-
-/**
- * Get records representing granted authority hierarchy.
- * @param axios
- */
-export function getAuthoritiesHierarchy(
-  axios: AxiosInstance
-): AxiosPromise<IGrantedAuthorityHierarchyNode[]> {
-  return restAuthGet<IGrantedAuthorityHierarchyNode[]>(
-    axios,
-    `/authorities/hierarchy`
-  );
 }

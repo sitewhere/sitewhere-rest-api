@@ -1998,19 +1998,25 @@ function deleteUser(axios, username) {
     return restAuthDelete(axios, "users/" + username);
 }
 /**
+ * List roles that match the given criteria.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+function listRoles(axios, criteria, format) {
+    var query = randomSeedQuery();
+    if (criteria) {
+        query += createPagingQuery(criteria);
+    }
+    return restAuthGet(axios, "roles" + query);
+}
+/**
  * Get granted authorities associated with user.
  * @param axios
  * @param username
  */
 function getAuthoritiesForUsername(axios, username) {
     return restAuthGet(axios, "users/" + username + "/authorities");
-}
-/**
- * Get records representing granted authority hierarchy.
- * @param axios
- */
-function getAuthoritiesHierarchy(axios) {
-    return restAuthGet(axios, "/authorities/hierarchy");
 }
 
 var UsersApi = /*#__PURE__*/Object.freeze({
@@ -2020,8 +2026,8 @@ var UsersApi = /*#__PURE__*/Object.freeze({
   updateUser: updateUser,
   listUsers: listUsers,
   deleteUser: deleteUser,
-  getAuthoritiesForUsername: getAuthoritiesForUsername,
-  getAuthoritiesHierarchy: getAuthoritiesHierarchy
+  listRoles: listRoles,
+  getAuthoritiesForUsername: getAuthoritiesForUsername
 });
 
 /**
@@ -2217,15 +2223,6 @@ var JwtApi = /*#__PURE__*/Object.freeze({
     TriggerType["SimpleTrigger"] = "SimpleTrigger";
     TriggerType["CronTrigger"] = "CronTrigger";
 })(exports.TriggerType || (exports.TriggerType = {}));
-
-/**
- * Enumeration of user account status values.
- */
-(function (AccountStatus) {
-    AccountStatus["AccountStatus"] = "A";
-    AccountStatus["Expired"] = "E";
-    AccountStatus["Locked"] = "L";
-})(exports.AccountStatus || (exports.AccountStatus = {}));
 
 /** Export authentication functions */
 var Auth = Authentication;

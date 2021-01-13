@@ -1992,19 +1992,25 @@ function deleteUser(axios, username) {
     return restAuthDelete(axios, "users/" + username);
 }
 /**
+ * List roles that match the given criteria.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+function listRoles(axios, criteria, format) {
+    var query = randomSeedQuery();
+    if (criteria) {
+        query += createPagingQuery(criteria);
+    }
+    return restAuthGet(axios, "roles" + query);
+}
+/**
  * Get granted authorities associated with user.
  * @param axios
  * @param username
  */
 function getAuthoritiesForUsername(axios, username) {
     return restAuthGet(axios, "users/" + username + "/authorities");
-}
-/**
- * Get records representing granted authority hierarchy.
- * @param axios
- */
-function getAuthoritiesHierarchy(axios) {
-    return restAuthGet(axios, "/authorities/hierarchy");
 }
 
 var UsersApi = /*#__PURE__*/Object.freeze({
@@ -2014,8 +2020,8 @@ var UsersApi = /*#__PURE__*/Object.freeze({
   updateUser: updateUser,
   listUsers: listUsers,
   deleteUser: deleteUser,
-  getAuthoritiesForUsername: getAuthoritiesForUsername,
-  getAuthoritiesHierarchy: getAuthoritiesHierarchy
+  listRoles: listRoles,
+  getAuthoritiesForUsername: getAuthoritiesForUsername
 });
 
 /**
@@ -2240,16 +2246,6 @@ var TriggerType;
     TriggerType["CronTrigger"] = "CronTrigger";
 })(TriggerType || (TriggerType = {}));
 
-/**
- * Enumeration of user account status values.
- */
-var AccountStatus;
-(function (AccountStatus) {
-    AccountStatus["AccountStatus"] = "A";
-    AccountStatus["Expired"] = "E";
-    AccountStatus["Locked"] = "L";
-})(AccountStatus || (AccountStatus = {}));
-
 /** Export authentication functions */
 var Auth = Authentication;
 /** Export core APIs */
@@ -2280,4 +2276,4 @@ var AuthAPI = {
     Jwt: JwtApi
 };
 
-export { API, AccountStatus, AlertLevel, AlertSource, AssetCategory, Auth, AuthAPI, BatchOperationStatus, CommandInitiator, CommandTarget, DeviceAssignmentStatus, DeviceContainerPolicy, DeviceEventType, ElementProcessingStatus, LifecycleStatus, ParameterType, TriggerType, createDateRangeQuery, createPagingQuery };
+export { API, AlertLevel, AlertSource, AssetCategory, Auth, AuthAPI, BatchOperationStatus, CommandInitiator, CommandTarget, DeviceAssignmentStatus, DeviceContainerPolicy, DeviceEventType, ElementProcessingStatus, LifecycleStatus, ParameterType, TriggerType, createDateRangeQuery, createPagingQuery };
