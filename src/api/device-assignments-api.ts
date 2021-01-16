@@ -6,7 +6,8 @@ import {
   IDeviceAssignmentSearchCriteria,
   IDeviceAssignmentResponseFormat,
   IDeviceAssignmentBulkRequest,
-  IDeviceAssignmentSearchResults
+  IDeviceAssignmentSearchResults,
+  IDeviceAssignmentSummarySearchResults
 } from "../model/device-assignments-model";
 import {
   createPagingQuery,
@@ -146,9 +147,37 @@ export function searchDeviceAssignments(
     query += addFilter(format.includeArea, "includeArea");
     query += addFilter(format.includeAsset, "includeAsset");
   }
+  if (criteria) {
+    query += createPagingQuery(criteria);
+  }
   return restAuthPost<IDeviceAssignmentSearchResults>(
     axios,
     `assignments/search${query}`,
+    criteria
+  );
+}
+
+/**
+ * Perform an advanced search on device assignment summaries.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+export function searchDeviceAssignmentSummaries(
+  axios: AxiosInstance,
+  criteria?: IDeviceAssignmentSearchCriteria,
+  format?: IDeviceAssignmentResponseFormat
+): AxiosPromise<IDeviceAssignmentSummarySearchResults> {
+  let query = randomSeedQuery();
+  if (format) {
+    query += addFilter(format.includeAsset, "includeAsset");
+  }
+  if (criteria) {
+    query += createPagingQuery(criteria);
+  }
+  return restAuthPost<IDeviceAssignmentSummarySearchResults>(
+    axios,
+    `assignments/search/summaries${query}`,
     criteria
   );
 }

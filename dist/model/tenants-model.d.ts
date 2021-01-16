@@ -1,22 +1,24 @@
-import { IBrandedEntityCreateRequest, IBrandedEntity, ISearchCriteria, ISearchResults, IResponseFormat, IAccessible } from "./common-model";
+import { ISearchCriteria, ISearchResults, IResponseFormat, IColorProvider, IIconProvider, IImageProvider, IMetadataProvider } from "./common-model";
 /**
  * Used to create or update a tenant.
  */
-export interface ITenantCreateRequest extends IBrandedEntityCreateRequest {
+export interface ITenantCreateRequest extends IColorProvider, IIconProvider, IImageProvider, IMetadataProvider {
+    token: string;
     name: string;
     authenticationToken: string;
     authorizedUserIds: string[];
-    tenantTemplateId: string;
+    configurationTemplateId: string;
     datasetTemplateId: string;
 }
 /**
  * Tenant information.
  */
-export interface ITenant extends IBrandedEntity {
+export interface ITenant extends IColorProvider, IIconProvider, IImageProvider, IMetadataProvider {
+    token: string;
     name: string;
     authenticationToken: string;
     authorizedUserIds: string[];
-    tenantTemplateId: string;
+    configurationTemplateId: string;
     datasetTemplateId: string;
 }
 /**
@@ -35,24 +37,18 @@ export interface ITenantSearchCriteria extends ISearchCriteria {
 export interface ITenantSearchResults extends ISearchResults<ITenant> {
 }
 /**
- * Tenant template information.
+ * Tenant configuration template information.
  */
-export interface ITenantTemplate extends IAccessible {
-    name: string;
-}
-/**
- * Initializers used in dataset templates.
- */
-export interface IDatasetIntitializers {
-    deviceManagement: string[];
-    assetManagement: string[];
-    scheduleManagement: string[];
-}
-/**
- * Dataset template information.
- */
-export interface IDatasetTemplate {
+export interface ITenantConfigurationTemplate {
     id: string;
     name: string;
-    initializers: IDatasetIntitializers;
+    description: string;
+}
+/**
+ * Tenant dataset template information.
+ */
+export interface ITenantDatasetTemplate {
+    id: string;
+    name: string;
+    description: string;
 }

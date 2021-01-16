@@ -1,86 +1,40 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IScriptTemplate, IScriptMetadata, IScriptCreateRequest, IScriptVersion, IScriptCloneRequest } from "../model/scripting-model";
+import { IScriptTemplate, IScriptMetadata, IScriptCreateRequest, IScriptVersion, IScriptCloneRequest, IScriptCategory } from "../model/scripting-model";
 /**
- * List script templates for a microservice by identifier.
+ * List script categories for a functional area.
  * @param axios
  * @param identifier
  */
-export declare function listScriptTemplates(axios: AxiosInstance, identifier: string): AxiosPromise<IScriptTemplate[]>;
+export declare function listScriptCategories(axios: AxiosInstance, identifier: string): AxiosPromise<IScriptCategory[]>;
 /**
- * Get content for a script template.
+ * List script templates for a functional area and in the given category.
  * @param axios
  * @param identifier
- * @param templateId
+ * @param category
  */
-export declare function getScriptTemplateContent(axios: AxiosInstance, identifier: string, templateId: string): AxiosPromise<string>;
+export declare function listScriptTemplates(axios: AxiosInstance, identifier: string, category: string): AxiosPromise<IScriptTemplate[]>;
 /**
- * List metadata for scripts associated with a global microservice.
- * @param axios
- * @param identifier
- */
-export declare function listGlobalScriptMetadata(axios: AxiosInstance, identifier: string): AxiosPromise<IScriptMetadata[]>;
-/**
- * Get metadata for a global script.
- * @param axios
- * @param identifier
- * @param scriptId
- */
-export declare function getGlobalScriptMetadata(axios: AxiosInstance, identifier: string, scriptId: string): AxiosPromise<IScriptMetadata>;
-/**
- * Create a global script.
- * @param axios
- * @param identifier
- * @param request
- */
-export declare function createGlobalScript(axios: AxiosInstance, identifier: string, request: IScriptCreateRequest): AxiosPromise<IScriptMetadata>;
-/**
- * Get content for a global script.
- * @param axios
- * @param identifier
- * @param scriptId
- * @param versionId
- */
-export declare function getGlobalScriptContent(axios: AxiosInstance, identifier: string, scriptId: string, versionId: string): AxiosPromise<string>;
-/**
- * Update an existing global script.
- * @param axios
- * @param identifier
- * @param scriptId
- * @param versionId
- * @param request
- */
-export declare function updateGlobalScript(axios: AxiosInstance, identifier: string, scriptId: string, versionId: string, request: IScriptCreateRequest): AxiosPromise<IScriptMetadata>;
-/**
- * Clone an existing global script.
- * @param axios
- * @param identifier
- * @param scriptId
- * @param versionId
- * @param request
- */
-export declare function cloneGlobalScript(axios: AxiosInstance, identifier: string, scriptId: string, versionId: string, request: IScriptCloneRequest): AxiosPromise<IScriptVersion>;
-/**
- * Activate a global script.
- * @param axios
- * @param identifier
- * @param scriptId
- * @param versionId
- */
-export declare function activateGlobalScript(axios: AxiosInstance, identifier: string, scriptId: string, versionId: string): AxiosPromise<IScriptMetadata>;
-/**
- * Delete a global script and its version history.
- * @param axios
- * @param identifier
- * @param scriptId
- */
-export declare function deleteGlobalScript(axios: AxiosInstance, identifier: string, scriptId: string): AxiosPromise<IScriptMetadata>;
-/**
- * List metadata for microservice tenant scripts.
+ * List tenant scripts for a functional area.
  * @param axios
  * @param identifier
  * @param tenantToken
  */
-export declare function listTenantScriptMetadata(axios: AxiosInstance, identifier: string, tenantToken: string): AxiosPromise<IScriptMetadata[]>;
+export declare function listTenantScripts(axios: AxiosInstance, identifier: string, tenantToken: string): AxiosPromise<IScriptMetadata[]>;
+/**
+ * List tenant scripts for functional area belonging to category.
+ * @param axios
+ * @param identifier
+ * @param tenantToken
+ * @param category
+ */
+export declare function listTenantScriptsForCategory(axios: AxiosInstance, identifier: string, tenantToken: string, category: string): AxiosPromise<IScriptMetadata[]>;
+/**
+ * List tenant scripts grouped by category.
+ * @param axios
+ * @param identifier
+ * @param tenantToken
+ */
+export declare function listTenantScriptsByCategory(axios: AxiosInstance, identifier: string, tenantToken: string): AxiosPromise<IScriptCategory[]>;
 /**
  * Get metadata for a given microservice tenant script.
  * @param axios
@@ -88,7 +42,7 @@ export declare function listTenantScriptMetadata(axios: AxiosInstance, identifie
  * @param tenantToken
  * @param scriptId
  */
-export declare function getTenantScriptMetadata(axios: AxiosInstance, identifier: string, tenantToken: string, scriptId: string): AxiosPromise<IScriptMetadata>;
+export declare function getTenantScript(axios: AxiosInstance, identifier: string, tenantToken: string, scriptId: string): AxiosPromise<IScriptMetadata>;
 /**
  * Create a new script for a microservice tenant.
  * @param axios

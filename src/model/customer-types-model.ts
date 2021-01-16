@@ -13,7 +13,7 @@ import {
  */
 export interface ICustomerTypeCreateRequest
   extends IBrandedEntityCreateRequest,
-    IAccessible {
+  IAccessible {
   containedCustomerTypeTokens: string[];
 }
 
@@ -21,7 +21,7 @@ export interface ICustomerTypeCreateRequest
  * Customer type information.
  */
 export interface ICustomerType extends IBrandedEntity, IAccessible {
-  containedCustomerTypeIds: uuid[];
+  containedCustomerTypes?: ICustomerType[];
 }
 
 /**
@@ -34,10 +34,10 @@ export interface ICustomerTypeResponseFormat extends IResponseFormat {
 /**
  * Search criteria for customer types.
  */
-export interface ICustomerTypeSearchCriteria extends ISearchCriteria {}
+export interface ICustomerTypeSearchCriteria extends ISearchCriteria { }
 
 /**
  * Search results for customer types.
  */
 export interface ICustomerTypeSearchResults
-  extends ISearchResults<ICustomerType> {}
+  extends ISearchResults<ICustomerType> { }

@@ -1,6 +1,6 @@
 import { AxiosInstance, AxiosPromise } from "axios";
 import { IAreaCreateRequest, IArea, IAreaSearchCriteria, IAreaResponseFormat, IAreaSearchResults } from "../model/areas-model";
-import { IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults } from "../model/device-assignments-model";
+import { IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults, IDeviceAssignmentSummarySearchResults } from "../model/device-assignments-model";
 import { ISearchCriteria, IDateRangeSearchCriteria, ITreeNode } from "../model/common-model";
 import { IDeviceMeasurementSearchResults, IDeviceLocationSearchResults, IDeviceAlertSearchResults, IDeviceMeasurementResponseFormat, IDeviceLocationResponseFormat, IDeviceAlertResponseFormat } from "../model/device-events-model";
 /**
@@ -49,6 +49,14 @@ export declare function deleteArea(axios: AxiosInstance, token: string): AxiosPr
  * @param format
  */
 export declare function listAssignmentsForArea(axios: AxiosInstance, token: string, criteria?: ISearchCriteria, format?: IDeviceAssignmentResponseFormat): AxiosPromise<IDeviceAssignmentSearchResults>;
+/**
+ * List assignments for area in summary format.
+ * @param axios
+ * @param token
+ * @param criteria
+ * @param format
+ */
+export declare function listAssignmentSummariesForArea(axios: AxiosInstance, token: string, criteria?: ISearchCriteria, format?: IDeviceAssignmentResponseFormat): AxiosPromise<IDeviceAssignmentSummarySearchResults>;
 /**
  * List measurement events associated with area.
  * @param axios

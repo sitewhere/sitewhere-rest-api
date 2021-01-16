@@ -54,13 +54,13 @@ export const AuthAPI = {
   Jwt: JwtApi
 };
 
+/** Export object model */
 export * from "./model/area-types-model";
 export * from "./model/areas-model";
 export * from "./model/asset-types-model";
 export * from "./model/assets-model";
 export * from "./model/batch-operations-model";
 export * from "./model/common-model";
-export * from "./model/configuration-model";
 export * from "./model/customer-types-model";
 export * from "./model/customers-model";
 export * from "./model/device-assignments-model";

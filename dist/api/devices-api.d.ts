@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise } from "axios";
-import { IDeviceCreateRequest, IDevice, IDeviceSearchCriteria, IDeviceResponseFormat, IDeviceSearchResults } from "../model/devices-model";
+import { IDeviceCreateRequest, IDevice, IDeviceSearchCriteria, IDeviceResponseFormat, IDeviceSearchResults, IDeviceSummarySearchResults } from "../model/devices-model";
 import { IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults } from "../model/device-assignments-model";
 import { ISearchCriteria } from "../model/common-model";
 /**
@@ -28,6 +28,13 @@ export declare function updateDevice(axios: AxiosInstance, deviceToken: string, 
  * @param format
  */
 export declare function listDevices(axios: AxiosInstance, criteria?: IDeviceSearchCriteria, format?: IDeviceResponseFormat): AxiosPromise<IDeviceSearchResults>;
+/**
+ * List summary data for devices that match the given criteria.
+ * @param axios
+ * @param criteria
+ * @param format
+ */
+export declare function listDeviceSummaries(axios: AxiosInstance, criteria?: IDeviceSearchCriteria): AxiosPromise<IDeviceSummarySearchResults>;
 /**
  * Delete an existing device.
  * @param axios

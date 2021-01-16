@@ -1,146 +1,80 @@
 import { AxiosInstance, AxiosPromise } from "axios";
 import {
-  IConfigurationModel,
-  IElementContent
-} from "../model/configuration-model";
-import {
-  IInstanceTopologySummary,
-  ITenantEngineState
+  IMicroserviceSummary,
+  ITenantEngineConfiguration,
+  IInstanceConfiguration
 } from "../model/instance-model";
-import { restAuthGet, restAuthPost } from "../rest";
+import { restAuthGet, restAuthPut, restAuthPost } from "../rest";
 
 /**
- * Get instance topology including both global and multitenant microservices.
+ * Get the currently effective instance configuration.
  * @param axios
  */
-export function getTopology(
+export function getInstanceConfiguration(
   axios: AxiosInstance
-): AxiosPromise<IInstanceTopologySummary[]> {
-  return restAuthGet<IInstanceTopologySummary[]>(axios, `instance/topology`);
+): AxiosPromise<IInstanceConfiguration> {
+  return restAuthGet<IInstanceConfiguration>(axios, "instance/configuration");
 }
 
 /**
- * Get elements in the instance topology that are global in scope.
+ * Update global instance configuration.
+ * @param axios
+ * @param request
+ */
+export function updateInstanceConfiguration(
+  axios: AxiosInstance,
+  request: IInstanceConfiguration
+): AxiosPromise<IInstanceConfiguration> {
+  return restAuthPut<IInstanceConfiguration>(
+    axios,
+    `instance/configuration`,
+    request
+  );
+}
+
+/**
+ * Get a list of all microservices registered for instance.
  * @param axios
  */
-export function getGlobalTopology(
+export function getInstanceMicroservices(
   axios: AxiosInstance
-): AxiosPromise<IInstanceTopologySummary[]> {
-  return restAuthGet<IInstanceTopologySummary[]>(
-    axios,
-    `instance/topology/global`
-  );
+): AxiosPromise<IMicroserviceSummary[]> {
+  return restAuthGet<IMicroserviceSummary[]>(axios, "instance/microservices");
 }
 
 /**
- * Get elements in the instance topology that are multitenant in scope.
+ * Get configuration information for a tenant engine.
  * @param axios
+ * @param functionalArea
+ * @param tenant
  */
-export function getTenantTopology(
-  axios: AxiosInstance
-): AxiosPromise<IInstanceTopologySummary[]> {
-  return restAuthGet<IInstanceTopologySummary[]>(
-    axios,
-    `instance/topology/tenant`
-  );
-}
-
-/**
- * Get summary of runtime state for a tenant.
- * @param axios
- * @param identifier
- * @param tenantToken
- */
-export function getTenantRuntimeState(
+export function getTenantEngineConfiguration(
   axios: AxiosInstance,
-  identifier: string,
-  tenantToken: string
-): AxiosPromise<ITenantEngineState[]> {
-  return restAuthGet<ITenantEngineState[]>(
+  functionalArea: string,
+  tenant: string
+): AxiosPromise<ITenantEngineConfiguration> {
+  return restAuthGet<ITenantEngineConfiguration>(
     axios,
-    `instance/microservice/${identifier}/tenants/${tenantToken}/state`
+    `instance/microservices/${functionalArea}/tenants/${tenant}/configuration`
   );
 }
 
 /**
- * Get configuration model for a given microservice identifier.
+ * Update configuration information for a tenant engine.
  * @param axios
- * @param identifier
+ * @param functionalArea
+ * @param tenant
+ * @param configuration
  */
-export function getConfigurationModel(
+export function updateTenantEngineConfiguration(
   axios: AxiosInstance,
-  identifier: string
-): AxiosPromise<IConfigurationModel> {
-  return restAuthGet<IConfigurationModel>(
+  functionalArea: string,
+  tenant: string,
+  configuration: any
+): AxiosPromise<ITenantEngineConfiguration> {
+  return restAuthPost<ITenantEngineConfiguration>(
     axios,
-    `instance/microservice/${identifier}/configuration/model`
-  );
-}
-
-/**
- * Get configuration for global microservice based on identifier.
- * @param axios
- * @param identifier
- */
-export function getGlobalConfiguration(
-  axios: AxiosInstance,
-  identifier: string
-): AxiosPromise<IElementContent> {
-  return restAuthGet<IElementContent>(
-    axios,
-    `instance/microservice/${identifier}/configuration`
-  );
-}
-
-/**
- * Update configuration for global microservice based on identifier.
- * @param axios
- * @param identifier
- * @param config
- */
-export function updateGlobalConfiguration(
-  axios: AxiosInstance,
-  identifier: string,
-  config: IElementContent
-): AxiosPromise<void> {
-  return restAuthPost(
-    axios,
-    `instance/microservice/${identifier}/configuration`,
-    config
-  );
-}
-
-/**
- * Get configuration for tenant microservice based on identifier.
- * @param axios
- * @param identifier
- */
-export function getTenantConfiguration(
-  axios: AxiosInstance,
-  identifier: string,
-  tenantToken: string
-): AxiosPromise<IElementContent> {
-  return restAuthGet<IElementContent>(
-    axios,
-    `instance/microservice/${identifier}/tenants/${tenantToken}/configuration`
-  );
-}
-
-/**
- * Update configuration for tenant microservice based on identifier.
- * @param axios
- * @param identifier
- * @param config
- */
-export function updateTenantConfiguration(
-  axios: AxiosInstance,
-  identifier: string,
-  tenantToken: string,
-  config: IElementContent
-): AxiosPromise<void> {
-  return restAuthPost(
-    axios,
-    `instance/microservice/${identifier}/tenants/${tenantToken}/configuration`,
-    config
+    `instance/microservices/${functionalArea}/tenants/${tenant}/configuration`,
+    configuration
   );
 }

@@ -1,11 +1,18 @@
 import { IPersistentEntityCreateRequest, IPersistentEntity, ISearchCriteria, ISearchResults, IResponseFormat } from "./common-model";
 /**
- * Enumeration of user account status values.
+ * Granted authority in the system.
  */
-export declare enum AccountStatus {
-    AccountStatus = "A",
-    Expired = "E",
-    Locked = "L"
+export interface IGrantedAuthority {
+    authority: string;
+    description: string;
+}
+/**
+ * Role with a list of associated granted authorities.
+ */
+export interface IRole {
+    role: string;
+    description: string;
+    authorities: IGrantedAuthority[];
 }
 /**
  * Used to create or update a user.
@@ -15,20 +22,20 @@ export interface IUserCreateRequest extends IPersistentEntityCreateRequest {
     password: string;
     firstName: string;
     lastName: string;
-    status: AccountStatus;
-    authorities: string[];
+    email: string;
+    enabled: boolean;
+    roles: string[];
 }
 /**
  * User information.
  */
 export interface IUser extends IPersistentEntity {
     username: string;
-    hashedPassword: string;
     firstName: string;
     lastName: string;
-    lastLogin: Date;
-    status: AccountStatus;
-    authorities: string[];
+    email: string;
+    enabled: boolean;
+    roles: IRole[];
 }
 /**
  * Response format for user records.
@@ -46,20 +53,17 @@ export interface IUserSearchCriteria extends ISearchCriteria {
 export interface IUserSearchResults extends ISearchResults<IUser> {
 }
 /**
- * Granted authority information.
+ * Response format for role records.
  */
-export interface IGrantedAuthority {
-    authority: string;
-    description: string;
-    parent: string;
-    group: boolean;
+export interface IRoleResponseFormat extends IResponseFormat {
 }
 /**
- * Used for displaying granted authority tree.
+ * Search criteria for roles.
  */
-export interface IGrantedAuthorityHierarchyNode {
-    id: string;
-    text: string;
-    group: string;
-    items: IGrantedAuthorityHierarchyNode[];
+export interface IRoleSearchCriteria extends ISearchCriteria {
+}
+/**
+ * Search results for roles.
+ */
+export interface IRoleSearchResults extends ISearchResults<IRole> {
 }

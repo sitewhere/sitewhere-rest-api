@@ -8,7 +8,8 @@ import {
 } from "../model/areas-model";
 import {
   IDeviceAssignmentResponseFormat,
-  IDeviceAssignmentSearchResults
+  IDeviceAssignmentSearchResults,
+  IDeviceAssignmentSummarySearchResults
 } from "../model/device-assignments-model";
 import {
   createPagingQuery,
@@ -153,6 +154,32 @@ export function listAssignmentsForArea(
   return restAuthGet<IDeviceAssignmentSearchResults>(
     axios,
     `areas/${token}/assignments${query}`
+  );
+}
+
+/**
+ * List assignments for area in summary format.
+ * @param axios 
+ * @param token 
+ * @param criteria 
+ * @param format 
+ */
+export function listAssignmentSummariesForArea(
+  axios: AxiosInstance,
+  token: string,
+  criteria?: ISearchCriteria,
+  format?: IDeviceAssignmentResponseFormat
+): AxiosPromise<IDeviceAssignmentSummarySearchResults> {
+  let query = randomSeedQuery();
+  if (format) {
+    query += addFilter(format.includeAsset, "includeAsset");
+  }
+  if (criteria) {
+    query += createPagingQuery(criteria);
+  }
+  return restAuthGet<IDeviceAssignmentSummarySearchResults>(
+    axios,
+    `areas/${token}/assignments/summaries${query}`
   );
 }
 
