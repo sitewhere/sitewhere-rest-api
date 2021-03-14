@@ -103,11 +103,24 @@ export interface IPersistenceConfigurations {
     timeSeriesConfigurations: ITimeSeriesConfigurationMap;
 }
 /**
+ * Debugging related to event pipeline.
+ */
+export interface IEventPipelineDebugging {
+    debugLevel: string;
+}
+/**
+ * Instance-scoped debugging configuration.
+ */
+export interface IInstanceDebuggingConfiguration {
+    eventPipeLine: IEventPipelineDebugging;
+}
+/**
  * Global instance configuration.
  */
 export interface IInstanceConfiguration {
     infrastructure: IInfrastructureConfiguration;
     persistenceConfigurations: IPersistenceConfigurations;
+    debugging: IInstanceDebuggingConfiguration;
 }
 /**
  * Provides summary information about a deployed microservice.
