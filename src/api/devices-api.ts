@@ -2,7 +2,6 @@ import { AxiosInstance, AxiosPromise } from "axios";
 import {
   IDeviceCreateRequest,
   IDevice,
-  IDeviceSummary,
   IDeviceSearchCriteria,
   IDeviceResponseFormat,
   IDeviceSearchResults,

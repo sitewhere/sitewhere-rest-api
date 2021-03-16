@@ -1,4 +1,9 @@
 import { ITenant } from "./tenants-model";
+import {
+  ISearchCriteria,
+  ISearchResults,
+  IResponseFormat
+} from "./common-model";
 
 /**
  * Enumeration of lifecycle statuses.
@@ -133,6 +138,29 @@ export interface IInstanceConfiguration {
   infrastructure: IInfrastructureConfiguration;
   persistenceConfigurations: IPersistenceConfigurations;
   debugging: IInstanceDebuggingConfiguration;
+}
+
+/** Event pipeline log entry */
+export interface IEventPipelineLog {
+  timestamp: number;
+  source: string;
+  deviceToken: string;
+  level: string;
+  microservice: string;
+  message: string;
+  detail: string;
+}
+
+/** Response format for event pipeline logs */
+export interface IEventPipelineLogResponseFormat extends IResponseFormat {
+}
+
+/** Search criteria for event pipeline logs */
+export interface IEventPipelineLogSearchCriteria extends ISearchCriteria {
+}
+
+/** Search results for devices */
+export interface IEventPipelineLogSearchResults extends ISearchResults<IEventPipelineLog> {
 }
 
 /**

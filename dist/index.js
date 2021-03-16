@@ -1669,6 +1669,30 @@ function getTenantEngineConfiguration(axios, functionalArea, tenant) {
 function updateTenantEngineConfiguration(axios, functionalArea, tenant, configuration) {
     return restAuthPost(axios, "instance/microservices/" + functionalArea + "/tenants/" + tenant + "/configuration", configuration);
 }
+/**
+ * List event pipeline log entries that match the given criteria.
+ * @param axios
+ * @param tenantToken
+ * @param criteria
+ * @param format
+ * @returns
+ */
+function listInstancePipelineLogEntries(axios, tenantToken, criteria, format) {
+    var query = randomSeedQuery();
+    if (criteria) {
+        query += createPagingQuery(criteria);
+    }
+    return restAuthGet(axios, "instance/eventpipeline/tenants/" + tenantToken + "/recent" + query);
+}
+/**
+ * Delete event pipeline log entries for the given tenant.
+ * @param axios
+ * @param tenantToken
+ * @returns
+ */
+function deleteInstancePipelineLogEntries(axios, tenantToken) {
+    return restAuthDelete(axios, "instance/eventpipeline/tenants/" + tenantToken + "/recent");
+}
 
 var InstanceApi = /*#__PURE__*/Object.freeze({
   __proto__: null,
@@ -1676,7 +1700,9 @@ var InstanceApi = /*#__PURE__*/Object.freeze({
   updateInstanceConfiguration: updateInstanceConfiguration,
   getInstanceMicroservices: getInstanceMicroservices,
   getTenantEngineConfiguration: getTenantEngineConfiguration,
-  updateTenantEngineConfiguration: updateTenantEngineConfiguration
+  updateTenantEngineConfiguration: updateTenantEngineConfiguration,
+  listInstancePipelineLogEntries: listInstancePipelineLogEntries,
+  deleteInstancePipelineLogEntries: deleteInstancePipelineLogEntries
 });
 
 /**

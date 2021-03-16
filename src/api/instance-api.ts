@@ -2,9 +2,21 @@ import { AxiosInstance, AxiosPromise } from "axios";
 import {
   IMicroserviceSummary,
   ITenantEngineConfiguration,
-  IInstanceConfiguration
+  IInstanceConfiguration,
+  IEventPipelineLogResponseFormat,
+  IEventPipelineLogSearchCriteria,
+  IEventPipelineLogSearchResults
 } from "../model/instance-model";
-import { restAuthGet, restAuthPut, restAuthPost } from "../rest";
+import {
+  restAuthGet,
+  restAuthPut,
+  restAuthPost,
+  restAuthDelete,
+  randomSeedQuery
+} from "../rest";
+import {
+  createPagingQuery
+} from "../model/common-model";
 
 /**
  * Get the currently effective instance configuration.
@@ -77,4 +89,43 @@ export function updateTenantEngineConfiguration(
     `instance/microservices/${functionalArea}/tenants/${tenant}/configuration`,
     configuration
   );
+}
+
+/**
+ * List event pipeline log entries that match the given criteria.
+ * @param axios 
+ * @param tenantToken 
+ * @param criteria 
+ * @param format 
+ * @returns 
+ */
+export function listInstancePipelineLogEntries(
+  axios: AxiosInstance,
+  tenantToken: string,
+  criteria?: IEventPipelineLogSearchCriteria,
+  format?: IEventPipelineLogResponseFormat
+): AxiosPromise<IEventPipelineLogSearchResults> {
+  let query = randomSeedQuery();
+  if (format) {
+  }
+  if (criteria) {
+    query += createPagingQuery(criteria);
+  }
+  return restAuthGet<IEventPipelineLogSearchResults>(
+    axios,
+    `instance/eventpipeline/tenants/${tenantToken}/recent${query}`
+  );
+}
+
+/**
+ * Delete event pipeline log entries for the given tenant.
+ * @param axios 
+ * @param tenantToken 
+ * @returns 
+ */
+export function deleteInstancePipelineLogEntries(
+  axios: AxiosInstance,
+  tenantToken: string,
+): AxiosPromise<void> {
+  return restAuthDelete<void>(axios, `instance/eventpipeline/tenants/${tenantToken}/recent`);
 }
